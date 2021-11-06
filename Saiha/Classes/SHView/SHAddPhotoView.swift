@@ -72,6 +72,24 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
             }
         }
     }
+    
+    func setImage(image: UIImage?) {
+        
+    }
+}
+
+// MARK: - SHAddPhotoViewDelegate.
+
+@objc public protocol SHAddPhotoViewDelegate {
+    
+    /**
+     如果未实现此方法，则点击相框默认调出相机拍摄相片，拍摄的相片保存在内存中，可以通过 `getPhoto:from:` 方法获取拍摄的相片。
+     并且在拍摄照片后会自动在 `maxPhotos` 范围内动态增加空相框。
+     如果实现此方法，则默认为空方法。可以通过 `addEmptyPhoto:` 方法手动增加空相框。
+     */
+    @objc optional func addPhotoView(addPhotoView: SHAddPhotoView, didSelectItemAt index: Int)
+    
+    @objc optional func addPhotoView(addPhotoView: SHAddPhotoView, didTouchRemoveButtonAt index: Int)
 }
 
 // MARK: - SHAddPhotoView.
@@ -80,7 +98,13 @@ open class SHAddPhotoView: SHUIView {
     
     private var photoCollectionView: SHUICollectionView!
     
-    open var photos: [String] = [""]
+    private var photos: [UIImage?] = [nil]
+    
+    open var maxPhotos: Int = 10
+    
+    private var currentSelectIndex: Int = 0
+    
+    weak var delegate: SHAddPhotoViewDelegate?
     
     private func initialize() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -110,6 +134,41 @@ open class SHAddPhotoView: SHUIView {
         super.init(coder: coder)
         self.initialize()
     }
+    
+    /**
+     获取指定序号的相片。
+     
+     - Parameters:
+        - from: 序号。
+     
+     - Returns: 返回存储在内存中的相片原片。若返回 `nil`，则代表指定的是一个空相框。
+     */
+    open func getPhoto(from index: Int) -> UIImage? {
+        return self.photos[index]
+    }
+    
+    /**
+     增加一个空相框。
+     
+     - Important: 若调用该方法时，照片数量 + 空相框数量 = `maxPhotos`，则调用此方法不会有任何效果。
+     */
+    open func addEmptyPhoto() {
+        if self.photos.count <= self.maxPhotos {
+            self.photos.append(nil)
+            let r1: Int = self.photos.count - 1
+            let r2: Int = self.photos.count - 2
+            if r1 < self.photos.count {
+                DispatchQueue.main.async {
+                    self.photoCollectionView.reloadItems(at: [IndexPath(item: r1, section: 0)])
+                }
+            }
+            if r2 < self.photos.count {
+                DispatchQueue.main.async {
+                    self.photoCollectionView.reloadItems(at: [IndexPath(item: r2, section: 0)])
+                }
+            }
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource.
@@ -117,7 +176,7 @@ open class SHAddPhotoView: SHUIView {
 extension SHAddPhotoView: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return self.photos.count
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -130,4 +189,31 @@ extension SHAddPhotoView: UICollectionViewDataSource {
 
 extension SHAddPhotoView: UICollectionViewDelegate {
     
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if self.delegate != nil {
+            self.delegate?.addPhotoView?(addPhotoView: self, didSelectItemAt: indexPath.row)
+        } else {
+            self.currentSelectIndex = indexPath.row
+            let imagePicker: UIImagePickerController = UIImagePickerController()
+            imagePicker.allowsEditing = true
+            imagePicker.isEditing = true
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.modalPresentationStyle = .fullScreen
+            imagePicker.cameraCaptureMode = .photo
+            UIViewController.saiha.currentActivityViewController()?.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate.
+
+extension SHAddPhotoView: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image: UIImage = info[.editedImage] as! UIImage
+        self.photos[self.currentSelectIndex] = image
+        self.addEmptyPhoto()
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

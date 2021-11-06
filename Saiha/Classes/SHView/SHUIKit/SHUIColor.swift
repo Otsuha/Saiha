@@ -9,7 +9,9 @@ import UIKit
 
 public extension UIColor {
     
-    static var saiha: SaihaUIColor = SaihaUIColor(color: UIColor())
+    static var saiha: SaihaUIColor {
+        return SaihaUIColor(color: UIColor())
+    }
 }
 
 public struct SaihaUIColor {
