@@ -1,0 +1,16 @@
+PODS:
+  - Saiha (0.1.0)
+
+DEPENDENCIES:
+  - Saiha (from `../`)
+
+EXTERNAL SOURCES:
+  Saiha:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Saiha: 6fb15267d0ba6637ad2da11b3815c82a0398c344
+
+PODFILE CHECKSUM: df6e437a92af3bbc3a9fc54c352d08f9f77dd83d
+
+COCOAPODS: 1.10.2

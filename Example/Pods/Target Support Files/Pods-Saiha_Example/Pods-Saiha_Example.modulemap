@@ -1,0 +1,6 @@
+framework module Pods_Saiha_Example {
+  umbrella header "Pods-Saiha_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

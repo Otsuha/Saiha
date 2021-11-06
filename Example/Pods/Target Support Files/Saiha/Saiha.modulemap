@@ -1,0 +1,6 @@
+framework module Saiha {
+  umbrella header "Saiha-umbrella.h"
+
+  export *
+  module * { export * }
+}

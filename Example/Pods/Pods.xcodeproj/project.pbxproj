@@ -1,0 +1,774 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2441FECF3B3C21B8559ECDD9183748BF /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060E70CD9D93366D5B7025737937267 /* ReplaceMe.swift */; };
+		3453E7A799355EE7331C7216B6EF9DE9 /* Pods-Saiha_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D71E1E337169467CDF98B6158F817E39 /* Pods-Saiha_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		471E743626425024217F9FAEBFDCC941 /* Pods-Saiha_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24AF13C4EC5B7B9272FE0082FBF32A71 /* Pods-Saiha_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		730EA6C058494EEF1A00E550EDC01CB9 /* Saiha-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABBD751F2FC58B72CDC0A265FDA33EF /* Saiha-dummy.m */; };
+		9130404AD86FD1F432B8C27543565414 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		972515D080743456D91E5F852C5DBCA1 /* Pods-Saiha_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 83281714010EFB86B88E2356CBFFC4B6 /* Pods-Saiha_Example-dummy.m */; };
+		9A9BBCDD9365C4B8963F59BF6D71CD47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		A527DE1BC6C87B2AA28F98FC653125F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		C6E841EBA7D99B6F002A90B238F95A72 /* Pods-Saiha_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EFCAD04E46B2131698F8909AF896BA8 /* Pods-Saiha_Tests-dummy.m */; };
+		D13C5FA2BBAA078895ED93632AE4641E /* Saiha-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AB7F165EBE2EF32F9749B193BBE9DFF /* Saiha-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		90BB37B0D7DFD454B9FE1579D9882113 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 69239C10A80D0B9465F5DB61BB8CEDB0;
+			remoteInfo = "Pods-Saiha_Example";
+		};
+		E2DCB122380D4D6351416C9ABB93DD8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 035C1FEC1C67A62D4975DA64FFBA6148;
+			remoteInfo = Saiha;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		063A0BC6C99D23F849023924D1EB676F /* Pods-Saiha_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Saiha_Tests.modulemap"; sourceTree = "<group>"; };
+		0D1C68B628B98EF54E747FBE88854825 /* Pods-Saiha_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Saiha_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		10386AF25F138C8C981CA3EC93F468B9 /* Saiha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Saiha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A72C555F2B68A8E1061688B8379E061 /* Pods-Saiha_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Saiha_Example-frameworks.sh"; sourceTree = "<group>"; };
+		24AF13C4EC5B7B9272FE0082FBF32A71 /* Pods-Saiha_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Saiha_Example-umbrella.h"; sourceTree = "<group>"; };
+		25DC264FB72026AF81C2884044D21DA0 /* Saiha.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Saiha.modulemap; sourceTree = "<group>"; };
+		3289C1F8C0ED15D7BA3A291F957785ED /* Pods-Saiha_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Saiha_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		3C893B29B66D5B54969FEA6F04A5BEFC /* Pods-Saiha_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Saiha_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		447B3330A75461982FEA13DD7AD0061D /* Pods-Saiha_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Saiha_Tests-Info.plist"; sourceTree = "<group>"; };
+		54ED6584F9F68532D193F114E999FFEC /* Saiha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Saiha.debug.xcconfig; sourceTree = "<group>"; };
+		5F36DDC3524D579B80FB1D393BC87AEA /* Pods_Saiha_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Saiha_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AB7F165EBE2EF32F9749B193BBE9DFF /* Saiha-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Saiha-umbrella.h"; sourceTree = "<group>"; };
+		6E688B6629C45B56AD34667ECC452EFA /* Saiha.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Saiha.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6EFCAD04E46B2131698F8909AF896BA8 /* Pods-Saiha_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Saiha_Tests-dummy.m"; sourceTree = "<group>"; };
+		7060E70CD9D93366D5B7025737937267 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = Saiha/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7B1C324135E18991647EB1799D44ADF1 /* Pods-Saiha_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Saiha_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		83281714010EFB86B88E2356CBFFC4B6 /* Pods-Saiha_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Saiha_Example-dummy.m"; sourceTree = "<group>"; };
+		8ABBD751F2FC58B72CDC0A265FDA33EF /* Saiha-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Saiha-dummy.m"; sourceTree = "<group>"; };
+		8D2109814F9B54F10989290F7903CBF3 /* Pods-Saiha_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Saiha_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F663F4D8E23720317F64E09966AD43D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A0864471E4E5DB798AE9D6B859602DEB /* Pods-Saiha_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Saiha_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		A9E49769A6A87FCFD615009440CE3E1F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B1293EDF9B638D30FB03CB632FCED708 /* Pods-Saiha_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Saiha_Example.modulemap"; sourceTree = "<group>"; };
+		B3EF5AED7D65AE37FEDB666E6A53B5BA /* Pods-Saiha_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Saiha_Example-Info.plist"; sourceTree = "<group>"; };
+		B4BD8A46B5477EA6CC0F0EB3854856D7 /* Pods-Saiha_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Saiha_Example.release.xcconfig"; sourceTree = "<group>"; };
+		D71E1E337169467CDF98B6158F817E39 /* Pods-Saiha_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Saiha_Tests-umbrella.h"; sourceTree = "<group>"; };
+		DB25C72A2FFCD1ECCAF1FACABD38B739 /* Pods_Saiha_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Saiha_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A9CBA86B33DEF3D10EBE7F87A9399E /* Saiha-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Saiha-Info.plist"; sourceTree = "<group>"; };
+		F323734E05ED04D01EA2A3DD56ACEFCA /* Pods-Saiha_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Saiha_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F579DBB38DAF77B4E59130863FFFA8B8 /* Saiha-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Saiha-prefix.pch"; sourceTree = "<group>"; };
+		FC589E17FA1B510BCC831DD3FBB6D6D3 /* Saiha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Saiha.release.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07646EA69E39FCA22857C65DC40F98F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A527DE1BC6C87B2AA28F98FC653125F1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		173EA49CF7BF2392855B1B4D36601B3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A9BBCDD9365C4B8963F59BF6D71CD47 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6EF421D6E0BC30455ADD523CAA306FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9130404AD86FD1F432B8C27543565414 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		066E79AE235A8F23A121E133879FBC76 /* Pods-Saiha_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				063A0BC6C99D23F849023924D1EB676F /* Pods-Saiha_Tests.modulemap */,
+				0D1C68B628B98EF54E747FBE88854825 /* Pods-Saiha_Tests-acknowledgements.markdown */,
+				A0864471E4E5DB798AE9D6B859602DEB /* Pods-Saiha_Tests-acknowledgements.plist */,
+				6EFCAD04E46B2131698F8909AF896BA8 /* Pods-Saiha_Tests-dummy.m */,
+				447B3330A75461982FEA13DD7AD0061D /* Pods-Saiha_Tests-Info.plist */,
+				D71E1E337169467CDF98B6158F817E39 /* Pods-Saiha_Tests-umbrella.h */,
+				7B1C324135E18991647EB1799D44ADF1 /* Pods-Saiha_Tests.debug.xcconfig */,
+				3C893B29B66D5B54969FEA6F04A5BEFC /* Pods-Saiha_Tests.release.xcconfig */,
+			);
+			name = "Pods-Saiha_Tests";
+			path = "Target Support Files/Pods-Saiha_Tests";
+			sourceTree = "<group>";
+		};
+		0737486983738E7EAAB1E02B62D551A2 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F205370803F063436D529B4037E79ED1 /* Saiha */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		1EAF9E973C2CDFE89B78FACE5498CD4D /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				A9E49769A6A87FCFD615009440CE3E1F /* LICENSE */,
+				9F663F4D8E23720317F64E09966AD43D /* README.md */,
+				6E688B6629C45B56AD34667ECC452EFA /* Saiha.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		839B6BF1C3763E22C7C3571E9C25B3B5 /* Pods-Saiha_Example */ = {
+			isa = PBXGroup;
+			children = (
+				B1293EDF9B638D30FB03CB632FCED708 /* Pods-Saiha_Example.modulemap */,
+				F323734E05ED04D01EA2A3DD56ACEFCA /* Pods-Saiha_Example-acknowledgements.markdown */,
+				3289C1F8C0ED15D7BA3A291F957785ED /* Pods-Saiha_Example-acknowledgements.plist */,
+				83281714010EFB86B88E2356CBFFC4B6 /* Pods-Saiha_Example-dummy.m */,
+				1A72C555F2B68A8E1061688B8379E061 /* Pods-Saiha_Example-frameworks.sh */,
+				B3EF5AED7D65AE37FEDB666E6A53B5BA /* Pods-Saiha_Example-Info.plist */,
+				24AF13C4EC5B7B9272FE0082FBF32A71 /* Pods-Saiha_Example-umbrella.h */,
+				8D2109814F9B54F10989290F7903CBF3 /* Pods-Saiha_Example.debug.xcconfig */,
+				B4BD8A46B5477EA6CC0F0EB3854856D7 /* Pods-Saiha_Example.release.xcconfig */,
+			);
+			name = "Pods-Saiha_Example";
+			path = "Target Support Files/Pods-Saiha_Example";
+			sourceTree = "<group>";
+		};
+		8D81F409EACF46DA236EFEBEE74C7988 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				25DC264FB72026AF81C2884044D21DA0 /* Saiha.modulemap */,
+				8ABBD751F2FC58B72CDC0A265FDA33EF /* Saiha-dummy.m */,
+				F1A9CBA86B33DEF3D10EBE7F87A9399E /* Saiha-Info.plist */,
+				F579DBB38DAF77B4E59130863FFFA8B8 /* Saiha-prefix.pch */,
+				6AB7F165EBE2EF32F9749B193BBE9DFF /* Saiha-umbrella.h */,
+				54ED6584F9F68532D193F114E999FFEC /* Saiha.debug.xcconfig */,
+				FC589E17FA1B510BCC831DD3FBB6D6D3 /* Saiha.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Saiha";
+			sourceTree = "<group>";
+		};
+		CD2EC561063A0D12D24BB8AC6E200B52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5F36DDC3524D579B80FB1D393BC87AEA /* Pods_Saiha_Example.framework */,
+				DB25C72A2FFCD1ECCAF1FACABD38B739 /* Pods_Saiha_Tests.framework */,
+				10386AF25F138C8C981CA3EC93F468B9 /* Saiha.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				0737486983738E7EAAB1E02B62D551A2 /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				CD2EC561063A0D12D24BB8AC6E200B52 /* Products */,
+				DB3D85D2CC10AFCEB5980D87E6B56E43 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB3D85D2CC10AFCEB5980D87E6B56E43 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				839B6BF1C3763E22C7C3571E9C25B3B5 /* Pods-Saiha_Example */,
+				066E79AE235A8F23A121E133879FBC76 /* Pods-Saiha_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		F205370803F063436D529B4037E79ED1 /* Saiha */ = {
+			isa = PBXGroup;
+			children = (
+				7060E70CD9D93366D5B7025737937267 /* ReplaceMe.swift */,
+				1EAF9E973C2CDFE89B78FACE5498CD4D /* Pod */,
+				8D81F409EACF46DA236EFEBEE74C7988 /* Support Files */,
+			);
+			name = Saiha;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1544629F1DB1F2772BDB8B567FA12115 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3453E7A799355EE7331C7216B6EF9DE9 /* Pods-Saiha_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1BFBC349E80F6F5BB324B9E42AB69D3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D13C5FA2BBAA078895ED93632AE4641E /* Saiha-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDC267B0E72AA6E5204BA175C7BA6095 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				471E743626425024217F9FAEBFDCC941 /* Pods-Saiha_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		035C1FEC1C67A62D4975DA64FFBA6148 /* Saiha */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37C5335D84493F800820E7568E0696E5 /* Build configuration list for PBXNativeTarget "Saiha" */;
+			buildPhases = (
+				B1BFBC349E80F6F5BB324B9E42AB69D3 /* Headers */,
+				CD5C818B32280C46BB965FC23C2CEBC4 /* Sources */,
+				F6EF421D6E0BC30455ADD523CAA306FA /* Frameworks */,
+				4FEA75176B4BA2850206067FD5AFE758 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Saiha;
+			productName = Saiha;
+			productReference = 10386AF25F138C8C981CA3EC93F468B9 /* Saiha.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		69239C10A80D0B9465F5DB61BB8CEDB0 /* Pods-Saiha_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91B93DBA5189022B933BD92425B5C448 /* Build configuration list for PBXNativeTarget "Pods-Saiha_Example" */;
+			buildPhases = (
+				CDC267B0E72AA6E5204BA175C7BA6095 /* Headers */,
+				CB990321299DF6E76F6BCECE28DDC8BB /* Sources */,
+				07646EA69E39FCA22857C65DC40F98F5 /* Frameworks */,
+				190B1E6D0C9D4E29DC3F6037C7F2A560 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8D831DD7E8023995C4BDE4787F62392C /* PBXTargetDependency */,
+			);
+			name = "Pods-Saiha_Example";
+			productName = "Pods-Saiha_Example";
+			productReference = 5F36DDC3524D579B80FB1D393BC87AEA /* Pods_Saiha_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EA0B63EE70B415FC185406D988D5019C /* Pods-Saiha_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F0B5A610A9EED300F2EF4C7BB4290E3 /* Build configuration list for PBXNativeTarget "Pods-Saiha_Tests" */;
+			buildPhases = (
+				1544629F1DB1F2772BDB8B567FA12115 /* Headers */,
+				9892571CA8D2473B45BA9BCEE0395EF4 /* Sources */,
+				173EA49CF7BF2392855B1B4D36601B3A /* Frameworks */,
+				BBF43D1579A9F9F0DA14AD7E116E8FD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C5125212C480FFB1B3AD7D5937414F6A /* PBXTargetDependency */,
+			);
+			name = "Pods-Saiha_Tests";
+			productName = "Pods-Saiha_Tests";
+			productReference = DB25C72A2FFCD1ECCAF1FACABD38B739 /* Pods_Saiha_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					035C1FEC1C67A62D4975DA64FFBA6148 = {
+						LastSwiftMigration = 1310;
+					};
+				};
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = CD2EC561063A0D12D24BB8AC6E200B52 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				69239C10A80D0B9465F5DB61BB8CEDB0 /* Pods-Saiha_Example */,
+				EA0B63EE70B415FC185406D988D5019C /* Pods-Saiha_Tests */,
+				035C1FEC1C67A62D4975DA64FFBA6148 /* Saiha */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		190B1E6D0C9D4E29DC3F6037C7F2A560 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FEA75176B4BA2850206067FD5AFE758 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBF43D1579A9F9F0DA14AD7E116E8FD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9892571CA8D2473B45BA9BCEE0395EF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6E841EBA7D99B6F002A90B238F95A72 /* Pods-Saiha_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB990321299DF6E76F6BCECE28DDC8BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				972515D080743456D91E5F852C5DBCA1 /* Pods-Saiha_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD5C818B32280C46BB965FC23C2CEBC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2441FECF3B3C21B8559ECDD9183748BF /* ReplaceMe.swift in Sources */,
+				730EA6C058494EEF1A00E550EDC01CB9 /* Saiha-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8D831DD7E8023995C4BDE4787F62392C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Saiha;
+			target = 035C1FEC1C67A62D4975DA64FFBA6148 /* Saiha */;
+			targetProxy = E2DCB122380D4D6351416C9ABB93DD8C /* PBXContainerItemProxy */;
+		};
+		C5125212C480FFB1B3AD7D5937414F6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Saiha_Example";
+			target = 69239C10A80D0B9465F5DB61BB8CEDB0 /* Pods-Saiha_Example */;
+			targetProxy = 90BB37B0D7DFD454B9FE1579D9882113 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		201AD924B1A36883CC2D571E37AB540F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4BD8A46B5477EA6CC0F0EB3854856D7 /* Pods-Saiha_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Saiha_Example/Pods-Saiha_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Saiha_Example/Pods-Saiha_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		3C711A17DF367890F1D6FE6BE2DBD7E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C893B29B66D5B54969FEA6F04A5BEFC /* Pods-Saiha_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Saiha_Tests/Pods-Saiha_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Saiha_Tests/Pods-Saiha_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4AAD587CEA680A44C5B78498DC8A432A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54ED6584F9F68532D193F114E999FFEC /* Saiha.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Saiha/Saiha-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Saiha/Saiha-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Saiha/Saiha.modulemap";
+				PRODUCT_MODULE_NAME = Saiha;
+				PRODUCT_NAME = Saiha;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		948C7A1004D6D8F05A0D3EC71BF06B51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC589E17FA1B510BCC831DD3FBB6D6D3 /* Saiha.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Saiha/Saiha-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Saiha/Saiha-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Saiha/Saiha.modulemap";
+				PRODUCT_MODULE_NAME = Saiha;
+				PRODUCT_NAME = Saiha;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AF75D752EE0D52ECE32100B67C194C68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D2109814F9B54F10989290F7903CBF3 /* Pods-Saiha_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Saiha_Example/Pods-Saiha_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Saiha_Example/Pods-Saiha_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		D5CCA5A63AF506EAB4433F5C9A39CF08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B1C324135E18991647EB1799D44ADF1 /* Pods-Saiha_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Saiha_Tests/Pods-Saiha_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Saiha_Tests/Pods-Saiha_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		37C5335D84493F800820E7568E0696E5 /* Build configuration list for PBXNativeTarget "Saiha" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AAD587CEA680A44C5B78498DC8A432A /* Debug */,
+				948C7A1004D6D8F05A0D3EC71BF06B51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
+				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8F0B5A610A9EED300F2EF4C7BB4290E3 /* Build configuration list for PBXNativeTarget "Pods-Saiha_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5CCA5A63AF506EAB4433F5C9A39CF08 /* Debug */,
+				3C711A17DF367890F1D6FE6BE2DBD7E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91B93DBA5189022B933BD92425B5C448 /* Build configuration list for PBXNativeTarget "Pods-Saiha_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF75D752EE0D52ECE32100B67C194C68 /* Debug */,
+				201AD924B1A36883CC2D571E37AB540F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
