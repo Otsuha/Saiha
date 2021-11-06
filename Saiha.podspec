@@ -68,7 +68,7 @@ Pod::Spec.new do |spec|
   # spec.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  # spec.ios.deployment_target = "5.0"
+  spec.ios.deployment_target = "10.0"
   # spec.osx.deployment_target = "10.7"
   # spec.watchos.deployment_target = "2.0"
   # spec.tvos.deployment_target = "9.0"
@@ -91,10 +91,24 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  #spec.source_files  = "Classes", "Classes/**/*.{h,m}"
+  spec.source_files  = "Saiha/Classes/**/*"
   #spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
+  
+  spec.prefix_header_contents = '#import <Saiha/Saiha-Swift.h>'
+  
+  spec.subspec "SHFoundation" do |subspec|
+    subspec.source_files = "Saiha/Classes/SHFoundation/**/*"
+  end
+  
+  spec.subspec "SHView" do |subspec|
+    subspec.source_files = "Saiha/Classes/SHView/**/*"
+  end
+  
+  spec.subspec "SHUIKit" do |subspec|
+    subspec.source_files = "Saiha/Classes/SHUIKit/**/*"
+  end
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -107,6 +121,14 @@ Pod::Spec.new do |spec|
 
   # spec.resource  = "icon.png"
   # spec.resources = "Resources/*.png"
+  
+  spec.resource_bundles = {
+    "Saiha" => ["Saiha/Assets/*"]
+  }
+  
+  spec.subspec "Resources" do |subspec|
+    subspec.resources = "Saiha/Assets/*"
+  end
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -134,5 +156,7 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
+  spec.dependency "SnapKit"
+  spec.static_framework = true
 
 end

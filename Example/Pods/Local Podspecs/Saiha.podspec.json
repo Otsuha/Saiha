@@ -1,22 +1,56 @@
 {
   "name": "Saiha",
-  "version": "0.1.0",
-  "summary": "A short description of Saiha.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/sylvia-grass/Saiha",
+  "version": "0.0.1",
+  "summary": "My iOS universal code.",
+  "description": "自己制作的一些通用代码，可以在 iOS 项目中进行使用。",
+  "homepage": "https://gitee.com/saiha/saiha",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "sylvia-grass": "grass.usagi@outlook.com"
-  },
-  "source": {
-    "git": "https://github.com/sylvia-grass/Saiha.git",
-    "tag": "0.1.0"
+    "Saiha": "grass.usagi@outlook.com"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "10.0"
   },
-  "source_files": "Saiha/Classes/**/*"
+  "source": {
+    "git": "https://gitee.com/saiha/saiha.git",
+    "tag": "0.0.1"
+  },
+  "source_files": "Saiha/Classes/**/*",
+  "prefix_header_contents": "#import <Saiha/Saiha-Swift.h>",
+  "resource_bundles": {
+    "Saiha": [
+      "Saiha/Assets/*"
+    ]
+  },
+  "frameworks": [
+    "UIKit",
+    "Foundation"
+  ],
+  "dependencies": {
+    "SnapKit": [
+
+    ]
+  },
+  "static_framework": true,
+  "subspecs": [
+    {
+      "name": "SHFoundation",
+      "source_files": "Saiha/Classes/SHFoundation/**/*"
+    },
+    {
+      "name": "SHView",
+      "source_files": "Saiha/Classes/SHView/**/*"
+    },
+    {
+      "name": "SHUIKit",
+      "source_files": "Saiha/Classes/SHUIKit/**/*"
+    },
+    {
+      "name": "Resources",
+      "resources": "Saiha/Assets/*"
+    }
+  ]
 }

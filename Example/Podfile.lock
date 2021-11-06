@@ -1,16 +1,36 @@
 PODS:
-  - Saiha (0.1.0)
+  - Saiha (0.0.1):
+    - Saiha/Resources (= 0.0.1)
+    - Saiha/SHFoundation (= 0.0.1)
+    - Saiha/SHUIKit (= 0.0.1)
+    - Saiha/SHView (= 0.0.1)
+    - SnapKit
+  - Saiha/Resources (0.0.1):
+    - SnapKit
+  - Saiha/SHFoundation (0.0.1):
+    - SnapKit
+  - Saiha/SHUIKit (0.0.1):
+    - SnapKit
+  - Saiha/SHView (0.0.1):
+    - SnapKit
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Saiha (from `../`)
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
 
 EXTERNAL SOURCES:
   Saiha:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Saiha: 6fb15267d0ba6637ad2da11b3815c82a0398c344
+  Saiha: d01807df59f7e981d35340f951eac3b034863b1b
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: df6e437a92af3bbc3a9fc54c352d08f9f77dd83d
+PODFILE CHECKSUM: db309d7b56d3740c1b88c2f5f90c35888ae5d7c5
 
 COCOAPODS: 1.10.2
