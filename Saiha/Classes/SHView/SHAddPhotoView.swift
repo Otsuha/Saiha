@@ -141,7 +141,7 @@ open class SHAddPhotoView: SHUIView {
      - Parameters:
         - from: 序号。
      
-     - Returns: 返回存储在内存中的相片原片。若返回 `nil`，则代表指定的是一个空相框。
+     - Returns: 返回存储在内存中的相片原片。若返回 `nil`，则代表指定的是一个空相框或该序号是一个无效的序号。
      */
     open func getPhoto(from index: Int) -> UIImage? {
         return self.photos[index]
