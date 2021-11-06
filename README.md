@@ -22,7 +22,7 @@ pod 'Saiha'
 
 ## Author
 
-sylvia-grass, grass.usagi@outlook.com
+Saiha, grass.usagi@outlook.com
 
 ## License
 
