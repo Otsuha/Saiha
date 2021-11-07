@@ -25,6 +25,7 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
     
     private var addImageView: UIImageView!
     private var titleLabel: UILabel!
+    private var photoImageView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,8 +39,13 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
         self.titleLabel.text = "添加照片"
         self.titleLabel.textAlignment = .center
         self.titleLabel.textColor = UIColor.saiha.colorWithHexString("#858B9C")
-        self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 12))
+        self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 12) * self.ratio)
         self.contentView.addSubview(self.titleLabel)
+        
+        self.photoImageView = UIImageView()
+        self.photoImageView.contentMode = .scaleAspectFit
+        self.contentView.addSubview(self.photoImageView)
+        self.photoImageView.isHidden = true
         
         self.contentView.layer.cornerRadius = 2
         self.contentView.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -57,24 +63,44 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
     override func layoutSubviews() {
         if self.addImageView != nil {
             self.addImageView.snp.remakeConstraints { make in
+                //make.width.height.greaterThanOrEqualTo(CGFloat.saiha.verticalSize(num: 24) * self.ratio)
+                //make.centerX.equalToSuperview()
+                //make.bottom.lessThanOrEqualTo(self.contentView.snp.centerY).offset(CGFloat.saiha.verticalSize(num: -8) * self.ratio)
+                make.top.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: 26) * self.ratio)
                 make.left.equalToSuperview().offset(CGFloat.saiha.levelSize(num: 38) * self.ratio)
                 make.right.equalToSuperview().offset(CGFloat.saiha.levelSize(num: -38) * self.ratio)
-                make.top.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: 26) * self.ratio)
-                make.centerX.equalToSuperview()
+                make.bottom.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: -50) * self.ratio)
             }
         }
         if self.titleLabel != nil {
+            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 12) * self.ratio)
             self.titleLabel.snp.remakeConstraints { make in
-                make.left.lessThanOrEqualToSuperview()
-                make.right.greaterThanOrEqualToSuperview()
-                make.centerX.equalToSuperview()
-                make.top.equalTo(self.addImageView.snp.bottom).offset(CGFloat.saiha.verticalSize(num: 12))
+//                make.left.lessThanOrEqualToSuperview()
+//                make.right.greaterThanOrEqualToSuperview()
+//                make.centerX.equalTo(self.addImageView)
+//                make.top.greaterThanOrEqualTo(self.contentView.snp.centerY).offset(CGFloat.saiha.verticalSize(num: 8) * self.ratio)
+                make.left.lessThanOrEqualToSuperview().offset(CGFloat.saiha.levelSize(num: 26) * self.ratio)
+                make.centerX.equalToSuperview().priority(.high)
+                make.right.greaterThanOrEqualToSuperview().offset(CGFloat.saiha.levelSize(num: -26) * self.ratio)
+                make.top.equalTo(self.addImageView.snp.bottom).offset(CGFloat.saiha.verticalSize(num: 12) * self.ratio)
+                make.bottom.greaterThanOrEqualToSuperview().offset(CGFloat.saiha.verticalSize(num: -22) * self.ratio)
+            }
+        }
+        if self.photoImageView != nil {
+            self.photoImageView.snp.remakeConstraints { make in
+                make.left.right.top.bottom.equalToSuperview()
             }
         }
     }
     
     func setImage(image: UIImage?) {
-        
+        if image == nil {
+            self.photoImageView.image = nil
+            self.photoImageView.isHidden = true
+        } else {
+            self.photoImageView.image = image
+            self.photoImageView.isHidden = false
+        }
     }
 }
 
@@ -85,7 +111,7 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
     /**
      如果未实现此方法，则点击相框默认调出相机拍摄相片，拍摄的相片保存在内存中，可以通过 `getPhoto:from:` 方法获取拍摄的相片。
      并且在拍摄照片后会自动在 `maxPhotos` 范围内动态增加空相框。
-     如果实现此方法，则默认为空方法。可以通过 `addEmptyPhoto:` 方法手动增加空相框。
+     如果实现此方法，则默认为空方法，点击相框将无任何效果。可以通过 `addEmptyPhoto:` 方法手动增加空相框。
      */
     @objc optional func addPhotoView(addPhotoView: SHAddPhotoView, didSelectItemAt index: Int)
     
@@ -102,13 +128,35 @@ open class SHAddPhotoView: SHUIView {
     
     open var maxPhotos: Int = 10
     
+    /// 设置每个相框的边长。
+    open var itemEdge: CGFloat = CGFloat.saiha.verticalSize(num: 100) {
+        didSet {
+            (self.photoCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: self.itemEdge, height: self.itemEdge)
+        }
+    }
+    
     private var currentSelectIndex: Int = 0
     
     weak var delegate: SHAddPhotoViewDelegate?
     
+    /// 如果需要动态拓展视图高度，可以用此属性计算视图高度来对视图做约束。
+    open var viewHeight: CGFloat {
+        get {
+            let count: Int = self.photos.count
+            let row: Int = (count - 1) / 3 + 1
+            return (self.itemEdge + 10) * CGFloat(row) + 10
+        }
+    }
+    
+    open var enableScroll: Bool = false {
+        didSet {
+            self.photoCollectionView.isScrollEnabled = self.enableScroll
+        }
+    }
+    
     private func initialize() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: CGFloat.saiha.levelSize(num: 100), height: CGFloat.saiha.verticalSize(num: 100))
+        layout.itemSize = CGSize(width: self.itemEdge, height: self.itemEdge)
         layout.sectionInset.left = CGFloat.saiha.levelSize(num: 10)
         layout.sectionInset.right = CGFloat.saiha.levelSize(num: 10)
         layout.sectionInset.top = CGFloat.saiha.verticalSize(num: 10)
@@ -181,6 +229,8 @@ extension SHAddPhotoView: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SHAddPhotoCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! SHAddPhotoCollectionCell
+        cell.aCellSize = self.itemEdge
+        cell.setImage(image: self.photos[indexPath.row])
         return cell
     }
 }
@@ -213,7 +263,9 @@ extension SHAddPhotoView: UIImagePickerControllerDelegate & UINavigationControll
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image: UIImage = info[.editedImage] as! UIImage
         self.photos[self.currentSelectIndex] = image
-        self.addEmptyPhoto()
+        if self.currentSelectIndex == self.photos.count - 1 {
+            self.addEmptyPhoto()
+        }
         picker.dismiss(animated: true, completion: nil)
     }
 }

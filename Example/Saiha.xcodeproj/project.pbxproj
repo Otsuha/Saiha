@@ -213,6 +213,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YK6G2Z3K97;
 						LastSwiftMigration = 1310;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -502,6 +503,7 @@
 			baseConfigurationReference = 552B9664514B6AD2999C6F28 /* Pods-Saiha_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YK6G2Z3K97;
 				INFOPLIST_FILE = Saiha/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -517,6 +519,7 @@
 			baseConfigurationReference = 67DCCDD37CFB1344D1406D73 /* Pods-Saiha_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = YK6G2Z3K97;
 				INFOPLIST_FILE = Saiha/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;

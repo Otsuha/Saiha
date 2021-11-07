@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let photoView: SHAddPhotoView = SHAddPhotoView()
+        photoView.itemEdge = CGFloat.saiha.verticalSize(num: 100)
         self.view.addSubview(photoView)
         photoView.snp.remakeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
