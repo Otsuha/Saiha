@@ -63,9 +63,6 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
     override func layoutSubviews() {
         if self.addImageView != nil {
             self.addImageView.snp.remakeConstraints { make in
-                //make.width.height.greaterThanOrEqualTo(CGFloat.saiha.verticalSize(num: 24) * self.ratio)
-                //make.centerX.equalToSuperview()
-                //make.bottom.lessThanOrEqualTo(self.contentView.snp.centerY).offset(CGFloat.saiha.verticalSize(num: -8) * self.ratio)
                 make.top.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: 26) * self.ratio)
                 make.left.equalToSuperview().offset(CGFloat.saiha.levelSize(num: 38) * self.ratio)
                 make.right.equalToSuperview().offset(CGFloat.saiha.levelSize(num: -38) * self.ratio)
@@ -75,10 +72,6 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
         if self.titleLabel != nil {
             self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 12) * self.ratio)
             self.titleLabel.snp.remakeConstraints { make in
-//                make.left.lessThanOrEqualToSuperview()
-//                make.right.greaterThanOrEqualToSuperview()
-//                make.centerX.equalTo(self.addImageView)
-//                make.top.greaterThanOrEqualTo(self.contentView.snp.centerY).offset(CGFloat.saiha.verticalSize(num: 8) * self.ratio)
                 make.left.lessThanOrEqualToSuperview().offset(CGFloat.saiha.levelSize(num: 26) * self.ratio)
                 make.centerX.equalToSuperview().priority(.high)
                 make.right.greaterThanOrEqualToSuperview().offset(CGFloat.saiha.levelSize(num: -26) * self.ratio)
