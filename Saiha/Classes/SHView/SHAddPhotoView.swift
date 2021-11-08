@@ -160,7 +160,7 @@ open class SHAddPhotoView: SHUIView {
         self.photoCollectionView.register(SHAddPhotoCollectionCell.self, forCellWithReuseIdentifier: "PhotoCell")
         self.photoCollectionView.dataSource = self
         self.photoCollectionView.delegate = self
-        self.photoCollectionView.isScrollEnabled = true
+        self.photoCollectionView.isScrollEnabled = false
         self.addSubview(self.photoCollectionView)
         self.photoCollectionView.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
