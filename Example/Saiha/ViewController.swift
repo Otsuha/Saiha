@@ -65,10 +65,16 @@ class ViewController: UIViewController {
         sidebarView.dataSourceHandle = { cell, indexPath in
             cell.textLabel?.text = sidebarView.models[indexPath.section].contents[indexPath.row].title
         }
+        sidebarView.layer.cornerRadius = 20
+        sidebarView.clipsToBounds = true
         self.view.addSubview(sidebarView)
         sidebarView.snp.remakeConstraints { make in
-            make.left.right.top.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.top.equalToSuperview().offset(90)
+            make.bottom.equalToSuperview().offset(-90)
         }
+        self.view.backgroundColor = .red
     }
 
     override func didReceiveMemoryWarning() {

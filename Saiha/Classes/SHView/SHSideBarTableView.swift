@@ -116,6 +116,9 @@ open class SHSideBarTableView: SHUIView {
         self.sidebarTableView.rowHeight = self.rowHeight
         self.sidebarTableView.delegate = self
         self.sidebarTableView.dataSource = self
+        self.sidebarTableView.sectionHeaderHeight = 0
+        self.sidebarTableView.sectionFooterHeight = 0
+        self.sidebarTableView.separatorStyle = .none
         self.addSubview(self.sidebarTableView)
         self.sidebarTableView.snp.remakeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
@@ -164,14 +167,19 @@ extension SHSideBarTableView: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView: SHSideBarHeaderView = SHSideBarHeaderView()
-        headerView.titleLabel?.text = self.models[section].header
-        headerView.touchAccessButtonHandle = { button in
-            self.models[section].isSelected = !self.models[section].isSelected
-            let sets: IndexSet = IndexSet(integer: section)
-            tableView.reloadSections(sets, with: .fade)
+        if self.delegate == nil {
+            let headerView: SHSideBarHeaderView = SHSideBarHeaderView()
+            headerView.titleLabel?.text = self.models[section].header
+            headerView.backgroundColor = .white
+            headerView.touchAccessButtonHandle = { button in
+                self.models[section].isSelected = !self.models[section].isSelected
+                let sets: IndexSet = IndexSet(integer: section)
+                tableView.reloadSections(sets, with: .fade)
+            }
+            return headerView
+        } else {
+            return self.delegate?.sidebarTableView?(self, viewForHeaderInSection: section)
         }
-        return headerView
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

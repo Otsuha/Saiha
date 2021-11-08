@@ -9,7 +9,7 @@ import UIKit
 
 public extension UITableView {
     
-    public enum SHStyle: Int {
+    enum SHStyle: Int {
         case plain = 0
         case grouped = 1
         case sidebar = 2
