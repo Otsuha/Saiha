@@ -137,7 +137,7 @@ open class SHAddPhotoView: SHUIView {
         get {
             let count: Int = self.photos.count
             let row: Int = (count - 1) / 3 + 1
-            return (self.itemEdge + 10) * CGFloat(row) + 10
+            return (self.itemEdge + CGFloat.saiha.verticalSize(num: 10)) * CGFloat(row) + CGFloat.saiha.verticalSize(num: 10)
         }
     }
     
@@ -160,9 +160,12 @@ open class SHAddPhotoView: SHUIView {
         self.photoCollectionView.register(SHAddPhotoCollectionCell.self, forCellWithReuseIdentifier: "PhotoCell")
         self.photoCollectionView.dataSource = self
         self.photoCollectionView.delegate = self
+        self.photoCollectionView.isScrollEnabled = true
         self.addSubview(self.photoCollectionView)
-        self.photoCollectionView.snp.remakeConstraints { make in
-            make.left.right.top.bottom.equalToSuperview()
+        self.photoCollectionView.snp.makeConstraints { make in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(self.viewHeight)
+            make.bottom.equalToSuperview()
         }
     }
     
@@ -174,6 +177,13 @@ open class SHAddPhotoView: SHUIView {
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.initialize()
+    }
+    
+    open override func updateConstraints() {
+        self.photoCollectionView.snp.updateConstraints { make in
+            make.height.equalTo(self.viewHeight)
+        }
+        super.updateConstraints()
     }
     
     /**
@@ -194,7 +204,7 @@ open class SHAddPhotoView: SHUIView {
      - Important: 若调用该方法时，照片数量 + 空相框数量 = `maxPhotos`，则调用此方法不会有任何效果。
      */
     open func addEmptyPhoto() {
-        if self.photos.count <= self.maxPhotos {
+        if self.photos.count < self.maxPhotos {
             self.photos.append(nil)
             let r1: Int = self.photos.count - 1
             let r2: Int = self.photos.count - 2
@@ -209,6 +219,7 @@ open class SHAddPhotoView: SHUIView {
                 }
             }
         }
+        self.updateConstraints()
     }
 }
 
