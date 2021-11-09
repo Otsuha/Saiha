@@ -180,10 +180,11 @@ open class SHAddPhotoView: SHUIView {
     }
     
     open override func updateConstraints() {
+        super.updateConstraints()
+        
         self.photoCollectionView.snp.updateConstraints { make in
             make.height.equalTo(self.viewHeight)
         }
-        super.updateConstraints()
     }
     
     /**

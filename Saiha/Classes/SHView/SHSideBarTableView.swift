@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - SHSideBarHeaderView.
 
-open class SHSideBarHeaderView: UIView {
+open class SHSideBarHeaderView: SHUIView {
     
     open var titleLabel: UILabel?
     open var accessButton: UIButton?
@@ -89,15 +89,12 @@ extension SHSideBarTableView {
 
 @objc public protocol SHSideBarTableViewDelegate {
     
-    @objc optional func sidebarTableView(_ sidebarTableView: SHSideBarTableView, viewForHeaderInSection section: Int) -> SHUIView?
+    @objc optional func sidebarTableView(_ sidebarTableView: SHSideBarTableView, viewForHeaderInSection section: Int) -> SHSideBarHeaderView?
 }
 
 // MARK: - SHSideBarTableView.
 
 open class SHSideBarTableView: SHUIView {
-
-    open var customHeaderView: SHSideBarHeaderView?
-    open var customCellView: UIView?
         
     open var models: [SHSideBarTableView.SHSideBarDataModel] = []
     
@@ -107,6 +104,17 @@ open class SHSideBarTableView: SHUIView {
     open var rowHeight: CGFloat = CGFloat.saiha.verticalSize(num: 56)
     
     open var dataSourceHandle: ((_ cell: UITableViewCell, _ indexPath: IndexPath) -> Void)?
+    
+    open var cellSeparatorStyle: UITableViewCell.SeparatorStyle = .none {
+        willSet {
+            self.sidebarTableView.separatorStyle = newValue
+        }
+    }
+    open var cellSeparatorColor: UIColor = UIColor.saiha.colorWithHexString("#D8D8D8", alpha: 0.5) {
+        willSet {
+            self.sidebarTableView.separatorColor = newValue
+        }
+    }
     
     private var sidebarTableView: SHUITableView!
     
@@ -119,6 +127,7 @@ open class SHSideBarTableView: SHUIView {
         self.sidebarTableView.sectionHeaderHeight = 0
         self.sidebarTableView.sectionFooterHeight = 0
         self.sidebarTableView.separatorStyle = .none
+        self.sidebarTableView.separatorColor = self.cellSeparatorColor
         self.addSubview(self.sidebarTableView)
         self.sidebarTableView.snp.remakeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
@@ -132,6 +141,15 @@ open class SHSideBarTableView: SHUIView {
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    open func reloadSections(_ sets: [Int], with animation: UITableView.RowAnimation) {
+        let isets: IndexSet = IndexSet(sets)
+        self.sidebarTableView.reloadSections(isets, with: animation)
+    }
+    
+    open func ee() {
+        self.sidebarTableView.separatorStyle = .none
     }
 }
 
@@ -167,10 +185,10 @@ extension SHSideBarTableView: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if self.delegate == nil {
+        let delegateHeaderView: SHSideBarHeaderView? = self.delegate?.sidebarTableView?(self, viewForHeaderInSection: section)
+        if delegateHeaderView == nil {
             let headerView: SHSideBarHeaderView = SHSideBarHeaderView()
             headerView.titleLabel?.text = self.models[section].header
-            headerView.backgroundColor = .white
             headerView.touchAccessButtonHandle = { button in
                 self.models[section].isSelected = !self.models[section].isSelected
                 let sets: IndexSet = IndexSet(integer: section)
@@ -178,7 +196,7 @@ extension SHSideBarTableView: UITableViewDelegate {
             }
             return headerView
         } else {
-            return self.delegate?.sidebarTableView?(self, viewForHeaderInSection: section)
+            return delegateHeaderView
         }
     }
     
