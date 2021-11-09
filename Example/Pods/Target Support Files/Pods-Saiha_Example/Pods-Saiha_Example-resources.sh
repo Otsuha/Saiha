@@ -101,12 +101,18 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add.png"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add@2x.png"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add@3x.png"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_del.png"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_del@2x.png"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_del@3x.png"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Saiha/Saiha.bundle"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add.png"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add@2x.png"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add@3x.png"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_del.png"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_del@2x.png"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_del@3x.png"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

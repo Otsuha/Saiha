@@ -30,7 +30,7 @@ public struct SaihaCGFloat {
         return UIScreen.main.bounds.height
     }
     
-    public func levelRatio() -> CGFloat {
+    public func horizontalRatio() -> CGFloat {
         return self.screenWidth / 375.0
     }
     
@@ -38,8 +38,8 @@ public struct SaihaCGFloat {
         return self.screenHeight / 812.0
     }
     
-    public func levelSize(num: CGFloat) -> CGFloat {
-        return self.levelRatio() * num
+    public func horizontalSize(num: CGFloat) -> CGFloat {
+        return self.horizontalRatio() * num
     }
     
     public func verticalSize(num: CGFloat) -> CGFloat {

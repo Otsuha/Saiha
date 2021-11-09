@@ -274,6 +274,9 @@
 				"${PODS_ROOT}/../../Saiha/Assets/camera_add.png",
 				"${PODS_ROOT}/../../Saiha/Assets/camera_add@2x.png",
 				"${PODS_ROOT}/../../Saiha/Assets/camera_add@3x.png",
+				"${PODS_ROOT}/../../Saiha/Assets/camera_del.png",
+				"${PODS_ROOT}/../../Saiha/Assets/camera_del@2x.png",
+				"${PODS_ROOT}/../../Saiha/Assets/camera_del@3x.png",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -281,6 +284,9 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/camera_add.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/camera_add@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/camera_add@3x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/camera_del.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/camera_del@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/camera_del@3x.png",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

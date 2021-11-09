@@ -13,8 +13,8 @@ import SnapKit
 class SHAddPhotoCollectionCell: UICollectionViewCell {
     
     // 默认设置 cell 的大小为 100，所有的约束以 100 为基准做比例缩放。
-    private let defaultSize: CGFloat = CGFloat.saiha.levelSize(num: 100)
-    var aCellSize: CGFloat = CGFloat.saiha.levelSize(num: 100) {
+    private let defaultSize: CGFloat = CGFloat.saiha.horizontalSize(num: 100)
+    var aCellSize: CGFloat = CGFloat.saiha.horizontalSize(num: 100) {
         didSet {
             self.setNeedsLayout()
         }
@@ -26,6 +26,12 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
     private var addImageView: UIImageView!
     private var titleLabel: UILabel!
     private var photoImageView: UIImageView!
+    private var deleteButton: UIButton!
+    
+    var index: Int!
+    var addPhotoView: SHAddPhotoView!
+    
+    weak var delegate: SHAddPhotoViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,9 +49,18 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
         self.contentView.addSubview(self.titleLabel)
         
         self.photoImageView = UIImageView()
+        self.photoImageView.isUserInteractionEnabled = true
         self.photoImageView.contentMode = .scaleAspectFit
         self.contentView.addSubview(self.photoImageView)
+        self.photoImageView.snp.makeConstraints { make in
+            make.left.right.top.bottom.equalToSuperview()
+        }
         self.photoImageView.isHidden = true
+        
+        self.deleteButton = SHUIButton()
+        self.deleteButton.setImage(UIImage(named: "camera_del"), for: .normal)
+        self.deleteButton.addTarget(self, action: #selector(self.touchRemoveButton(sender:)), for: .touchUpInside)
+        self.contentView.addSubview(self.deleteButton)
         
         self.contentView.layer.cornerRadius = 2
         self.contentView.layer.shadowOffset = CGSize(width: 0, height: 3)
@@ -61,20 +76,22 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
+        
         if self.addImageView != nil {
             self.addImageView.snp.remakeConstraints { make in
                 make.top.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: 26) * self.ratio)
-                make.left.equalToSuperview().offset(CGFloat.saiha.levelSize(num: 38) * self.ratio)
-                make.right.equalToSuperview().offset(CGFloat.saiha.levelSize(num: -38) * self.ratio)
+                make.left.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: 38) * self.ratio)
+                make.right.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: -38) * self.ratio)
                 make.bottom.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: -50) * self.ratio)
             }
         }
         if self.titleLabel != nil {
             self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 12) * self.ratio)
             self.titleLabel.snp.remakeConstraints { make in
-                make.left.lessThanOrEqualToSuperview().offset(CGFloat.saiha.levelSize(num: 26) * self.ratio)
+                make.left.lessThanOrEqualToSuperview().offset(CGFloat.saiha.verticalSize(num: 26) * self.ratio)
                 make.centerX.equalToSuperview().priority(.high)
-                make.right.greaterThanOrEqualToSuperview().offset(CGFloat.saiha.levelSize(num: -26) * self.ratio)
+                make.right.greaterThanOrEqualToSuperview().offset(CGFloat.saiha.verticalSize(num: -26) * self.ratio)
                 make.top.equalTo(self.addImageView.snp.bottom).offset(CGFloat.saiha.verticalSize(num: 12) * self.ratio)
                 make.bottom.greaterThanOrEqualToSuperview().offset(CGFloat.saiha.verticalSize(num: -22) * self.ratio)
             }
@@ -84,15 +101,32 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
                 make.left.right.top.bottom.equalToSuperview()
             }
         }
+        if self.deleteButton != nil {
+            self.deleteButton.snp.makeConstraints { make in
+                make.right.equalToSuperview()
+                make.top.equalToSuperview()
+                make.width.height.equalTo(CGFloat.saiha.verticalSize(num: 24))
+            }
+        }
     }
     
     func setImage(image: UIImage?) {
         if image == nil {
             self.photoImageView.image = nil
             self.photoImageView.isHidden = true
+            self.deleteButton.isHidden = true
         } else {
             self.photoImageView.image = image
             self.photoImageView.isHidden = false
+            self.deleteButton.isHidden = false
+        }
+    }
+    
+    @objc private func touchRemoveButton(sender: UIButton) {
+        if self.delegate == nil {
+            self.setImage(image: nil)
+        } else {
+            self.delegate?.addPhotoView?(addPhotoView: self.addPhotoView, didTouchRemoveButtonAt: self.index)
         }
     }
 }
@@ -150,11 +184,11 @@ open class SHAddPhotoView: SHUIView {
     private func initialize() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: self.itemEdge, height: self.itemEdge)
-        layout.sectionInset.left = CGFloat.saiha.levelSize(num: 10)
-        layout.sectionInset.right = CGFloat.saiha.levelSize(num: 10)
+        layout.sectionInset.left = CGFloat.saiha.horizontalSize(num: 10)
+        layout.sectionInset.right = CGFloat.saiha.horizontalSize(num: 10)
         layout.sectionInset.top = CGFloat.saiha.verticalSize(num: 10)
         layout.sectionInset.bottom = CGFloat.saiha.verticalSize(num: 10)
-        layout.minimumInteritemSpacing = CGFloat.saiha.levelSize(num: 10)
+        layout.minimumInteritemSpacing = CGFloat.saiha.horizontalSize(num: 10)
         layout.minimumLineSpacing = CGFloat.saiha.verticalSize(num: 10)
         self.photoCollectionView = SHUICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         self.photoCollectionView.register(SHAddPhotoCollectionCell.self, forCellWithReuseIdentifier: "PhotoCell")
@@ -234,6 +268,8 @@ extension SHAddPhotoView: UICollectionViewDataSource {
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SHAddPhotoCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! SHAddPhotoCollectionCell
+        cell.addPhotoView = self
+        cell.index = indexPath.row
         cell.aCellSize = self.itemEdge
         cell.setImage(image: self.photos[indexPath.row])
         return cell
@@ -270,6 +306,8 @@ extension SHAddPhotoView: UIImagePickerControllerDelegate & UINavigationControll
         self.photos[self.currentSelectIndex] = image
         if self.currentSelectIndex == self.photos.count - 1 {
             self.addEmptyPhoto()
+        } else {
+            self.photoCollectionView.reloadItems(at: [IndexPath(item: self.currentSelectIndex, section: 0)])
         }
         picker.dismiss(animated: true, completion: nil)
     }

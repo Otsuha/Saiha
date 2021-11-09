@@ -21,10 +21,10 @@ open class SHSideBarHeaderView: SHUIView {
         self.titleLabel!.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 16))
         self.titleLabel!.textAlignment = .left
         self.addSubview(titleLabel!)
-        self.titleLabel!.snp.remakeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.saiha.levelSize(num: 16))
+        self.titleLabel!.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: 16))
             make.centerY.equalToSuperview()
-            make.width.greaterThanOrEqualTo(CGFloat.saiha.levelSize(num: 64))
+            make.width.greaterThanOrEqualTo(CGFloat.saiha.horizontalSize(num: 64))
         }
         
         self.accessButton = UIButton()
@@ -33,10 +33,10 @@ open class SHSideBarHeaderView: SHUIView {
         self.accessButton!.isSelected = false
         self.accessButton!.addTarget(self, action: #selector(self.handleButton(sender:)), for: .touchUpInside)
         self.addSubview(self.accessButton!)
-        self.accessButton!.snp.remakeConstraints { make in
+        self.accessButton!.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(CGFloat.saiha.levelSize(num: -12))
-            make.width.equalTo(CGFloat.saiha.levelSize(num: 24))
+            make.right.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: -12))
+            make.width.equalTo(CGFloat.saiha.horizontalSize(num: 24))
         }
     }
     
@@ -129,7 +129,7 @@ open class SHSideBarTableView: SHUIView {
         self.sidebarTableView.separatorStyle = .none
         self.sidebarTableView.separatorColor = self.cellSeparatorColor
         self.addSubview(self.sidebarTableView)
-        self.sidebarTableView.snp.remakeConstraints { make in
+        self.sidebarTableView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
     }
