@@ -40,4 +40,16 @@ public struct SaihaUIWindowHelper {
         }
         return UIApplication.shared.windows.last
     }
+    
+    public func safeAreaInsets() -> UIEdgeInsets {
+        guard let window = self.securyWindow(), let rootViewController = window.rootViewController else {
+            return UIEdgeInsets.zero
+        }
+        
+        if #available(iOS 11.0, *) {
+            return rootViewController.view.safeAreaInsets
+        } else {
+            return UIEdgeInsets.zero
+        }
+    }
 }

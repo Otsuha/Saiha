@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Saiha
 
 open class SHContentSheetSwitchCell: UITableViewCell {
     

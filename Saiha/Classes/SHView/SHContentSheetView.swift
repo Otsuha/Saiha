@@ -43,12 +43,16 @@ open class SHContentSheetView: SHUIView {
         self.cancelButton.titleLabel?.bounds = self.cancelButton.bounds
         self.cancelButton.titleLabel?.textAlignment = .center
         self.cancelButton.titleLabel?.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 17))
+        self.cancelButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: UIWindow.saiha.safeAreaInsets().bottom, right: 0)
         self.cancelButton.layer.backgroundColor = UIColor.white.cgColor
         self.cancelButton.addTarget(self, action: #selector(self.touchCancelAction(sender:)), for: .touchUpInside)
         self.backgroundView.addSubview(self.cancelButton)
         self.cancelButton.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(CGFloat.saiha.verticalSize(num: 56))
+            make.left.right.equalToSuperview()
+            //make.bottomMargin.equalToSuperview()
+            make.bottom.equalTo(self.snp.bottom)
+            //make.top.lessThanOrEqualTo(self.snp.bottom).offset(CGFloat.saiha.verticalSize(num: -56))
+            make.height.equalTo(CGFloat.saiha.verticalSize(num: 56) + UIWindow.saiha.safeAreaInsets().bottom)
         }
         
         self.sepratorLine = UIView()
