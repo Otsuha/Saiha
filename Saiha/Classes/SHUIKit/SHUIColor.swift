@@ -10,17 +10,11 @@ import UIKit
 public extension UIColor {
     
     static var saiha: SaihaUIColor {
-        return SaihaUIColor(color: UIColor())
+        return SaihaUIColor()
     }
 }
 
 public struct SaihaUIColor {
-    
-    let shColor: UIColor
-    
-    init(color: UIColor) {
-        self.shColor = color
-    }
     
     public func colorWithHexString(_ hex: String) -> UIColor {
         self.colorWithHexString(hex, alpha: 1.0)

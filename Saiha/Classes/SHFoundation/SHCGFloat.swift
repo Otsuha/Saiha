@@ -10,17 +10,11 @@ import UIKit
 public extension CGFloat {
     
     static var saiha: SaihaCGFloat {
-        return SaihaCGFloat(cgFloat: CGFloat())
+        return SaihaCGFloat()
     }
 }
 
 public struct SaihaCGFloat {
-    
-    let shCGFloat: CGFloat
-    
-    init(cgFloat: CGFloat) {
-        self.shCGFloat = cgFloat
-    }
     
     public var screenWidth: CGFloat {
         return UIScreen.main.bounds.width

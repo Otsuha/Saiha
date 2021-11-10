@@ -19,12 +19,6 @@ open class SHUIViewController: UIViewController {
 
 public struct SHUIViewControllerHelper {
     
-    let shViewController: UIViewController
-    
-    init(viewController: UIViewController) {
-        self.shViewController = viewController
-    }
-    
     public func currentActivityViewController() -> UIViewController? {
         let rootViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController
         guard let rootVC = rootViewController else {
@@ -71,6 +65,6 @@ public struct SHUIViewControllerHelper {
 public extension UIViewController {
     
     static var saiha: SHUIViewControllerHelper {
-        return SHUIViewControllerHelper(viewController: UIViewController())
+        return SHUIViewControllerHelper()
     }
 }
