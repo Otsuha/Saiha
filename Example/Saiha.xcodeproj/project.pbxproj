@@ -271,6 +271,9 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Saiha_Example/Pods-Saiha_Example-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Saiha/Saiha.bundle",
+				"${PODS_ROOT}/../../Saiha/Assets/arrow_down.png",
+				"${PODS_ROOT}/../../Saiha/Assets/arrow_down@2x.png",
+				"${PODS_ROOT}/../../Saiha/Assets/arrow_down@3x.png",
 				"${PODS_ROOT}/../../Saiha/Assets/camera_add.png",
 				"${PODS_ROOT}/../../Saiha/Assets/camera_add@2x.png",
 				"${PODS_ROOT}/../../Saiha/Assets/camera_add@3x.png",
@@ -281,6 +284,9 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Saiha.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/arrow_down.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/arrow_down@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/arrow_down@3x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/camera_add.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/camera_add@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/camera_add@3x.png",

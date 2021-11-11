@@ -98,6 +98,9 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Saiha/Saiha.bundle"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/arrow_down.png"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/arrow_down@2x.png"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/arrow_down@3x.png"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add.png"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add@2x.png"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add@3x.png"
@@ -107,6 +110,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Saiha/Saiha.bundle"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/arrow_down.png"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/arrow_down@2x.png"
+  install_resource "${PODS_ROOT}/../../Saiha/Assets/arrow_down@3x.png"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add.png"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add@2x.png"
   install_resource "${PODS_ROOT}/../../Saiha/Assets/camera_add@3x.png"

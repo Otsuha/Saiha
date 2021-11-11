@@ -17,19 +17,9 @@ open class SHSideBarHeaderView: SHUIView {
     open var touchAccessButtonHandle: ((_ button: UIButton) -> Void)?
     
     private func initialize() {
-        self.titleLabel = UILabel()
-        self.titleLabel!.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 16))
-        self.titleLabel!.textAlignment = .left
-        self.addSubview(titleLabel!)
-        self.titleLabel!.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: 16))
-            make.centerY.equalToSuperview()
-            make.width.greaterThanOrEqualTo(CGFloat.saiha.horizontalSize(num: 64))
-        }
-        
         self.accessButton = UIButton()
-        self.accessButton!.setImage(UIImage(named: "camera_add"), for: .normal)
-        self.accessButton!.setImage(UIImage(named: "camera_add"), for: .selected)
+        self.accessButton!.setImage(UIImage(named: "arrow_down"), for: .normal)
+        self.accessButton!.setImage(UIImage(named: "arrow_down"), for: .selected)
         self.accessButton!.isSelected = false
         self.accessButton!.addTarget(self, action: #selector(self.handleButton(sender:)), for: .touchUpInside)
         self.addSubview(self.accessButton!)
@@ -37,6 +27,17 @@ open class SHSideBarHeaderView: SHUIView {
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: -12))
             make.width.equalTo(CGFloat.saiha.horizontalSize(num: 24))
+        }
+        
+        self.titleLabel = UILabel()
+        self.titleLabel!.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 16))
+        self.titleLabel!.textAlignment = .left
+        self.addSubview(titleLabel!)
+        self.titleLabel!.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: 16))
+            make.centerY.equalToSuperview()
+            //make.width.greaterThanOrEqualTo(CGFloat.saiha.horizontalSize(num: 64))
+            make.right.lessThanOrEqualTo(self.accessButton!.snp.left).offset(CGFloat.saiha.horizontalSize(num: -42))
         }
     }
     
