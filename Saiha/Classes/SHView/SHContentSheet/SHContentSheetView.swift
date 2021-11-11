@@ -17,6 +17,7 @@ import UIKit
 // MARK: - SHContentSheetView.
 
 open class SHContentSheetView: SHUIView {
+    
     private var backgroundView: UIView!
     private var sepratorLine: UIView!
     private var cancelButton: UIButton!
@@ -102,6 +103,7 @@ open class SHContentSheetView: SHUIView {
         sheetView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
+        UIWindow.saiha.securyWindow()?.bringSubviewToFront(customView)
     }
     
     required public init?(coder: NSCoder) {
@@ -116,7 +118,7 @@ open class SHContentSheetView: SHUIView {
         }
     }
     
-    @objc private func touchCancelAction(sender: UIButton) {
+    @objc func touchCancelAction(sender: UIButton) {
         if self.delegate?.contentSheetView?(didTapCancelActionIn: self) == nil {
             self.isHidden = true
             self.removeFromSuperview()

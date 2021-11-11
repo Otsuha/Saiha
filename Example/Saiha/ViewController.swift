@@ -16,12 +16,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let photoView: SHAddPhotoView = SHAddPhotoView()
-        photoView.itemEdge = CGFloat.saiha.verticalSize(num: 100)
-        self.view.addSubview(photoView)
-        photoView.snp.makeConstraints { make in
-            make.left.right.top.bottom.equalTo(self.view.snp.margins)
-        }
+//        let photoView: SHAddPhotoView = SHAddPhotoView()
+//        photoView.itemEdge = CGFloat.saiha.verticalSize(num: 100)
+//        self.view.addSubview(photoView)
+//        photoView.snp.makeConstraints { make in
+//            make.left.right.top.bottom.equalTo(self.view.snp.margins)
+//        }
         
 //        let sidebarView: SHSideBarTableView = SHSideBarTableView()
 //        sidebarView.models = [
@@ -74,13 +74,19 @@ class ViewController: UIViewController {
 //            make.top.equalToSuperview().offset(90)
 //            make.bottom.equalToSuperview().offset(-90)
 //        }
-//        self.view.backgroundColor = .red
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    @IBAction func handleButton(_ sender: Any) {
+        SHContentSwitchSheetView.show(contentHeight: 500, dataSource: [(nil, "1", false), (nil, "1", false), (nil, "1", false)]) { statusTable in
+            print(statusTable)
+        }
+    }
+    
 }
 

@@ -19,7 +19,7 @@ open class SHSideBarHeaderView: SHUIView {
     private func initialize() {
         self.accessButton = UIButton()
         self.accessButton!.setImage(UIImage(named: "arrow_down"), for: .normal)
-        self.accessButton!.setImage(UIImage(named: "arrow_down"), for: .selected)
+        self.accessButton!.setImage(UIImage(named: "arrow_up"), for: .selected)
         self.accessButton!.isSelected = false
         self.accessButton!.addTarget(self, action: #selector(self.handleButton(sender:)), for: .touchUpInside)
         self.addSubview(self.accessButton!)
@@ -36,7 +36,6 @@ open class SHSideBarHeaderView: SHUIView {
         self.titleLabel!.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: 16))
             make.centerY.equalToSuperview()
-            //make.width.greaterThanOrEqualTo(CGFloat.saiha.horizontalSize(num: 64))
             make.right.lessThanOrEqualTo(self.accessButton!.snp.left).offset(CGFloat.saiha.horizontalSize(num: -42))
         }
     }
@@ -190,8 +189,9 @@ extension SHSideBarTableView: UITableViewDelegate {
         if delegateHeaderView == nil {
             let headerView: SHSideBarHeaderView = SHSideBarHeaderView()
             headerView.titleLabel?.text = self.models[section].header
+            headerView.accessButton?.isSelected = self.models[section].isSelected
             headerView.touchAccessButtonHandle = { button in
-                self.models[section].isSelected = !self.models[section].isSelected
+                self.models[section].isSelected = button.isSelected
                 let sets: IndexSet = IndexSet(integer: section)
                 tableView.reloadSections(sets, with: .fade)
             }

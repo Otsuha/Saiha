@@ -123,11 +123,11 @@ Pod::Spec.new do |spec|
   # spec.resources = "Resources/*.png"
   
   spec.resource_bundles = {
-    "Saiha" => ["Saiha/Assets/*"]
+    "Saiha" => ["Saiha/Assets/**/*"]
   }
   
   spec.subspec "Resources" do |subspec|
-    subspec.resources = "Saiha/Assets/*"
+    subspec.resources = "Saiha/Assets/**/*"
   end
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"

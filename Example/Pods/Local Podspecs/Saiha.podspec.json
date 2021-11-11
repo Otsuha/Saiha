@@ -22,7 +22,7 @@
   "prefix_header_contents": "#import <Saiha/Saiha-Swift.h>",
   "resource_bundles": {
     "Saiha": [
-      "Saiha/Assets/*"
+      "Saiha/Assets/**/*"
     ]
   },
   "frameworks": [
@@ -50,7 +50,7 @@
     },
     {
       "name": "Resources",
-      "resources": "Saiha/Assets/*"
+      "resources": "Saiha/Assets/**/*"
     }
   ]
 }
