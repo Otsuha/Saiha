@@ -13,8 +13,6 @@ open class SHContentSwitchSheetView: SHContentSheetView, UITableViewDataSource {
     private var switchContentView: SHUIView!
     private var mainTableView: UITableView!
     
-    open var dataSource: [(icon: UIImage?, title: String, isOn: Bool)] = []
-    
     open var statusTaleHandler: ((_ statusTable: inout [Bool]) -> Void)?
     
     override init(frame: CGRect) {
@@ -47,51 +45,53 @@ open class SHContentSwitchSheetView: SHContentSheetView, UITableViewDataSource {
         self.mainTableView.snp.makeConstraints { make in
             make.top.bottom.left.right.equalToSuperview()
         }
+        
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public static func show(contentHeight: CGFloat, dataSource: [(icon: UIImage?, title: String, isOn: Bool)], _ completionHandler: @escaping (_ statusTable: inout [Bool]) -> Void) {
-        let sheetView: SHContentSwitchSheetView = SHContentSwitchSheetView()
-        sheetView.contentHeight = contentHeight
-        sheetView.dataSource = dataSource
-        sheetView.statusTaleHandler = completionHandler
-        SHContentSheetView.show(customView: sheetView, contentHeight: contentHeight)
-        
-    }
+//    public static func show(contentHeight: CGFloat, dataSource: [(icon: UIImage?, title: String, isOn: Bool)], _ completionHandler: @escaping (_ statusTable: inout [Bool]) -> Void) {
+//        let sheetView: SHContentSwitchSheetView = SHContentSwitchSheetView()
+//        sheetView.contentHeight = contentHeight
+//        sheetView.statusTaleHandler = completionHandler
+//        SHContentSheetView.show(customView: sheetView, contentHeight: contentHeight, completionHandler: { dataSource in
+//
+//        })
+//
+//    }
     
-    @objc override func touchCancelAction(sender: UIButton) {
-        if self.delegate?.contentSheetView?(didTapCancelActionIn: self) == nil {
-            self.isHidden = true
-            self.removeFromSuperview()
-            var tables: [Bool] = []
-            for status in self.dataSource {
-                tables.append(status.isOn)
-            }
-            self.statusTaleHandler?(&tables)
-        }
-    }
+//    @objc override func touchCancelAction(sender: UIButton) {
+//        if self.delegate?.contentSheetView?(didTapCancelActionIn: self) == nil {
+//            self.isHidden = true
+//            self.removeFromSuperview()
+//            var tables: [Bool] = []
+//            for status in (self.dataSource as! [String: Bool]) {
+//                tables.append(status.isOn)
+//            }
+//            self.statusTaleHandler?(&tables)
+//        }
+//    }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource.count
+        return 0
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SHContentSwitchSheetCell = tableView.dequeueReusableCell(withIdentifier: "SHContentSwitchSheetCell", for: indexPath) as! SHContentSwitchSheetCell
-        cell.switchButton.isOn = self.dataSource[indexPath.row].isOn
-        cell.titleLabel.text = self.dataSource[indexPath.row].title
-        if let image = self.dataSource[indexPath.row].icon {
-            cell.showIcon = true
-            cell.iconImageView?.image = image
-        } else {
-            cell.showIcon = false
-        }
-        cell.handleSwitch = { [weak self] switchButton in
-            guard let strongSelf = self else { return }
-            strongSelf.dataSource[indexPath.row].isOn = switchButton.isOn
-        }
+//        cell.switchButton.isOn = self.dataSource[indexPath.row].isOn
+//        cell.titleLabel.text = self.dataSource[indexPath.row].title
+//        if let image = self.dataSource[indexPath.row].icon {
+//            cell.showIcon = true
+//            cell.iconImageView?.image = image
+//        } else {
+//            cell.showIcon = false
+//        }
+//        cell.handleSwitch = { [weak self] switchButton in
+//            guard let strongSelf = self else { return }
+//            strongSelf.dataSource[indexPath.row].isOn = switchButton.isOn
+//        }
         return cell
     }
     

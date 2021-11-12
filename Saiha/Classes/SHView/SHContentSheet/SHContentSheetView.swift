@@ -17,7 +17,7 @@ import UIKit
 // MARK: - SHContentSheetView.
 
 open class SHContentSheetView: SHUIView {
-    
+
     private var backgroundView: UIView!
     private var sepratorLine: UIView!
     private var cancelButton: UIButton!
@@ -26,7 +26,8 @@ open class SHContentSheetView: SHUIView {
     open var contentHeight: CGFloat = 0
     
     open weak var delegate: SHContentSheetViewDelegate?
-    
+    open var completionHandler: (() -> Void)?
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -92,8 +93,9 @@ open class SHContentSheetView: SHUIView {
         //self.mainView.saiha.addRoundedCorners(corners: .topRight, radius: CGSize(width: 10, height: 10))
     }
     
-    public static func show(customView: UIView, contentHeight: CGFloat) {
+    public static func show(customView: UIView, contentHeight: CGFloat, completionHandler: ((() -> Void)?)) {
         let sheetView: SHContentSheetView = SHContentSheetView()
+        sheetView.completionHandler = completionHandler
         sheetView.mainView.addSubview(customView)
         customView.snp.makeConstraints { make in
             make.left.top.right.bottom.equalToSuperview()
@@ -122,6 +124,7 @@ open class SHContentSheetView: SHUIView {
         if self.delegate?.contentSheetView?(didTapCancelActionIn: self) == nil {
             self.isHidden = true
             self.removeFromSuperview()
+            self.completionHandler?()
         }
     }
 }

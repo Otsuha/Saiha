@@ -34,7 +34,7 @@ public struct SaihaUIViewHelper {
         self.view.layer.mask = shape
     }
     
-    public func addSeparator(color: UIColor, position: SaihaUIViewHelper.SeparatorPositon, leftEdge: CGFloat, rightEdge: CGFloat) {
+    public func addSeparator(color: UIColor = UIColor.saiha.colorWithHexString("#F2F3F7"), position: SaihaUIViewHelper.SeparatorPositon = .bottom, leftEdge: CGFloat = 0, rightEdge: CGFloat = 0) {
         let aLine: UIView = UIView()
         aLine.backgroundColor = color
         self.view.addSubview(aLine)
