@@ -25,7 +25,6 @@ open class SHContentSheetView: SHUIView {
     
     open var contentHeight: CGFloat = 0
     
-    open weak var delegate: SHContentSheetViewDelegate?
     open var completionHandler: (() -> Void)?
         
     override init(frame: CGRect) {
@@ -105,7 +104,6 @@ open class SHContentSheetView: SHUIView {
         sheetView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
-        UIWindow.saiha.securyWindow()?.bringSubviewToFront(customView)
     }
     
     required public init?(coder: NSCoder) {
@@ -121,10 +119,8 @@ open class SHContentSheetView: SHUIView {
     }
     
     @objc func touchCancelAction(sender: UIButton) {
-        if self.delegate?.contentSheetView?(didTapCancelActionIn: self) == nil {
-            self.isHidden = true
-            self.removeFromSuperview()
-            self.completionHandler?()
-        }
+        self.isHidden = true
+        self.removeFromSuperview()
+        self.completionHandler?()
     }
 }

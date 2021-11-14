@@ -37,18 +37,6 @@
   "static_framework": true,
   "subspecs": [
     {
-      "name": "SHFoundation",
-      "source_files": "Saiha/Classes/SHFoundation/**/*"
-    },
-    {
-      "name": "SHView",
-      "source_files": "Saiha/Classes/SHView/**/*"
-    },
-    {
-      "name": "SHUIKit",
-      "source_files": "Saiha/Classes/SHUIKit/**/*"
-    },
-    {
       "name": "Resources",
       "resources": "Saiha/Assets/**/*"
     }

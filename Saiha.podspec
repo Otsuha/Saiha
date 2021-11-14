@@ -97,19 +97,6 @@ Pod::Spec.new do |spec|
   # spec.public_header_files = "Classes/**/*.h"
   
   spec.prefix_header_contents = '#import <Saiha/Saiha-Swift.h>'
-  
-  spec.subspec "SHFoundation" do |subspec|
-    subspec.source_files = "Saiha/Classes/SHFoundation/**/*"
-  end
-  
-  spec.subspec "SHView" do |subspec|
-    subspec.source_files = "Saiha/Classes/SHView/**/*"
-  end
-  
-  spec.subspec "SHUIKit" do |subspec|
-    subspec.source_files = "Saiha/Classes/SHUIKit/**/*"
-  end
-
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #

@@ -15,7 +15,7 @@ open class SHContentSheetSwitchCell: UITableViewCell {
     private var expressIcon: UIImageView!
     private var switchButton: UISwitch!
     
-    open var handleSwitchButton: ((_ switchButton: UISwitch) -> Void)?
+    open var switchCallBack: ((_ switchButton: UISwitch) -> Void)?
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -54,7 +54,6 @@ open class SHContentSheetSwitchCell: UITableViewCell {
         }
         
         self.switchButton = UISwitch()
-        //self.switchButton.tintColor = UIColor.saiha.colorWithHexString("#3951C4")
         self.switchButton.onTintColor = UIColor.saiha.colorWithHexString("#3951C4")
         self.switchButton.isOn = true
         self.switchButton.isSelected = false
@@ -85,6 +84,6 @@ open class SHContentSheetSwitchCell: UITableViewCell {
     }
     
     @objc private func handleSwitch(sender: UISwitch) {
-        self.handleSwitchButton?(sender)
+        self.switchCallBack?(sender)
     }
 }
