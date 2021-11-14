@@ -7,13 +7,6 @@
 
 import UIKit
 
-// MARK: - SHContentSheetViewDelegate.
-
-@objc public protocol SHContentSheetViewDelegate {
-    
-    @objc optional func contentSheetView(didTapCancelActionIn contentSheetView: SHContentSheetView)
-}
-
 // MARK: - SHContentSheetView.
 
 open class SHContentSheetView: SHUIView {
@@ -100,6 +93,8 @@ open class SHContentSheetView: SHUIView {
             make.left.top.right.bottom.equalToSuperview()
         }
         sheetView.contentHeight = contentHeight
+        let cornersHeight: CGFloat = CGFloat.saiha.verticalSize(num: 56) + UIWindow.saiha.safeAreaInsets().bottom + CGFloat.saiha.verticalSize(num: 8) + contentHeight
+        //sheetView.saiha.addRoundedCorners(rect: CGRect(x: 0, y: UIWindow.saiha.securyWindow()!.frame.height - cornersHeight, width: CGFloat.saiha.screenWidth, height: cornersHeight), corners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10))
         UIWindow.saiha.securyWindow()?.addSubview(sheetView)
         sheetView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()

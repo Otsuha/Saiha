@@ -7,32 +7,49 @@
 
 import UIKit
 
-open class SHContentSwitchSheetView: SHContentSheetView, UITableViewDataSource {
+@objc public protocol SHContentSwitchSheetViewDelegate {
+    
+    @objc optional func contentSwitchSheetView(_ contentSwitchSheetView: SHContentSwitchSheetView, didSwitchButtonStatusIn index: Int, with isOn: Bool)
+    
+}
+
+open class SHContentSwitchSheetView: SHUIView, UITableViewDataSource {
 
     private var titleLabel: SHUILabel!
     private var switchContentView: SHUIView!
     private var mainTableView: UITableView!
     
-    open var statusTaleHandler: ((_ statusTable: inout [Bool]) -> Void)?
+    open var dataSource: [(icon: UIImage?, title: String, isOn: Bool)] = []
+    
+    open var defaultContentHeight: CGFloat {
+        get {
+            return self.tableViewHeight + CGFloat.saiha.verticalSize(num: 60)
+        }
+    }
+    
+    private var tableViewHeight: CGFloat {
+        get {
+            var height: CGFloat = 0
+            if self.dataSource.count <= 8 {
+                height = CGFloat(dataSource.count) * CGFloat.saiha.verticalSize(num: 56)
+            } else {
+                height = 8 * CGFloat.saiha.verticalSize(num: 56)
+            }
+            return height
+        }
+    }
+    
+    open weak var delegate: SHContentSwitchSheetViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.titleLabel = SHUILabel()
-        self.titleLabel.text = "照片上传"
-        self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 16), weight: .medium)
-        self.addSubview(self.titleLabel)
-        self.titleLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: 20))
-            make.top.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: 20))
-            make.width.greaterThanOrEqualTo(CGFloat.saiha.horizontalSize(num: 64))
-        }
-        
         self.switchContentView = SHUIView()
         self.addSubview(self.switchContentView)
         self.switchContentView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(self.titleLabel.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.top.equalToSuperview()
         }
         
         self.mainTableView = UITableView()
@@ -43,7 +60,19 @@ open class SHContentSwitchSheetView: SHContentSheetView, UITableViewDataSource {
         self.mainTableView.separatorInset = UIEdgeInsets(top: 0, left: CGFloat.saiha.horizontalSize(num: 16), bottom: 0, right: CGFloat.saiha.horizontalSize(num: -18))
         self.switchContentView.addSubview(self.mainTableView)
         self.mainTableView.snp.makeConstraints { make in
-            make.top.bottom.left.right.equalToSuperview()
+            make.bottom.left.right.equalToSuperview()
+            make.height.equalTo(0)
+        }
+        
+        self.titleLabel = SHUILabel()
+        self.titleLabel.text = "照片上传"
+        self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 16), weight: .medium)
+        self.switchContentView.addSubview(self.titleLabel)
+        self.titleLabel.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: 20))
+            make.bottom.equalTo(self.mainTableView.snp.top).offset(CGFloat.saiha.verticalSize(num: -20))
+            make.width.greaterThanOrEqualTo(CGFloat.saiha.horizontalSize(num: 64))
+            make.height.equalTo(CGFloat.saiha.verticalSize(num: 20))
         }
         
     }
@@ -52,46 +81,46 @@ open class SHContentSwitchSheetView: SHContentSheetView, UITableViewDataSource {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    public static func show(contentHeight: CGFloat, dataSource: [(icon: UIImage?, title: String, isOn: Bool)], _ completionHandler: @escaping (_ statusTable: inout [Bool]) -> Void) {
-//        let sheetView: SHContentSwitchSheetView = SHContentSwitchSheetView()
-//        sheetView.contentHeight = contentHeight
-//        sheetView.statusTaleHandler = completionHandler
-//        SHContentSheetView.show(customView: sheetView, contentHeight: contentHeight, completionHandler: { dataSource in
-//
-//        })
-//
-//    }
+    open func setTitle(text: String) {
+        self.titleLabel.text = text
+    }
     
-//    @objc override func touchCancelAction(sender: UIButton) {
-//        if self.delegate?.contentSheetView?(didTapCancelActionIn: self) == nil {
-//            self.isHidden = true
-//            self.removeFromSuperview()
-//            var tables: [Bool] = []
-//            for status in (self.dataSource as! [String: Bool]) {
-//                tables.append(status.isOn)
-//            }
-//            self.statusTaleHandler?(&tables)
-//        }
-//    }
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.mainTableView.snp.updateConstraints { make in
+            make.height.equalTo(self.tableViewHeight)
+        }
+    }
+    
+    public static func show(title: String, dataSource: [(icon: UIImage?, title: String, isOn: Bool)], delegate: SHContentSwitchSheetViewDelegate? = nil, contentHeight: CGFloat? = nil, completionHandler: (() -> Void)?) {
+        let sheetView: SHContentSwitchSheetView = SHContentSwitchSheetView()
+        sheetView.setTitle(text: title)
+        sheetView.delegate = delegate
+        sheetView.dataSource = dataSource
+        SHContentSheetView.show(customView: sheetView, contentHeight: sheetView.defaultContentHeight, completionHandler: completionHandler)
+    }
+    
+    // MARK: - UITableViewDataSource.
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.dataSource.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SHContentSwitchSheetCell = tableView.dequeueReusableCell(withIdentifier: "SHContentSwitchSheetCell", for: indexPath) as! SHContentSwitchSheetCell
-//        cell.switchButton.isOn = self.dataSource[indexPath.row].isOn
-//        cell.titleLabel.text = self.dataSource[indexPath.row].title
-//        if let image = self.dataSource[indexPath.row].icon {
-//            cell.showIcon = true
-//            cell.iconImageView?.image = image
-//        } else {
-//            cell.showIcon = false
-//        }
-//        cell.handleSwitch = { [weak self] switchButton in
-//            guard let strongSelf = self else { return }
-//            strongSelf.dataSource[indexPath.row].isOn = switchButton.isOn
-//        }
+        cell.switchButton.isOn = self.dataSource[indexPath.row].isOn
+        cell.titleLabel.text = self.dataSource[indexPath.row].title
+        if let image = self.dataSource[indexPath.row].icon {
+            cell.showIcon = true
+            cell.iconImageView?.image = image
+        } else {
+            cell.showIcon = false
+        }
+        cell.handleSwitch = { [weak self] switchButton in
+            guard let strongSelf = self else { return }
+            strongSelf.dataSource[indexPath.row].isOn = switchButton.isOn
+        }
         return cell
     }
     

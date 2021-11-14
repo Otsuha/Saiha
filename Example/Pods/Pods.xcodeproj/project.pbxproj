@@ -10,7 +10,6 @@
 		037BEB1A0F80204A98003F047687BAA0 /* ConstraintConstantTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D990E0FED5B41C1F13AC6B08208A99B /* ConstraintConstantTarget.swift */; };
 		05CBBF0A0A9BE7FB3C375FE37BE6A508 /* arrow_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C579A9C9F14E724192156B6DDBF5A493 /* arrow_left@2x.png */; };
 		0C3C7556D6262218CBBA814647694AFF /* ConstraintViewDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56006AA49A060CA2830F32CD6F394823 /* ConstraintViewDSL.swift */; };
-		0CA0DEAF99AF98A4E09422DC66BF2B40 /* SHContentSheetSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCE9957B03BB8B7F3BB70CC5AF8436D /* SHContentSheetSwitchCell.swift */; };
 		0F206DB5D87A39274553E2B327F0D438 /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = FDFD0040805C3C1B93221519F769CFC1 /* arrow_up.png */; };
 		10778D307D718DD0D043B1EF43222CA9 /* Pods-Saiha_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FAA0D489C60EF379DBD3DCE505E64 /* Pods-Saiha_Example-dummy.m */; };
 		11652C2BE27F7074F70F4DF74D942F03 /* ConstraintInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549471CD1FE3A1E1865DD172864918D3 /* ConstraintInsets.swift */; };
@@ -206,7 +205,6 @@
 		A67571189F6593DD57E32EA691E09794 /* camera_del@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "camera_del@2x.png"; path = "Saiha/Assets/camera_del@2x.png"; sourceTree = "<group>"; };
 		A731A4C926D8C8C571441B92B977291D /* Pods-Saiha_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Saiha_Example-frameworks.sh"; sourceTree = "<group>"; };
 		A7D358AA1606C7B2CDC8555485807E9E /* ConstraintDirectionalInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsetTarget.swift; path = Source/ConstraintDirectionalInsetTarget.swift; sourceTree = "<group>"; };
-		BCCE9957B03BB8B7F3BB70CC5AF8436D /* SHContentSheetSwitchCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SHContentSheetSwitchCell.swift; sourceTree = "<group>"; };
 		BD4A6DDE28F2232DBB8EDA57781F5455 /* Saiha.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Saiha.modulemap; sourceTree = "<group>"; };
 		BE0BE9F3D55FDB29EF516F6D6B1B6BCA /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		BEF2110AB79CE4C2C9EE40CD4FFD5823 /* Pods-Saiha_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Saiha_Example-Info.plist"; sourceTree = "<group>"; };
@@ -402,7 +400,6 @@
 		7CDFD66CB650DBA44238FA6DBEA1289E /* SHContentSheet */ = {
 			isa = PBXGroup;
 			children = (
-				BCCE9957B03BB8B7F3BB70CC5AF8436D /* SHContentSheetSwitchCell.swift */,
 				8A96057C7D8887F18C54C7E17C272655 /* SHContentSheetView.swift */,
 				D48C1F633747C08C80987BAB86258BC0 /* SHContentSwitchSheetView.swift */,
 			);
@@ -807,7 +804,6 @@
 				5BBA5E48852219CCF922E580B8CD1D11 /* Saiha-dummy.m in Sources */,
 				B229E1F9884E63AD7609FEC34080B01B /* SHAddPhotoView.swift in Sources */,
 				DE47A0C64C90313751D5D889F5128B03 /* SHCGFloat.swift in Sources */,
-				0CA0DEAF99AF98A4E09422DC66BF2B40 /* SHContentSheetSwitchCell.swift in Sources */,
 				5849CDA682E74A11FB9EE6ED82E45353 /* SHContentSheetView.swift in Sources */,
 				BE765D34333BA3EC2825F7BB7FC3B779 /* SHContentSwitchSheetView.swift in Sources */,
 				792394CEEB357BF2A3D9513D3CFF5EEC /* SHSideBarTableView.swift in Sources */,
