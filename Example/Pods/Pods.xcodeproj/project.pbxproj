@@ -136,7 +136,7 @@
 		0A638B255310F8B7BEEB94AFB6A9B8DD /* arrow_left@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_left@3x.png"; path = "Saiha/Assets/arrow_left@3x.png"; sourceTree = "<group>"; };
 		0B598C8A785671A2247D8535378C26FA /* arrow_up@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_up@3x.png"; path = "Saiha/Assets/arrow_up@3x.png"; sourceTree = "<group>"; };
 		0F7426275563FDD6F18ECD49BB6DE8D4 /* Pods-Saiha_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Saiha_Tests-umbrella.h"; sourceTree = "<group>"; };
-		10386AF25F138C8C981CA3EC93F468B9 /* Saiha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Saiha.framework; path = Saiha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10386AF25F138C8C981CA3EC93F468B9 /* Saiha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Saiha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		10501C88DA03EE6557B777F45CBC2974 /* arrow_left.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = arrow_left.png; path = Saiha/Assets/arrow_left.png; sourceTree = "<group>"; };
 		11D02329E74D733C03BF6BAE1F564481 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
 		13F460233F2A555D41511B6CCA66A124 /* ConstraintAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintAttributes.swift; path = Source/ConstraintAttributes.swift; sourceTree = "<group>"; };
@@ -149,9 +149,9 @@
 		2975CA5A0D26BC84F3EE9912FEBDA795 /* ConstraintRelatableTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelatableTarget.swift; path = Source/ConstraintRelatableTarget.swift; sourceTree = "<group>"; };
 		30A85BC3C9F1F75B6F8E5185A349250C /* arrow_down@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_down@3x.png"; path = "Saiha/Assets/arrow_down@3x.png"; sourceTree = "<group>"; };
 		3188FD2D073D6FEC6A70BE79520081BC /* arrow_right.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = arrow_right.png; path = Saiha/Assets/arrow_right.png; sourceTree = "<group>"; };
-		321901B2F42951C3299B2E3971FC77CB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		321901B2F42951C3299B2E3971FC77CB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		32E127BA1B81919C9AFD112FAEBABE40 /* ResourceBundle-Saiha-Saiha-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Saiha-Saiha-Info.plist"; sourceTree = "<group>"; };
-		343445E79AA159E44452EE6E175EE00E /* Saiha.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Saiha.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		343445E79AA159E44452EE6E175EE00E /* Saiha.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = Saiha.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		386B930ED0C0114F1F53BE39BC213C84 /* arrow_right@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_right@2x.png"; path = "Saiha/Assets/arrow_right@2x.png"; sourceTree = "<group>"; };
 		391A6F8B42D2CD885F8F3C4CE6859439 /* SnapKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SnapKit-Info.plist"; sourceTree = "<group>"; };
 		39CDDBAA16544F49FBC1C105C23F0483 /* SHUIWindow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SHUIWindow.swift; sourceTree = "<group>"; };
@@ -169,10 +169,10 @@
 		549471CD1FE3A1E1865DD172864918D3 /* ConstraintInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsets.swift; path = Source/ConstraintInsets.swift; sourceTree = "<group>"; };
 		56006AA49A060CA2830F32CD6F394823 /* ConstraintViewDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintViewDSL.swift; path = Source/ConstraintViewDSL.swift; sourceTree = "<group>"; };
 		5E5C2A1DE26B53E35EE577672277D08D /* Pods-Saiha_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Saiha_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		5F36DDC3524D579B80FB1D393BC87AEA /* Pods_Saiha_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Saiha_Example.framework; path = "Pods-Saiha_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F36DDC3524D579B80FB1D393BC87AEA /* Pods_Saiha_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Saiha_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60A7A88B9327AF5352F34B076BA7D60C /* Pods-Saiha_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Saiha_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		6316552CE5A8A7A4D257961A2329D632 /* Pods-Saiha_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Saiha_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		647D4A3085732F8F3404E8790B8902B2 /* Saiha.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Saiha.bundle; path = "Saiha-Saiha.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		647D4A3085732F8F3404E8790B8902B2 /* Saiha.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Saiha.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		648543444806D8736268B8BE4C77EDA6 /* SHUILabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SHUILabel.swift; sourceTree = "<group>"; };
 		65F59F3B628EFBFF61A3C4D991DAFEBD /* SHAddPhotoView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SHAddPhotoView.swift; sourceTree = "<group>"; };
 		66C5188AE61F0E667CD9E7ED28CDD61C /* ConstraintLayoutGuide.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuide.swift; path = Source/ConstraintLayoutGuide.swift; sourceTree = "<group>"; };
@@ -194,9 +194,9 @@
 		91164BE769DA144776663FBF46785561 /* ConstraintDirectionalInsets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintDirectionalInsets.swift; path = Source/ConstraintDirectionalInsets.swift; sourceTree = "<group>"; };
 		91A53CAF547D71AEFABE49D91B4E6816 /* ConstraintMakerPriortizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerPriortizable.swift; path = Source/ConstraintMakerPriortizable.swift; sourceTree = "<group>"; };
 		9716AD15FADF38A93170E034F2BCE457 /* ConstraintPriorityTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriorityTarget.swift; path = Source/ConstraintPriorityTarget.swift; sourceTree = "<group>"; };
-		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98D047BF8867880CF32CB1062DAD0EF1 /* camera_del@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "camera_del@3x.png"; path = "Saiha/Assets/camera_del@3x.png"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E6A1027D098CAF13096DC5D7440E60D /* Saiha-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Saiha-prefix.pch"; sourceTree = "<group>"; };
 		A1CD432F32277BB93DEAADA626ECEC5B /* SnapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SnapKit.release.xcconfig; sourceTree = "<group>"; };
 		A3BD6C7F621076BA3EE15D262CE0132C /* Pods-Saiha_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Saiha_Example.modulemap"; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 		D755256D8823396C30EBB632467C976E /* arrow_right@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_right@3x.png"; path = "Saiha/Assets/arrow_right@3x.png"; sourceTree = "<group>"; };
 		D76422A9E9E5A167C1C89B0FD17C6927 /* camera_del.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = camera_del.png; path = Saiha/Assets/camera_del.png; sourceTree = "<group>"; };
 		D9793F0EC2490864AA00B03B4559AC63 /* Pods-Saiha_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Saiha_Example.release.xcconfig"; sourceTree = "<group>"; };
-		DB25C72A2FFCD1ECCAF1FACABD38B739 /* Pods_Saiha_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Saiha_Tests.framework; path = "Pods-Saiha_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB25C72A2FFCD1ECCAF1FACABD38B739 /* Pods_Saiha_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Saiha_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB64BA8E7B7025595402DB4C24667511 /* SHUIButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SHUIButton.swift; sourceTree = "<group>"; };
 		DE1B18C19CD61C928FDDAFE62A991FB0 /* SHUITableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SHUITableView.swift; sourceTree = "<group>"; };
 		E13B89FFD81AACB7530769CA05EEA26B /* SnapKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapKit-dummy.m"; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 		EB19C263C0769AEC0D464C49CF39EC25 /* arrow_down.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = arrow_down.png; path = Saiha/Assets/arrow_down.png; sourceTree = "<group>"; };
 		EE9055CEA7890517265589BD23D73A49 /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		F0BD95F32F2E57D6B9100B77B93F013C /* ConstraintPriority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintPriority.swift; path = Source/ConstraintPriority.swift; sourceTree = "<group>"; };
-		F3ADFF2AE160C1C8EFFAA57B8812AD5F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		F3ADFF2AE160C1C8EFFAA57B8812AD5F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F44C5B72775F6AF0891BF331F32FE10D /* LayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraint.swift; path = Source/LayoutConstraint.swift; sourceTree = "<group>"; };
 		F7AB9BB47A2175181386A432C07253AE /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
 		F90FAA0D489C60EF379DBD3DCE505E64 /* Pods-Saiha_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Saiha_Example-dummy.m"; sourceTree = "<group>"; };
@@ -406,7 +406,6 @@
 				8A96057C7D8887F18C54C7E17C272655 /* SHContentSheetView.swift */,
 				D48C1F633747C08C80987BAB86258BC0 /* SHContentSwitchSheetView.swift */,
 			);
-			name = SHContentSheet;
 			path = SHContentSheet;
 			sourceTree = "<group>";
 		};
@@ -451,7 +450,6 @@
 				6A9341666EAC154422A032092A7DC2D7 /* UILayoutSupport+Extensions.swift */,
 				843EFF0C650682C304D518A9092EE9FD /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -697,7 +695,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1310;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1073,8 +1071,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
