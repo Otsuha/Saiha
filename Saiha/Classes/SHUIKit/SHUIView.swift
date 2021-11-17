@@ -9,6 +9,7 @@ import UIKit
 
 open class SHUIView: UIView {
     
+    
 }
 
 public extension UIView {
@@ -18,12 +19,17 @@ public extension UIView {
     }
 }
 
-public struct SaihaUIViewHelper {
+open class SaihaUIViewHelper {
     
-    let view: UIView
+    var view: UIView = UIView()
     
     init(view: UIView) {
         self.view = view
+    }
+    
+    
+    public func end() {
+        
     }
     
     public func addRoundedCorners(rect: CGRect, corners: UIRectCorner, cornerRadii: CGSize) {

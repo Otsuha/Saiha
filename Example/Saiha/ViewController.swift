@@ -11,10 +11,53 @@ import Saiha
 import SnapKit
 
 class ViewController: UIViewController {
+    
+    private var label: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.label = UILabel.saiha.create(superView: self.view, { label in
+            label.frame(x: 20, y: 100, width: 100, height: 60)
+                .text(text: "sss")
+                .font(size: 16)
+                .text(text: "")
+                .text(text: "s")
+                .text(text: "ddd")
+                .end()
+        })
+        self.label.snp.makeConstraints { make in
+            make.left.equalToSuperview()
+        }
+        
+        self.label = UILabel.saiha.create(superView: self.view, { label in
+            label.frame(x: 20, y: 100, width: 100, height: 60)
+                .text(text: "sss")
+                .font(size: 16)
+                .text(text: "")
+                .text(text: "s")
+                .text(text: "ddd")
+                .end()
+        })
+        self.label.snp.makeConstraints { make in
+            make.left.equalToSuperview()
+        }
+        
+        self.label = UILabel.saiha.create(superView: self.view, { label in
+            label.frame(x: 20, y: 100, width: 100, height: 60)
+                .text(text: "sss")
+                .font(size: 16)
+                .text(text: "")
+                .text(text: "s")
+                .text(text: "ddd")
+                .end()
+        })
+        self.label.snp.makeConstraints { make in
+            make.left.equalToSuperview()
+        }
+        
+        
         
 //        let photoView: SHAddPhotoView = SHAddPhotoView()
 //        photoView.itemEdge = CGFloat.saiha.verticalSize(num: 100)

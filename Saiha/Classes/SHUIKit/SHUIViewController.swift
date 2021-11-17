@@ -7,17 +7,37 @@
 
 import UIKit
 
+// MARK: - SHUIViewController.
+
+public extension UIViewController {
+    
+    static var saiha: SHUIViewControllerHelper {
+        return SHUIViewControllerHelper()
+    }
+}
+
 open class SHUIViewController: UIViewController {
+    
+    // MARK: - UIViewController.
 
     open override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    // MARK: - deinit.
+        
+    deinit {
+        print("\(NSStringFromClass(self.classForCoder)) 已释放。")
+        NotificationCenter.default.removeObserver(self)
+    }
 
 }
 
-public struct SHUIViewControllerHelper {
+// MARK: - SHUIViewControllerHelper.
+
+public class SHUIViewControllerHelper {
     
     public func currentActivityViewController() -> UIViewController? {
         let rootViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController
@@ -59,12 +79,5 @@ public struct SHUIViewControllerHelper {
         }
         
         return currentActivityViewController
-    }
-}
-
-public extension UIViewController {
-    
-    static var saiha: SHUIViewControllerHelper {
-        return SHUIViewControllerHelper()
     }
 }
