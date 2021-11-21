@@ -8,55 +8,56 @@
 import UIKit
 
 open class SHUILabel: UILabel {
-
-    private var helper: SaihaUILabelHelper {
-        return SaihaUILabelHelper(label: self)
-    }
     
 }
 
-public extension UILabel {
+//extension UILabel: SaihaUIViewDelegate {
+//
+//    public typealias ViewType = UILabel
+//
+//    public static var saiha: SaihaUIViewHelper<ViewType> {
+//        return SaihaUILabelHelper<ViewType>.init(label: ViewType())
+//    }
+//}
 
-    static var saiha: SaihaUILabelHelper {
-        return SaihaUILabelHelper(label: UILabel())
-    }
-}
-
-open class SaihaUILabelHelper: SaihaUIViewHelper {
-    
-    var label: UILabel = UILabel()
-    
-    init(label: UILabel) {
-        super.init(view: label)
-        
-        self.label = label
-    }
-    
-    open func create(superView: UIView, _ creator: ((_ label: SaihaUILabelHelper) -> Void)) -> UILabel {
-        creator(self)
-        superView.addSubview(self.label)
-        return self.label
-    }
-    
-    open func frame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> SaihaUILabelHelper {
-        self.label.frame = CGRect(x: x, y: y, width: width, height: height)
-        return self
-    }
-    
-    open func text(text: String) -> SaihaUILabelHelper {
-        self.label.text = text
-        return self
-    }
-    
-    open func font(size: CGFloat, weight: UIFont.Weight = .regular) -> SaihaUILabelHelper {
-        self.label.font = .systemFont(ofSize: size, weight: weight)
-        return self
-    }
-}
-
-// MARK: - UILabel.
-
-public extension SHUILabel {
-    
-    
-}
+//public class SaihaUILabelHelper: SaihaUIViewHelper<SHUILabel> {
+//
+//    private var label: SHUILabel
+//
+//    override init(view: SHUILabel) {
+//        self.label = view
+//        super.init(view: view)
+//    }
+//
+//    public override func create(superView: UIView?, creator: ((_ label: SaihaUILabelHelper) -> Void)) -> SHUILabel {
+//        creator(self)
+//        superView?.addSubview(self.label)
+//        return self.label
+//    }
+//
+//    public func text(text: String) -> SaihaUILabelHelper {
+//        self.label.text = text
+//        return self
+//    }
+//
+//    public func font(size: CGFloat, weight: UIFont.Weight = .regular) -> SaihaUILabelHelper {
+//        self.label.font = .systemFont(ofSize: size, weight: weight)
+//        return self
+//    }
+//
+//    public func textAlignment(_ alignment: NSTextAlignment) -> SaihaUILabelHelper {
+//        self.label.textAlignment = alignment
+//        return self
+//    }
+//
+//    public func textColor(_ color: UIColor) -> SaihaUILabelHelper {
+//        self.label.textColor = color
+//        return self
+//    }
+//
+//    public func lineBreakMode(_ mode: NSLineBreakMode, numberOfLines: Int) -> SaihaUILabelHelper {
+//        self.label.lineBreakMode = mode
+//        self.label.numberOfLines = numberOfLines
+//        return self
+//    }
+//}
