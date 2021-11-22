@@ -128,6 +128,9 @@ open class SHSideBarTableView: SHUIView {
         self.sidebarTableView.sectionFooterHeight = 0
         self.sidebarTableView.separatorStyle = .none
         self.sidebarTableView.separatorColor = self.cellSeparatorColor
+        self.sidebarTableView.estimatedRowHeight = 0
+        self.sidebarTableView.estimatedSectionFooterHeight = 0
+        self.sidebarTableView.estimatedSectionHeaderHeight = 0
         self.addSubview(self.sidebarTableView)
         self.sidebarTableView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()

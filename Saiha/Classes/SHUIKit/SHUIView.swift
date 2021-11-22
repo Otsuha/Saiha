@@ -114,7 +114,7 @@ public struct SaihaNormalUIKitHelper {
     }
     
     public func addRoundedCorners(rect: CGRect, corners: UIRectCorner, cornerRadii: CGSize) {
-        let rounded: UIBezierPath = UIBezierPath.init(roundedRect: self.view.bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
+        let rounded: UIBezierPath = UIBezierPath.init(roundedRect: rect, byRoundingCorners: corners, cornerRadii: cornerRadii)
         let shape: CAShapeLayer = CAShapeLayer()
         shape.frame = self.view.bounds
         shape.path = rounded.cgPath

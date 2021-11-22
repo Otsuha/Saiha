@@ -19,6 +19,10 @@ open class SHContentSheetView: SHUIView {
     open var contentHeight: CGFloat = 0
     
     open var completionHandler: (() -> Void)?
+    
+    public static var normalWidgeHeight: CGFloat {
+        return CGFloat.saiha.verticalSize(num: 56) + UIWindow.saiha.safeAreaInsets().bottom + CGFloat.saiha.verticalSize(num: 8)
+    }
         
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,21 +72,6 @@ open class SHContentSheetView: SHUIView {
         }
         
         self.mainView.clipsToBounds = true
-        
-//        let rounded: UIBezierPath = UIBezierPath.init(roundedRect: self.mainView.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10))
-//        let shape: CAShapeLayer = CAShapeLayer()
-//        shape.frame = self.mainView.bounds
-//        shape.path = rounded.cgPath
-//        self.mainView.layer.mask = shape
-        
-        //self.mainView.saiha.addRoundedCorners(rect: CGRect(x: 0, y: 0, width: CGFloat.saiha.screenWidth, height: self.mainView.frame.height), corners: .topLeft, cornerRadii: CGSize(width: 10, height: 10))
-//        let maskPath = UIBezierPath.init(roundedRect: self.mainView.bounds, byRoundingCorners: UIRectCorner(rawValue: UIRectCorner.topLeft.rawValue + UIRectCorner.topRight.rawValue), cornerRadii: CGSize(width: 12, height: 12))
-//        let maskLayer = CAShapeLayer.init()
-//        maskLayer.frame = self.mainView.bounds
-//        maskLayer.path = maskPath.cgPath
-//        self.mainView.layer.mask = maskLayer
-        //self.mainView.saiha.addRoundedCorners(corners: .topLeft, radius: CGSize(width: 10, height: 10))
-        //self.mainView.saiha.addRoundedCorners(corners: .topRight, radius: CGSize(width: 10, height: 10))
     }
     
     public static func show(customView: UIView, contentHeight: CGFloat, completionHandler: ((() -> Void)?)) {
@@ -93,12 +82,11 @@ open class SHContentSheetView: SHUIView {
             make.left.top.right.bottom.equalToSuperview()
         }
         sheetView.contentHeight = contentHeight
-        let cornersHeight: CGFloat = CGFloat.saiha.verticalSize(num: 56) + UIWindow.saiha.safeAreaInsets().bottom + CGFloat.saiha.verticalSize(num: 8) + contentHeight
-        //sheetView.saiha.addRoundedCorners(rect: CGRect(x: 0, y: UIWindow.saiha.securyWindow()!.frame.height - cornersHeight, width: CGFloat.saiha.screenWidth, height: cornersHeight), corners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10))
         UIWindow.saiha.securyWindow()?.addSubview(sheetView)
         sheetView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
+        sheetView.layoutIfNeeded()
     }
     
     required public init?(coder: NSCoder) {
@@ -111,6 +99,8 @@ open class SHContentSheetView: SHUIView {
         self.mainView.snp.updateConstraints { make in
             make.height.equalTo(self.contentHeight)
         }
+        
+        self.mainView.saiha.addRoundedCorners(rect: self.mainView.bounds, corners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10))
     }
     
     @objc func touchCancelAction(sender: UIButton) {

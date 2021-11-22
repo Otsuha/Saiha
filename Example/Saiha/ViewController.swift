@@ -18,9 +18,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        SHContentSwitchSheetView.show(title: "标题实例", dataSource: [(nil, "111", true), (nil, "222", false), (nil, "333", true)], contentHeight: nil) {
-            print("点击了取消")
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,5 +25,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func tapAction(_ sender: Any) {
+        SHContentSwitchSheetView.show(title: "标题实例", dataSource: [(nil, "111", true), (nil, "222", false), (nil, "333", true)], contentHeight: nil) {
+            print("点击了取消")
+        }
+    }
 }
 
