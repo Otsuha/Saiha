@@ -114,12 +114,56 @@ public struct SaihaNormalUIKitHelper {
     }
     
     public func addRoundedCorners(rect: CGRect, corners: UIRectCorner, cornerRadii: CGSize) {
-        let rounded: UIBezierPath = UIBezierPath.init(roundedRect: rect, byRoundingCorners: corners, cornerRadii: cornerRadii)
-        let shape: CAShapeLayer = CAShapeLayer()
-        shape.frame = self.view.bounds
-        shape.path = rounded.cgPath
-        self.view.layer.mask = shape
+//        let rounded: UIBezierPath = UIBezierPath.init(roundedRect: rect, byRoundingCorners: corners, cornerRadii: cornerRadii)
+//        let shape: CAShapeLayer = CAShapeLayer()
+//        shape.frame = self.view.bounds
+//        shape.path = rounded.cgPath
+//        self.view.layer.mask = shape
+        
+        if #available(iOS 11.0, *) {
+            self.view.layer.cornerRadius = 10
+            self.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
     }
+}
+
+public extension SaihaNormalUIKitHelper {
+    
+    enum CornerPosition {
+        case topLeft
+        case topRight
+        case bottomLeft
+        case bottomRight
+        case all
+    }
+    
+    public func addRoundedCorners(cornerPositons: [SaihaNormalUIKitHelper.CornerPosition], radius: CGFloat) {
+        if #available(iOS 11.0, *) {
+            var corners: UInt = CACornerMask().rawValue
+            for corner in cornerPositons {
+                switch corner {
+                case .topLeft:
+                    corners = corners | CACornerMask.layerMinXMinYCorner.rawValue
+                case .topRight:
+                    corners = corners | CACornerMask.layerMaxXMinYCorner.rawValue
+                case .bottomLeft:
+                    corners = corners | CACornerMask.layerMinXMaxYCorner.rawValue
+                case .bottomRight:
+                    corners = corners | CACornerMask.layerMaxXMaxYCorner.rawValue
+                case .all:
+                    corners = CACornerMask().rawValue
+                }
+            }
+            self.view.layer.cornerRadius = radius
+            self.view.layer.maskedCorners = CACornerMask(rawValue: corners)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    //public func addRoundedCorners
 }
 
 public extension SaihaNormalUIKitHelper {

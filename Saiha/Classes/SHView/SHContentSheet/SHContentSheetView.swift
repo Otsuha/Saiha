@@ -86,7 +86,7 @@ open class SHContentSheetView: SHUIView {
         sheetView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
-        sheetView.layoutIfNeeded()
+        sheetView.saiha.addRoundedCorners(cornerPositons: [.topLeft, .topRight], radius: 10)
     }
     
     required public init?(coder: NSCoder) {
@@ -99,8 +99,6 @@ open class SHContentSheetView: SHUIView {
         self.mainView.snp.updateConstraints { make in
             make.height.equalTo(self.contentHeight)
         }
-        
-        self.mainView.saiha.addRoundedCorners(rect: self.mainView.bounds, corners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10))
     }
     
     @objc func touchCancelAction(sender: UIButton) {
