@@ -31,6 +31,8 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
     var index: Int!
     var addPhotoView: SHAddPhotoView!
     
+    var removePhotoCallBack: ((_ index: Int) -> Void)?
+    
     weak var delegate: SHAddPhotoViewDelegate?
     
     override init(frame: CGRect) {
@@ -125,6 +127,7 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
     @objc private func touchRemoveButton(sender: UIButton) {
         if self.delegate == nil {
             self.setImage(image: nil)
+            self.removePhotoCallBack?(self.index)
         } else {
             self.delegate?.addPhotoView?(addPhotoView: self.addPhotoView, didTouchRemoveButtonAt: self.index)
         }
@@ -241,20 +244,9 @@ open class SHAddPhotoView: SHUIView {
     open func addEmptyPhoto() {
         if self.photos.count < self.maxPhotos {
             self.photos.append(nil)
-            let r1: Int = self.photos.count - 1
-            let r2: Int = self.photos.count - 2
-            if r1 < self.photos.count {
-                DispatchQueue.main.async {
-                    self.photoCollectionView.reloadItems(at: [IndexPath(item: r1, section: 0)])
-                }
-            }
-            if r2 < self.photos.count {
-                DispatchQueue.main.async {
-                    self.photoCollectionView.reloadItems(at: [IndexPath(item: r2, section: 0)])
-                }
-            }
+            self.photoCollectionView.reloadData()
+            self.updateConstraints()
         }
-        self.updateConstraints()
     }
 }
 
@@ -272,6 +264,19 @@ extension SHAddPhotoView: UICollectionViewDataSource {
         cell.index = indexPath.row
         cell.aCellSize = self.itemEdge
         cell.setImage(image: self.photos[indexPath.row])
+        cell.removePhotoCallBack = { [weak self] index in
+            guard let strongSelf = self else { return }
+            let full: Bool = strongSelf.photos.last! != nil
+            strongSelf.photos.remove(at: index)
+            DispatchQueue.main.async {
+                if full {
+                    strongSelf.addEmptyPhoto()
+                    strongSelf.photoCollectionView.reloadData()
+                } else {
+                    strongSelf.photoCollectionView.reloadData()
+                }
+            }
+        }
         return cell
     }
 }
@@ -304,7 +309,8 @@ extension SHAddPhotoView: UIImagePickerControllerDelegate & UINavigationControll
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image: UIImage = info[.editedImage] as! UIImage
         self.photos[self.currentSelectIndex] = image
-        if self.currentSelectIndex == self.photos.count - 1 {
+        self.photos[self.currentSelectIndex] = image
+        if self.currentSelectIndex == self.photos.count - 1 && self.currentSelectIndex < self.maxPhotos - 1 {
             self.addEmptyPhoto()
         } else {
             self.photoCollectionView.reloadItems(at: [IndexPath(item: self.currentSelectIndex, section: 0)])
