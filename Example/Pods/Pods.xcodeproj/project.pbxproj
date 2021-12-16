@@ -10,6 +10,7 @@
 		00C2CC909CE67E5FDD24BFCA47FE4CEE /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D598E3D0E0954490555863AFF34BB8F /* ReplaceMe.swift */; };
 		037C5552BB10C8F35B3661FDD1EF00C3 /* Saiha-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A64BEA6058163BB7981E280F2613B97 /* Saiha-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A870268DCD79F3A70C03D9154030173 /* SHUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB64BA8E7B7025595402DB4C24667511 /* SHUIButton.swift */; };
+		0E66048E276B09CF009CEA6A /* SHDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E66048D276B09CF009CEA6A /* SHDate.swift */; };
 		0ED9B01027584CE900CA01AF /* SHUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED9B00F27584CE900CA01AF /* SHUITextView.swift */; };
 		10778D307D718DD0D043B1EF43222CA9 /* Pods-Saiha_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F90FAA0D489C60EF379DBD3DCE505E64 /* Pods-Saiha_Example-dummy.m */; };
 		221A19B0EAA888334DB90F47113C067B /* arrow_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C579A9C9F14E724192156B6DDBF5A493 /* arrow_left@2x.png */; };
@@ -135,6 +136,7 @@
 		09BF299D2EEB87E7DD02630E87B96224 /* ConstraintLayoutGuide+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintLayoutGuide+Extensions.swift"; path = "Source/ConstraintLayoutGuide+Extensions.swift"; sourceTree = "<group>"; };
 		0A638B255310F8B7BEEB94AFB6A9B8DD /* arrow_left@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_left@3x.png"; path = "Saiha/Assets/arrow_left@3x.png"; sourceTree = "<group>"; };
 		0B598C8A785671A2247D8535378C26FA /* arrow_up@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_up@3x.png"; path = "Saiha/Assets/arrow_up@3x.png"; sourceTree = "<group>"; };
+		0E66048D276B09CF009CEA6A /* SHDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHDate.swift; sourceTree = "<group>"; };
 		0ED9B00F27584CE900CA01AF /* SHUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHUITextView.swift; sourceTree = "<group>"; };
 		0F7426275563FDD6F18ECD49BB6DE8D4 /* Pods-Saiha_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Saiha_Tests-umbrella.h"; sourceTree = "<group>"; };
 		10386AF25F138C8C981CA3EC93F468B9 /* Saiha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Saiha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				4ECC6FA59D900B86482BC549273B4997 /* SHCGFloat.swift */,
+				0E66048D276B09CF009CEA6A /* SHDate.swift */,
 			);
 			name = SHFoundation;
 			path = Saiha/Classes/SHFoundation;
@@ -824,6 +827,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E66048E276B09CF009CEA6A /* SHDate.swift in Sources */,
 				00C2CC909CE67E5FDD24BFCA47FE4CEE /* ReplaceMe.swift in Sources */,
 				8E9333016957E08C6D8CD1437726CC60 /* Saiha-dummy.m in Sources */,
 				D8A3256A9235F549356E604276835456 /* SHAddPhotoView.swift in Sources */,

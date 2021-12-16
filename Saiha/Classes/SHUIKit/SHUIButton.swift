@@ -8,6 +8,8 @@
 import UIKit
 
 open class SHUIButton: UIButton {
+    
+    open var clickArea: CGFloat = 0.4
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,6 +20,21 @@ open class SHUIButton: UIButton {
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        
+        // 获取 bounds 实际大小。
+        var bounds: CGRect = self.bounds
+        
+        let area: CGFloat = self.clickArea
+        let width: CGFloat = max(44.0 - area * bounds.size.width, 0.0)
+        let height: CGFloat = max(44.0 - area * bounds.size.height, 0.0)
+        
+        // 扩大 bounds。
+        bounds = bounds.insetBy(dx: -0.5 * width, dy: -0.5 * height)
+        
+        return bounds.contains(point)
     }
     
 }

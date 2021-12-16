@@ -24,7 +24,24 @@ open class SHUIViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.addNotification()
+        self.createUI()
+        self.handleBusiness()
+        self.sendRequestWhenViewDidLoad()
     }
+    
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.sendRequestWhenViewWillAppear()
+    }
+    
+    open func addNotification() {}
+    open func createUI() {}
+    open func handleBusiness() {}
+    open func sendRequestWhenViewDidLoad() {}
+    open func sendRequestWhenViewWillAppear() {}
     
     // MARK: - deinit.
         

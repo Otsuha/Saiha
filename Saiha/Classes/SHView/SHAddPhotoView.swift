@@ -248,6 +248,17 @@ open class SHAddPhotoView: SHUIView {
             self.updateConstraints()
         }
     }
+    
+    /**
+     手动添加一张照片。
+     
+     - Important: 调用该方法会在末尾的位置添加一张照片，并会自动添加一个空相框。
+     */
+    public func addPhoto(image: UIImage) {
+        let addIndex: Int = self.photos.count - 1
+        self.photos[addIndex] = image
+        self.addEmptyPhoto()
+    }
 }
 
 // MARK: - UICollectionViewDataSource.
@@ -308,7 +319,6 @@ extension SHAddPhotoView: UIImagePickerControllerDelegate & UINavigationControll
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image: UIImage = info[.editedImage] as! UIImage
-        self.photos[self.currentSelectIndex] = image
         self.photos[self.currentSelectIndex] = image
         if self.currentSelectIndex == self.photos.count - 1 && self.currentSelectIndex < self.maxPhotos - 1 {
             self.addEmptyPhoto()

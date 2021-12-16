@@ -86,7 +86,15 @@ open class SHContentSheetView: SHUIView {
         sheetView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
-        sheetView.saiha.addRoundedCorners(cornerPositons: [.topLeft, .topRight], radius: 10)
+        sheetView.layer.cornerRadius = 10
+        sheetView.mainView.layer.cornerRadius = 10
+        //sheetView.saiha.addRoundedCorners(cornerPositons: [.topLeft, .topRight], radius: 10)
+        if #available(iOS 11.0, *) {
+            //sheetView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            sheetView.mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        } else {
+            sheetView.layoutIfNeeded()
+        }
     }
     
     required public init?(coder: NSCoder) {
@@ -98,6 +106,12 @@ open class SHContentSheetView: SHUIView {
         
         self.mainView.snp.updateConstraints { make in
             make.height.equalTo(self.contentHeight)
+        }
+        
+        if #available(iOS 11.0, *) {
+            
+        } else {
+            //self.mainView.roundedCornerRadius(self.mainView.bounds, corner: [.topLeft, .topRight], cornerRadii: CGSize(width: 10, height: 10))
         }
     }
     
