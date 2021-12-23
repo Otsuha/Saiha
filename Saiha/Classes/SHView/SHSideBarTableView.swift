@@ -25,18 +25,18 @@ open class SHSideBarHeaderView: SHUIView {
         self.addSubview(self.accessButton!)
         self.accessButton!.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: -12))
-            make.width.equalTo(CGFloat.saiha.horizontalSize(num: 24))
+            make.right.equalToSuperview().offset(CGFloat.saiha_horizontalSize(num: -12))
+            make.width.equalTo(CGFloat.saiha_horizontalSize(num: 24))
         }
         
         self.titleLabel = UILabel()
-        self.titleLabel!.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 16))
+        self.titleLabel!.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16))
         self.titleLabel!.textAlignment = .left
         self.addSubview(titleLabel!)
         self.titleLabel!.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: 16))
+            make.left.equalToSuperview().offset(CGFloat.saiha_horizontalSize(num: 16))
             make.centerY.equalToSuperview()
-            make.right.lessThanOrEqualTo(self.accessButton!.snp.left).offset(CGFloat.saiha.horizontalSize(num: -42))
+            make.right.lessThanOrEqualTo(self.accessButton!.snp.left).offset(CGFloat.saiha_horizontalSize(num: -42))
         }
     }
     
@@ -100,8 +100,8 @@ open class SHSideBarTableView: SHUIView {
     
     open weak var delegate: SHSideBarTableViewDelegate?
     
-    open var headerHeight: CGFloat = CGFloat.saiha.verticalSize(num: 56)
-    open var rowHeight: CGFloat = CGFloat.saiha.verticalSize(num: 56)
+    open var headerHeight: CGFloat = CGFloat.saiha_verticalSize(num: 56)
+    open var rowHeight: CGFloat = CGFloat.saiha_verticalSize(num: 56)
     
     open var dataSourceHandle: ((_ cell: UITableViewCell, _ indexPath: IndexPath) -> Void)?
     
@@ -110,7 +110,7 @@ open class SHSideBarTableView: SHUIView {
             self.sidebarTableView.separatorStyle = newValue
         }
     }
-    open var cellSeparatorColor: UIColor = UIColor.saiha.colorWithHexString("#D8D8D8", alpha: 0.5) {
+    open var cellSeparatorColor: UIColor = UIColor.saiha_colorWithHexString("#D8D8D8", alpha: 0.5) {
         willSet {
             self.sidebarTableView.separatorColor = newValue
         }

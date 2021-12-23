@@ -32,6 +32,9 @@
   "dependencies": {
     "SnapKit": [
 
+    ],
+    "SDWebImage": [
+
     ]
   },
   "static_framework": true,

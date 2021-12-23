@@ -9,34 +9,28 @@ import UIKit
 
 public extension CGFloat {
     
-    static var saiha: SaihaCGFloat {
-        return SaihaCGFloat()
-    }
-}
-
-public struct SaihaCGFloat {
-    
-    public var screenWidth: CGFloat {
+    public static var saiha_screenWidth: CGFloat {
         return UIScreen.main.bounds.width
     }
     
-    public var screenHeight: CGFloat {
+    public static var saiha_screenHeight: CGFloat {
         return UIScreen.main.bounds.height
     }
     
-    public func horizontalRatio() -> CGFloat {
-        return self.screenWidth / 375.0
+    public static func saiha_horizontalRatio() -> CGFloat {
+        return self.saiha_screenWidth / 375.0
     }
     
-    public func verticalRatio() -> CGFloat {
-        return self.screenHeight / 812.0
+    public static func saiha_verticalRatio() -> CGFloat {
+        return self.saiha_screenHeight / 812.0
     }
     
-    public func horizontalSize(num: CGFloat) -> CGFloat {
-        return self.horizontalRatio() * num
+    public static func saiha_horizontalSize(num: CGFloat) -> CGFloat {
+        return self.saiha_horizontalRatio() * num
     }
     
-    public func verticalSize(num: CGFloat) -> CGFloat {
-        return self.verticalRatio() * num
+    public static func saiha_verticalSize(num: CGFloat) -> CGFloat {
+        return self.saiha_verticalRatio() * num
     }
+    
 }

@@ -14,7 +14,7 @@ open class SHUITextView: UITextView, UITextViewDelegate {
             if let text = self.text {
                 if text.count == 0 {
                     self.text = self.placeholder
-                    self.textColor = UIColor.saiha.colorWithHexString("#B4B4B4")
+                    self.textColor = UIColor.saiha_colorWithHexString("#B4B4B4")
                 }
             }
         }
@@ -32,8 +32,8 @@ open class SHUITextView: UITextView, UITextViewDelegate {
     open var textViewDidBeginEditingHandler: ((_ textView: UITextView) -> Void)?
     open var textViewDidEndEditingHandler: ((_ textView: UITextView) -> Void)?
     
-    let placeholderColor: UIColor = UIColor.saiha.colorWithHexString("#B4B4B4")
-    let normalTextColor: UIColor = UIColor.saiha.colorWithHexString("#333333")
+    let placeholderColor: UIColor = UIColor.saiha_colorWithHexString("#B4B4B4")
+    let normalTextColor: UIColor = UIColor.saiha_colorWithHexString("#333333")
     
     override public init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)

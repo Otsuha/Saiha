@@ -7,7 +7,8 @@ inhibit_all_warnings!
 target 'Saiha_Example' do
   pod 'Saiha', :path => '../'
   
-  pod 'SnapKit'
+  pod 'SnapKit', :inhibit_warnings => true
+  pod 'SDWebImage', :inhibit_warnings => true
 
   target 'Saiha_Tests' do
     inherit! :search_paths
@@ -19,7 +20,7 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = 10.0
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = 13.0
       #config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = 11.0
     end
   end

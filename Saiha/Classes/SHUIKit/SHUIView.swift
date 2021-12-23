@@ -11,125 +11,15 @@ open class SHUIView: UIView {
 
 }
 
-//public struct SaihaUIViewStaticHelper {
-//
-//
-//
-////    public func create(superView: UIView?, _ creator: ((_ label: SaihaUIViewHelper) -> Void)) -> UIView {
-////        var view: UIView = UIView()
-////        creator(SaihaUIViewHelper(view: view))
-////        superView?.addSubview(view)
-////        return view
-////    }
-////
-////    public func create(superView: UIView?, _ creator: ((_ label: SaihaUILabelHelper) -> Void)) -> UILabel {
-////        var label: UILabel = UILabel()
-////        creator(SaihaUILabelHelper(label: label))
-////        superView?.addSubview(label)
-////        return label
-////    }
-//}
-//
-////extension UIView: SaihaUIViewDelegate {
-////
-////    public typealias ViewType = UIView
-////
-////    public static var saiha: SaihaUIViewHelper<ViewType> {
-////        return SaihaUIViewHelper<ViewType>.init(view: ViewType())
-////    }
-////}
-//
-//public struct SaihaUIViewHelper {
-//
-//
-//    private var view: ViewType
-//
-//    init(view: ViewType) {
-//        self.view = view
-//        self.helper = self
-//    }
-//
-//    public func create(superView: UIView?, creator: ((_ view: SaihaUIViewHelper<ViewType>) -> Void)) -> ViewType {
-//        creator(self)
-//        superView?.addSubview(self.view)
-//        return self.view
-//    }
-//
-//    public func frame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) -> HelperType {
-//        self.view.frame = CGRect(x: x, y: y, width: width, height: height)
-//        return helper
-//    }
-//
-//    public func backgroundColor(_ color: UIColor) -> SaihaUIViewHelper<ViewType> {
-//        self.view.backgroundColor = color
-//        return self
-//    }
-//
-//    public func end() {}
-//
-//    public func addRoundedCorners(rect: CGRect, corners: UIRectCorner, cornerRadii: CGSize) {
-//        let rounded: UIBezierPath = UIBezierPath.init(roundedRect: self.view.bounds, byRoundingCorners: corners, cornerRadii: cornerRadii)
-//        let shape: CAShapeLayer = CAShapeLayer()
-//        shape.frame = self.view.bounds
-//        shape.path = rounded.cgPath
-//        self.view.layer.mask = shape
-//    }
-//
-//    public func addSeparator(color: UIColor = UIColor.saiha.colorWithHexString("#F2F3F7"), position: SaihaUIViewHelper.SeparatorPositon = .bottom, leftEdge: CGFloat = 0, rightEdge: CGFloat = 0) {
-//        let aLine: UIView = UIView()
-//        aLine.backgroundColor = color
-//        self.view.addSubview(aLine)
-//        if position == .top {
-//            aLine.snp.makeConstraints { make in
-//                make.left.equalToSuperview().offset(leftEdge)
-//                make.right.equalToSuperview().offset(-rightEdge)
-//                make.top.equalToSuperview()
-//                make.height.equalTo(1)
-//            }
-//        } else if position == .bottom {
-//            aLine.snp.makeConstraints { make in
-//                make.left.equalToSuperview().offset(leftEdge)
-//                make.right.equalToSuperview().offset(-rightEdge)
-//                make.bottom.equalToSuperview()
-//                make.height.equalTo(1)
-//            }
-//        }
-//    }
-//}
-//
-
 extension UIView {
     
-    public var saiha: SaihaNormalUIKitHelper {
-        return SaihaNormalUIKitHelper(view: self)
+    public func saiha_addRoundedCorners(rect: CGRect, corners: UIRectCorner, cornerRadii: CGSize) {
+        self.layer.cornerRadius = cornerRadii.width
+        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
 }
 
-public struct SaihaNormalUIKitHelper {
-    
-    private var view: UIView
-    
-    init(view: UIView) {
-        self.view = view
-    }
-    
-    public func addRoundedCorners(rect: CGRect, corners: UIRectCorner, cornerRadii: CGSize) {
-//        let rounded: UIBezierPath = UIBezierPath.init(roundedRect: rect, byRoundingCorners: corners, cornerRadii: cornerRadii)
-//        let shape: CAShapeLayer = CAShapeLayer()
-//        shape.frame = self.view.bounds
-//        shape.path = rounded.cgPath
-//        self.view.layer.mask = shape
-        
-        if #available(iOS 11.0, *) {
-            self.view.layer.cornerRadius = 10
-            self.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-}
-
-public extension SaihaNormalUIKitHelper {
+public extension UIView {
     
     enum CornerPosition {
         case topLeft
@@ -139,46 +29,41 @@ public extension SaihaNormalUIKitHelper {
         case all
     }
     
-    public func addRoundedCorners(cornerPositons: [SaihaNormalUIKitHelper.CornerPosition], radius: CGFloat) {
-        if #available(iOS 11.0, *) {
-            var corners: UInt = CACornerMask().rawValue
-            for corner in cornerPositons {
-                switch corner {
-                case .topLeft:
-                    corners = corners | CACornerMask.layerMinXMinYCorner.rawValue
-                case .topRight:
-                    corners = corners | CACornerMask.layerMaxXMinYCorner.rawValue
-                case .bottomLeft:
-                    corners = corners | CACornerMask.layerMinXMaxYCorner.rawValue
-                case .bottomRight:
-                    corners = corners | CACornerMask.layerMaxXMaxYCorner.rawValue
-                case .all:
-                    corners = CACornerMask().rawValue
-                }
+    public func addRoundedCorners(cornerPositons: [UIView.CornerPosition], radius: CGFloat) {
+        var corners: UInt = CACornerMask().rawValue
+        for corner in cornerPositons {
+            switch corner {
+            case .topLeft:
+                corners = corners | CACornerMask.layerMinXMinYCorner.rawValue
+            case .topRight:
+                corners = corners | CACornerMask.layerMaxXMinYCorner.rawValue
+            case .bottomLeft:
+                corners = corners | CACornerMask.layerMinXMaxYCorner.rawValue
+            case .bottomRight:
+                corners = corners | CACornerMask.layerMaxXMaxYCorner.rawValue
+            case .all:
+                corners = CACornerMask().rawValue
             }
-            self.view.layer.cornerRadius = radius
-            self.view.layer.maskedCorners = CACornerMask(rawValue: corners)
-        } else {
-            // Fallback on earlier versions
         }
+        self.layer.cornerRadius = radius
+        self.layer.maskedCorners = CACornerMask(rawValue: corners) // Fallback on earlier versions
     }
     
-    //public func addRoundedCorners
 }
 
-public extension SaihaNormalUIKitHelper {
+public extension UIView {
 
     enum SeparatorPositon {
         case top
         case bottom
     }
     
-    public func addSeparator(color: UIColor = UIColor.saiha.colorWithHexString("#F2F3F7"),
-                             position: SaihaNormalUIKitHelper.SeparatorPositon = .bottom,
+    public func saiha_addSeparator(color: UIColor = UIColor.saiha_colorWithHexString("#F2F3F7"),
+                             position: UIView.SeparatorPositon = .bottom,
                              leftEdge: CGFloat = 0, rightEdge: CGFloat = 0) {
         let aLine: UIView = UIView()
         aLine.backgroundColor = color
-        self.view.addSubview(aLine)
+        self.addSubview(aLine)
         if position == .top {
             aLine.snp.makeConstraints { make in
                 make.left.equalToSuperview().offset(leftEdge)

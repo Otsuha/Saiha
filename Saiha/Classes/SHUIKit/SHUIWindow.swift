@@ -13,43 +13,31 @@ open class SHUIWindow: UIWindow {
 
 public extension UIWindow {
     
-    static var saiha: SaihaUIWindowHelper {
-        return SaihaUIWindowHelper()
-    }
-}
-
-public struct SaihaUIWindowHelper {
-    
-    public func securyWindow() -> UIWindow? {
-        if  #available(iOS 13.0, *) {
+    public static func saiha_securyWindow() -> UIWindow? {
+        var resultWindow: UIWindow? = UIApplication.shared.windows.last
+        DispatchQueue.main.async {
             for item in UIApplication.shared.connectedScenes where item is UIWindowScene {
                 if item.activationState == .foregroundActive {
                     guard let windowScene = item as? UIWindowScene else {
-                        return nil
+                        resultWindow = nil
+                        return
                     }
                     for window in windowScene.windows {
                         if window.isKeyWindow {
-                            return window
+                            resultWindow = window
                         }
                     }
-                    return nil
+                    resultWindow = nil
                 }
             }
-        }else{
-            return UIApplication.shared.keyWindow
         }
-        return UIApplication.shared.windows.last
+        return resultWindow
     }
     
-    public func safeAreaInsets() -> UIEdgeInsets {
-        guard let window = self.securyWindow(), let rootViewController = window.rootViewController else {
+    public static func saiha_safeAreaInsets() -> UIEdgeInsets {
+        guard let window = UIWindow.saiha_securyWindow(), let rootViewController = window.rootViewController else {
             return UIEdgeInsets.zero
         }
-        
-        if #available(iOS 11.0, *) {
-            return rootViewController.view.safeAreaInsets
-        } else {
-            return UIEdgeInsets.zero
-        }
+        return rootViewController.view.safeAreaInsets
     }
 }

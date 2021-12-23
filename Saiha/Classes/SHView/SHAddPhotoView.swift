@@ -13,8 +13,8 @@ import SnapKit
 class SHAddPhotoCollectionCell: UICollectionViewCell {
     
     // 默认设置 cell 的大小为 100，所有的约束以 100 为基准做比例缩放。
-    private let defaultSize: CGFloat = CGFloat.saiha.horizontalSize(num: 100)
-    var aCellSize: CGFloat = CGFloat.saiha.horizontalSize(num: 100) {
+    private let defaultSize: CGFloat = CGFloat.saiha_horizontalSize(num: 100)
+    var aCellSize: CGFloat = CGFloat.saiha_horizontalSize(num: 100) {
         didSet {
             self.setNeedsLayout()
         }
@@ -46,8 +46,8 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
         self.titleLabel = UILabel()
         self.titleLabel.text = "添加照片"
         self.titleLabel.textAlignment = .center
-        self.titleLabel.textColor = UIColor.saiha.colorWithHexString("#858B9C")
-        self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 12) * self.ratio)
+        self.titleLabel.textColor = UIColor.saiha_colorWithHexString("#858B9C")
+        self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 12) * self.ratio)
         self.contentView.addSubview(self.titleLabel)
         
         self.photoImageView = UIImageView()
@@ -82,20 +82,20 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
         
         if self.addImageView != nil {
             self.addImageView.snp.remakeConstraints { make in
-                make.top.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: 26) * self.ratio)
-                make.left.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: 38) * self.ratio)
-                make.right.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: -38) * self.ratio)
-                make.bottom.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: -50) * self.ratio)
+                make.top.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: 26) * self.ratio)
+                make.left.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: 38) * self.ratio)
+                make.right.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -38) * self.ratio)
+                make.bottom.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -50) * self.ratio)
             }
         }
         if self.titleLabel != nil {
-            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 12) * self.ratio)
+            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 12) * self.ratio)
             self.titleLabel.snp.remakeConstraints { make in
-                make.left.lessThanOrEqualToSuperview().offset(CGFloat.saiha.verticalSize(num: 26) * self.ratio)
+                make.left.lessThanOrEqualToSuperview().offset(CGFloat.saiha_verticalSize(num: 26) * self.ratio)
                 make.centerX.equalToSuperview().priority(.high)
-                make.right.greaterThanOrEqualToSuperview().offset(CGFloat.saiha.verticalSize(num: -26) * self.ratio)
-                make.top.equalTo(self.addImageView.snp.bottom).offset(CGFloat.saiha.verticalSize(num: 12) * self.ratio)
-                make.bottom.greaterThanOrEqualToSuperview().offset(CGFloat.saiha.verticalSize(num: -22) * self.ratio)
+                make.right.greaterThanOrEqualToSuperview().offset(CGFloat.saiha_verticalSize(num: -26) * self.ratio)
+                make.top.equalTo(self.addImageView.snp.bottom).offset(CGFloat.saiha_verticalSize(num: 12) * self.ratio)
+                make.bottom.greaterThanOrEqualToSuperview().offset(CGFloat.saiha_verticalSize(num: -22) * self.ratio)
             }
         }
         if self.photoImageView != nil {
@@ -107,7 +107,7 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
             self.deleteButton.snp.makeConstraints { make in
                 make.right.equalToSuperview()
                 make.top.equalToSuperview()
-                make.width.height.equalTo(CGFloat.saiha.verticalSize(num: 24))
+                make.width.height.equalTo(CGFloat.saiha_verticalSize(num: 24))
             }
         }
     }
@@ -159,7 +159,7 @@ open class SHAddPhotoView: SHUIView {
     open var maxPhotos: Int = 10
     
     /// 设置每个相框的边长。
-    open var itemEdge: CGFloat = CGFloat.saiha.verticalSize(num: 100) {
+    open var itemEdge: CGFloat = CGFloat.saiha_verticalSize(num: 100) {
         didSet {
             (self.photoCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: self.itemEdge, height: self.itemEdge)
         }
@@ -174,7 +174,7 @@ open class SHAddPhotoView: SHUIView {
         get {
             let count: Int = self.photos.count
             let row: Int = (count - 1) / 3 + 1
-            return (self.itemEdge + CGFloat.saiha.verticalSize(num: 10)) * CGFloat(row) + CGFloat.saiha.verticalSize(num: 10)
+            return (self.itemEdge + CGFloat.saiha_verticalSize(num: 10)) * CGFloat(row) + CGFloat.saiha_verticalSize(num: 10)
         }
     }
     
@@ -187,12 +187,12 @@ open class SHAddPhotoView: SHUIView {
     private func initialize() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: self.itemEdge, height: self.itemEdge)
-        layout.sectionInset.left = CGFloat.saiha.horizontalSize(num: 10)
-        layout.sectionInset.right = CGFloat.saiha.horizontalSize(num: 10)
-        layout.sectionInset.top = CGFloat.saiha.verticalSize(num: 10)
-        layout.sectionInset.bottom = CGFloat.saiha.verticalSize(num: 10)
-        layout.minimumInteritemSpacing = CGFloat.saiha.horizontalSize(num: 10)
-        layout.minimumLineSpacing = CGFloat.saiha.verticalSize(num: 10)
+        layout.sectionInset.left = CGFloat.saiha_horizontalSize(num: 10)
+        layout.sectionInset.right = CGFloat.saiha_horizontalSize(num: 10)
+        layout.sectionInset.top = CGFloat.saiha_verticalSize(num: 10)
+        layout.sectionInset.bottom = CGFloat.saiha_verticalSize(num: 10)
+        layout.minimumInteritemSpacing = CGFloat.saiha_horizontalSize(num: 10)
+        layout.minimumLineSpacing = CGFloat.saiha_verticalSize(num: 10)
         self.photoCollectionView = SHUICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         self.photoCollectionView.register(SHAddPhotoCollectionCell.self, forCellWithReuseIdentifier: "PhotoCell")
         self.photoCollectionView.dataSource = self
@@ -308,7 +308,7 @@ extension SHAddPhotoView: UICollectionViewDelegate {
             imagePicker.sourceType = .camera
             imagePicker.modalPresentationStyle = .fullScreen
             imagePicker.cameraCaptureMode = .photo
-            UIViewController.saiha.currentActivityViewController()?.present(imagePicker, animated: true, completion: nil)
+            UIViewController.saiha_currentActivityViewController()?.present(imagePicker, animated: true, completion: nil)
         }
     }
 }

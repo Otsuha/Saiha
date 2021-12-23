@@ -9,18 +9,11 @@ import UIKit
 
 public extension UIColor {
     
-    static var saiha: SaihaUIColor {
-        return SaihaUIColor()
-    }
-}
-
-public struct SaihaUIColor {
-    
-    public func colorWithHexString(_ hex: String) -> UIColor {
-        self.colorWithHexString(hex, alpha: 1.0)
+    public static func saiha_colorWithHexString(_ hex: String) -> UIColor {
+        return UIColor.saiha_colorWithHexString(hex, alpha: 1.0)
     }
     
-    public func colorWithHexString(_ hex: String, alpha: CGFloat) -> UIColor {
+    public static func saiha_colorWithHexString(_ hex: String, alpha: CGFloat) -> UIColor {
         var cString: String = hex.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
 
         if (cString.hasPrefix("#")) {
@@ -42,4 +35,5 @@ public struct SaihaUIColor {
 
         return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: alpha)
     }
+    
 }

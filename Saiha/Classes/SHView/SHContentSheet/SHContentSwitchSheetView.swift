@@ -23,7 +23,7 @@ open class SHContentSwitchSheetView: SHUIView, UITableViewDataSource {
     
     open var defaultContentHeight: CGFloat {
         get {
-            return self.tableViewHeight + CGFloat.saiha.verticalSize(num: 60)
+            return self.tableViewHeight + CGFloat.saiha_verticalSize(num: 60)
         }
     }
     
@@ -31,9 +31,9 @@ open class SHContentSwitchSheetView: SHUIView, UITableViewDataSource {
         get {
             var height: CGFloat = 0
             if self.dataSource.count <= 8 {
-                height = CGFloat(dataSource.count) * CGFloat.saiha.verticalSize(num: 56)
+                height = CGFloat(dataSource.count) * CGFloat.saiha_verticalSize(num: 56)
             } else {
-                height = 8 * CGFloat.saiha.verticalSize(num: 56)
+                height = 8 * CGFloat.saiha_verticalSize(num: 56)
             }
             return height
         }
@@ -55,9 +55,9 @@ open class SHContentSwitchSheetView: SHUIView, UITableViewDataSource {
         self.mainTableView = UITableView()
         self.mainTableView.register(SHContentSwitchSheetCell.self, forCellReuseIdentifier: "SHContentSwitchSheetCell")
         self.mainTableView.dataSource = self
-        self.mainTableView.rowHeight = CGFloat.saiha.verticalSize(num: 56)
-        self.mainTableView.separatorColor = UIColor.saiha.colorWithHexString("#D8D8D8", alpha: 0.5)
-        self.mainTableView.separatorInset = UIEdgeInsets(top: 0, left: CGFloat.saiha.horizontalSize(num: 16), bottom: 0, right: CGFloat.saiha.horizontalSize(num: -18))
+        self.mainTableView.rowHeight = CGFloat.saiha_verticalSize(num: 56)
+        self.mainTableView.separatorColor = UIColor.saiha_colorWithHexString("#D8D8D8", alpha: 0.5)
+        self.mainTableView.separatorInset = UIEdgeInsets(top: 0, left: CGFloat.saiha_horizontalSize(num: 16), bottom: 0, right: CGFloat.saiha_horizontalSize(num: -18))
         self.switchContentView.addSubview(self.mainTableView)
         self.mainTableView.snp.makeConstraints { make in
             make.bottom.left.right.equalToSuperview()
@@ -66,13 +66,13 @@ open class SHContentSwitchSheetView: SHUIView, UITableViewDataSource {
         
         self.titleLabel = SHUILabel()
         self.titleLabel.text = "照片上传"
-        self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 16), weight: .medium)
+        self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16), weight: .medium)
         self.switchContentView.addSubview(self.titleLabel)
         self.titleLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: 20))
-            make.bottom.equalTo(self.mainTableView.snp.top).offset(CGFloat.saiha.verticalSize(num: -20))
-            make.width.greaterThanOrEqualTo(CGFloat.saiha.horizontalSize(num: 64))
-            make.height.equalTo(CGFloat.saiha.verticalSize(num: 20))
+            make.left.equalToSuperview().offset(CGFloat.saiha_horizontalSize(num: 20))
+            make.bottom.equalTo(self.mainTableView.snp.top).offset(CGFloat.saiha_verticalSize(num: -20))
+            make.width.greaterThanOrEqualTo(CGFloat.saiha_horizontalSize(num: 64))
+            make.height.equalTo(CGFloat.saiha_verticalSize(num: 20))
         }
         
     }
@@ -146,40 +146,40 @@ open class SHContentSwitchSheetCell: UITableViewCell {
             self.iconImageView?.contentMode = .scaleAspectFit
             self.contentView.addSubview(self.iconImageView!)
             self.iconImageView?.snp.makeConstraints({ make in
-                make.left.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: 20))
+                make.left.equalToSuperview().offset(CGFloat.saiha_horizontalSize(num: 20))
                 make.centerY.equalToSuperview()
-                make.width.height.equalTo(CGFloat.saiha.verticalSize(num: 24))
+                make.width.height.equalTo(CGFloat.saiha_verticalSize(num: 24))
             })
             
             self.titleLabel = SHUILabel()
             self.titleLabel.text = "中通快递"
-            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 16))
+            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16))
             self.contentView.addSubview(self.titleLabel)
             self.titleLabel.snp.makeConstraints { make in
-                make.left.equalTo(self.iconImageView!.snp.right).offset(CGFloat.saiha.horizontalSize(num: 8))
+                make.left.equalTo(self.iconImageView!.snp.right).offset(CGFloat.saiha_horizontalSize(num: 8))
                 make.centerY.equalToSuperview()
-                make.width.greaterThanOrEqualTo(CGFloat.saiha.horizontalSize(num: 64))
+                make.width.greaterThanOrEqualTo(CGFloat.saiha_horizontalSize(num: 64))
             }
         } else {
             self.titleLabel = SHUILabel()
             self.titleLabel.text = "中通快递"
-            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha.verticalSize(num: 16))
+            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16))
             self.contentView.addSubview(self.titleLabel)
             self.titleLabel.snp.makeConstraints { make in
-                make.left.equalToSuperview().offset(CGFloat.saiha.horizontalSize(num: 20))
+                make.left.equalToSuperview().offset(CGFloat.saiha_horizontalSize(num: 20))
                 make.centerY.equalToSuperview()
-                make.width.height.equalTo(CGFloat.saiha.verticalSize(num: 64))
+                make.width.height.equalTo(CGFloat.saiha_verticalSize(num: 64))
             }
         }
         self.switchButton = UISwitch()
         self.switchButton.isOn = true
-        self.switchButton.onTintColor = UIColor.saiha.colorWithHexString("#3951C4")
+        self.switchButton.onTintColor = UIColor.saiha_colorWithHexString("#3951C4")
         self.switchButton.addTarget(self, action: #selector(self.handleSwitch(sender:)), for: .touchUpInside)
         self.contentView.addSubview(self.switchButton)
         self.switchButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(CGFloat.saiha.verticalSize(num: -24))
+            make.right.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -24))
             make.centerY.equalToSuperview()
-            make.width.equalTo(CGFloat.saiha.horizontalSize(num: 51))
+            make.width.equalTo(CGFloat.saiha_horizontalSize(num: 51))
         }
     }
     
