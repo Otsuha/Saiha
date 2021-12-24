@@ -26,9 +26,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapAction(_ sender: Any) {
-        SHContentSwitchSheetView.show(title: "标题实例", dataSource: [(nil, "111", true), (nil, "222", false), (nil, "333", true)], contentHeight: nil) {
-            print("点击了取消")
-        }
+        let dataSource: [(String, String?)] = [
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil)
+        ]
+        SHContentSheetTableView.setActionTitle("保存")
+        SHContentSheetTableView.setDefaultShowCount(count: 6)
+        SHContentSheetTableView.showSeparator(show: false)
+        SHContentSheetTableView.show(title: "dddddd", dataSource: dataSource, style: .default(completionHandler: { index in
+        
+        }, cancelHandler: nil))
     }
 }
 
