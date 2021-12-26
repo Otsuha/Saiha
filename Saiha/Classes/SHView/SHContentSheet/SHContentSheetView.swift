@@ -34,20 +34,20 @@ open class SHContentSheetView: SHUIView {
             Self.sharedView?.cancelButton.setTitle(newValue, for: .normal)
         }
     }
+    
+    private let animationDuration: CGFloat = 0.6
             
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
         self.backgroundView = UIView()
         self.backgroundView.backgroundColor = UIColor.saiha_colorWithHexString("#000000", alpha: 0.7)
-        self.backgroundView.alpha = 1.0
         self.addSubview(self.backgroundView)
         self.backgroundView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
         
         self.mainContentView = UIView()
-        self.mainContentView.alpha = 1.0
         self.backgroundView.addSubview(self.mainContentView)
         self.mainContentView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
@@ -90,7 +90,6 @@ open class SHContentSheetView: SHUIView {
         }
         
         self.mainContentView.clipsToBounds = true
-        self.showAnimation()
     }
     
     /**
@@ -119,40 +118,51 @@ open class SHContentSheetView: SHUIView {
         sheetView.mainContentView.layer.cornerRadius = 10
         sheetView.mainContentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         Self.sharedView = sheetView
+        Self.sharedView?.showWithAnimation()
     }
     
-    private func showAnimation() {
-        self.mainContentView.layer.removeAnimation(forKey: "show.animation")
+    private func animationConfig(aniView: UIView, key: String, keyPath: String, from fromValue: CGFloat, to toValue: CGFloat, completionHandler: (() -> Void)?) {
+        aniView.layer.removeAnimation(forKey: key)
+        CATransaction.begin()
         let animation: CABasicAnimation = CABasicAnimation()
-        animation.keyPath = "position.y"
-        animation.fromValue = CGFloat.saiha_screenHeight
-        animation.toValue = CGFloat.saiha_screenHeight - self.contentHeight
-        animation.duration = CFTimeInterval(0.2)
+        animation.keyPath = keyPath
+        animation.fromValue = fromValue
+        animation.toValue = toValue
+        animation.duration = CFTimeInterval(self.animationDuration)
         animation.isRemovedOnCompletion = true
-        self.mainContentView.layer.add(animation, forKey: "show.animation")
-        
-//        UIView.animate(withDuration: 0.2) {
-//            self.mainContentView.frame.origin.y = CGFloat.saiha_screenHeight - self.contentHeight
-//            self.mainContentView.alpha = 1.0
-//            self.backgroundView.alpha = 1.0
-//        }
+        CATransaction.setCompletionBlock {
+            completionHandler?()
+        }
+        aniView.layer.add(animation, forKey: key)
+        CATransaction.commit()
     }
     
-    private func dismissAnimation(completionHandler: @escaping ((Bool) -> Void)) {
-//        UIView.animate(withDuration: 5, animations: {
-//            self.mainContentView.frame.origin.y = CGFloat.saiha_screenHeight
-//            //self.mainContentView.alpha = 0.0
-//        }, completion: completionHandler)
-
-        UIView.animate(withDuration: 0.2) {
-            self.mainContentView.frame.origin.y = CGFloat.saiha_screenHeight
-            //self.mainContentView.layer.position.y = CGFloat.saiha_screenHeight
-            self.mainContentView.alpha = 0.0
-            self.backgroundView.alpha = 0.0
-        } completion: { complete in
-            completionHandler(complete)
+    private func positonYAnimationShow() {
+        let fromValue: CGFloat = CGFloat.saiha_screenHeight + self.contentHeight / 2
+        let toValue: CGFloat = CGFloat.saiha_screenHeight - self.contentHeight + self.contentHeight / 2
+        self.animationConfig(aniView: self.mainContentView, key: "positionY.animation.show", keyPath: "position.y", from: fromValue, to: toValue, completionHandler: nil)
+    }
+    
+    private func positonYAnimationDismiss() {
+        let fromValue: CGFloat = CGFloat.saiha_screenHeight - self.contentHeight + self.contentHeight / 2
+        let toValue: CGFloat = CGFloat.saiha_screenHeight + self.contentHeight / 2
+        self.animationConfig(aniView: self.mainContentView, key: "positionY.animation.dismiss", keyPath: "position.y", from: fromValue, to: toValue) {
+            self.dismissAllView()
         }
-
+    }
+    
+    private func opacityAnimationShow() {
+        let fromValue: CGFloat = 0.0
+        let toValue: CGFloat = 1.0
+        self.animationConfig(aniView: self.mainContentView, key: "opacity.animation.show", keyPath: "opacity", from: fromValue, to: toValue, completionHandler: nil)
+        self.animationConfig(aniView: self.backgroundView, key: "opacity.animation.show.backgroundView", keyPath: "opacity", from: fromValue, to: toValue, completionHandler: nil)
+    }
+    
+    private func opacityAnimationDismiss() {
+        let fromValue: CGFloat = 1.0
+        let toValue: CGFloat = 0.0
+        self.animationConfig(aniView: self.mainContentView, key: "opacity.animation.dismiss", keyPath: "opacity", from: fromValue, to: toValue, completionHandler: nil)
+        self.animationConfig(aniView: self.backgroundView, key: "opacity.animation.dismiss.backgroundView", keyPath: "opacity", from: fromValue, to: toValue, completionHandler: nil)
     }
     
     /// 自定义底部按钮标题。
@@ -175,24 +185,29 @@ open class SHContentSheetView: SHUIView {
             make.height.equalTo(self.contentHeight)
         }
     }
+
+    private func showWithAnimation() {
+        self.positonYAnimationShow()
+        self.opacityAnimationShow()
+    }
+    
+    private func dismissWithAnimation() {
+        self.positonYAnimationDismiss()
+        self.opacityAnimationDismiss()
+    }
+    
+    private func dismissAllView() {
+        self.removeFromSuperview()
+        Self.sharedView?.removeFromSuperview()
+        Self.sharedView = nil
+    }
     
     @objc private func touchCancelAction(sender: UIButton) {
-        self.dismissAnimation { complete in
-            if complete {
-                self.removeFromSuperview()
-                self.completionHandler?()
-                Self.sharedView?.removeFromSuperview()
-                Self.sharedView = nil
-            }
-        }
+        self.dismissWithAnimation()
+        self.completionHandler?()
     }
     
     public static func dismiss() {
-        Self.sharedView?.dismissAnimation(completionHandler: { complete in
-            if complete {
-                Self.sharedView?.removeFromSuperview()
-                Self.sharedView = nil
-            }
-        })
+        Self.sharedView?.dismissWithAnimation()
     }
 }
