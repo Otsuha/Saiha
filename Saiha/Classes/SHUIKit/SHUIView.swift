@@ -13,9 +13,23 @@ open class SHUIView: UIView {
 
 extension UIView {
     
-    public func saiha_addRoundedCorners(rect: CGRect, corners: UIRectCorner, cornerRadii: CGSize) {
-        self.layer.cornerRadius = cornerRadii.width
-        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    /**
+     利用 `CABasicAnimation` 产生一次简单的动画。动画在完成后会自动移除。
+     */
+    public func saiha_addSimpleOnceAnimation(key: String, keyPath: String, from fromValue: CGFloat, to toValue: CGFloat, duration: CGFloat, completionHandler: (() -> Void)?) {
+        self.layer.removeAnimation(forKey: key)
+        CATransaction.begin()
+        let animation: CABasicAnimation = CABasicAnimation()
+        animation.keyPath = keyPath
+        animation.fromValue = fromValue
+        animation.toValue = toValue
+        animation.duration = CFTimeInterval(duration)
+        animation.isRemovedOnCompletion = true
+        CATransaction.setCompletionBlock {
+            completionHandler?()
+        }
+        self.layer.add(animation, forKey: key)
+        CATransaction.commit()
     }
 }
 
@@ -29,7 +43,7 @@ public extension UIView {
         case all
     }
     
-    public func addRoundedCorners(cornerPositons: [UIView.CornerPosition], radius: CGFloat) {
+    public func saiha_addRoundedCorners(cornerPositons: [UIView.CornerPosition], radius: CGFloat) {
         var corners: UInt = CACornerMask().rawValue
         for corner in cornerPositons {
             switch corner {

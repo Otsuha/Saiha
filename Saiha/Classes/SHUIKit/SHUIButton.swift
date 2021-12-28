@@ -19,7 +19,7 @@ open class SHUIButton: UIButton {
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {

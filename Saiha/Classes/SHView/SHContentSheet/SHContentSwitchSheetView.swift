@@ -78,7 +78,7 @@ open class SHContentSwitchSheetView: SHUIView, UITableViewDataSource {
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     open func setTitle(text: String) {
@@ -184,7 +184,7 @@ open class SHContentSwitchSheetCell: UITableViewCell {
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     @objc private func handleSwitch(sender: UISwitch) {

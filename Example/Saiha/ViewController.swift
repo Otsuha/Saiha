@@ -45,8 +45,11 @@ class ViewController: UIViewController {
         SHContentSheetTableView.setActionTitle("保存")
         SHContentSheetTableView.setDefaultShowCount(count: 6)
         SHContentSheetTableView.showSeparator(show: false)
-        SHContentSheetTableView.show(title: "dddddd", dataSource: dataSource, style: .default(completionHandler: { index in
-        
+//        SHContentSheetTableView.show(title: "dddddd", dataSource: dataSource, style: .default(completionHandler: { index in
+//
+//        }, cancelHandler: nil))
+        SHContentSheetTableView.show(title: "功能标题", dataSource: dataSource, style: .multipleSelection(completionHandler: { indexSet in
+            print(indexSet)
         }, cancelHandler: nil))
     }
 }

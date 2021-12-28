@@ -47,7 +47,7 @@ open class SHSideBarHeaderView: SHUIView {
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     @objc private func handleButton(sender: UIButton) {
@@ -143,7 +143,7 @@ open class SHSideBarTableView: SHUIView {
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
     
     open func reloadSections(_ sets: [Int], with animation: UITableView.RowAnimation) {
