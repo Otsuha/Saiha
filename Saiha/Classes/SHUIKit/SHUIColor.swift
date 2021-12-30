@@ -9,6 +9,20 @@ import UIKit
 
 public extension UIColor {
     
+    static var defaultLabelColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor { traitCollection in
+                if traitCollection.userInterfaceStyle == .light {
+                    return UIColor.saiha_colorWithHexString("333333")
+                } else {
+                    return UIColor.white
+                }
+            }
+        } else {
+            return UIColor.saiha_colorWithHexString("333333")
+        }
+    }
+    
     public static func saiha_colorWithHexString(_ hex: String) -> UIColor {
         return UIColor.saiha_colorWithHexString(hex, alpha: 1.0)
     }

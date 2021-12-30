@@ -16,19 +16,23 @@ public extension UIWindow {
     public static func saiha_securyWindow() -> UIWindow? {
         var resultWindow: UIWindow? = UIApplication.shared.windows.last
         DispatchQueue.main.async {
-            for item in UIApplication.shared.connectedScenes where item is UIWindowScene {
-                if item.activationState == .foregroundActive {
-                    guard let windowScene = item as? UIWindowScene else {
-                        resultWindow = nil
-                        return
-                    }
-                    for window in windowScene.windows {
-                        if window.isKeyWindow {
-                            resultWindow = window
+            if #available(iOS 13.0, *) {
+                for item in UIApplication.shared.connectedScenes where item is UIWindowScene {
+                    if item.activationState == .foregroundActive {
+                        guard let windowScene = item as? UIWindowScene else {
+                            resultWindow = nil
+                            return
                         }
+                        for window in windowScene.windows {
+                            if window.isKeyWindow {
+                                resultWindow = window
+                            }
+                        }
+                        resultWindow = nil
                     }
-                    resultWindow = nil
                 }
+            } else {
+                resultWindow = UIApplication.shared.keyWindow
             }
         }
         return resultWindow
@@ -38,6 +42,10 @@ public extension UIWindow {
         guard let window = UIWindow.saiha_securyWindow(), let rootViewController = window.rootViewController else {
             return UIEdgeInsets.zero
         }
-        return rootViewController.view.safeAreaInsets
+        if #available(iOS 11.0, *) {
+            return rootViewController.view.safeAreaInsets
+        } else {
+            return UIEdgeInsets.zero
+        }
     }
 }

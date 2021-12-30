@@ -15,12 +15,16 @@ open class SHContentSheetTableViewCell: UITableViewCell {
     }
     
     open var iconImageView: UIImageView?
-    open var titleLabel: UILabel!
+    open var titleLabel: SHUILabel!
     open var markButton: UIButton = {
         let button: UIButton = UIButton()
-        button.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        if #available(iOS 13.0, *) {
+            button.setImage(UIImage(systemName: "checkmark"), for: .normal)
+            button.tintColor = UIColor.defaultLabelColor
+        } else {
+            button.setImage(UIImage(named: "checkmark"), for: .normal)
+        }
         button.imageView?.contentMode = .scaleAspectFit
-        button.tintColor = .black
         button.isUserInteractionEnabled = false
         return button
     }()
@@ -42,12 +46,12 @@ open class SHContentSheetTableViewCell: UITableViewCell {
             self.iconImageView!.contentMode = .scaleAspectFit
             self.contentView.addSubview(self.iconImageView!)
             
-            self.titleLabel = UILabel()
+            self.titleLabel = SHUILabel()
             self.titleLabel.text = "中通快递"
             self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16))
             self.contentView.addSubview(self.titleLabel)
         } else {
-            self.titleLabel = UILabel()
+            self.titleLabel = SHUILabel()
             self.titleLabel.text = "中通快递"
             self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16))
             self.contentView.addSubview(self.titleLabel)
@@ -135,15 +139,19 @@ open class SHContentSheetTableView: SHUIView {
     
     private static var sharedView: SHContentSheetTableView = SHContentSheetTableView()
 
-    private var titleLabel: UILabel = {
-        let label: UILabel = UILabel()
+    private var titleLabel: SHUILabel = {
+        let label: SHUILabel = SHUILabel()
         label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16), weight: .medium)
         return label
     }()
     private var cancelButton: SHUIButton = {
         let button: SHUIButton = SHUIButton()
-        button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .black
+        if #available(iOS 13.0, *) {
+            button.setImage(UIImage(systemName: "xmark"), for: .normal)
+            button.tintColor = UIColor.defaultLabelColor
+        } else {
+            button.setImage(UIImage(named: "xmark"), for: .normal)
+        }
         button.imageView?.contentMode = .scaleAspectFit
         return button
     }()

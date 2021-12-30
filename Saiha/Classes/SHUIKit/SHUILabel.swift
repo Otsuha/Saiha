@@ -9,6 +9,16 @@ import UIKit
 
 open class SHUILabel: UILabel {
     
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.textColor = UIColor.defaultLabelColor
+    }
+    
+    required public init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
 }
 
 //extension UILabel: SaihaUIViewDelegate {

@@ -59,8 +59,12 @@ public extension UIView {
                 corners = CACornerMask().rawValue
             }
         }
-        self.layer.cornerRadius = radius
-        self.layer.maskedCorners = CACornerMask(rawValue: corners) // Fallback on earlier versions
+        if #available(iOS 11.0, *) {
+            self.layer.cornerRadius = radius
+            self.layer.maskedCorners = CACornerMask(rawValue: corners)
+        } else {
+            
+        }
     }
     
 }
