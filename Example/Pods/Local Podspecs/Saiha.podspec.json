@@ -1,6 +1,6 @@
 {
   "name": "Saiha",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "summary": "My iOS universal code.",
   "description": "自己制作的一些通用代码，可以在 iOS 项目中进行使用。",
   "homepage": "https://gitee.com/saiha/saiha",
@@ -17,7 +17,7 @@
   "swift_versions": "5.0",
   "source": {
     "git": "https://gitee.com/saiha/saiha.git",
-    "tag": "0.1.1"
+    "tag": "0.1.2"
   },
   "source_files": "Saiha/Classes/**/*",
   "prefix_header_contents": "#import <Saiha/Saiha-Swift.h>",
@@ -40,6 +40,18 @@
   },
   "static_framework": true,
   "subspecs": [
+    {
+      "name": "SHFoundation",
+      "source_files": "Saiha/Classes/SHFoundation/**/*"
+    },
+    {
+      "name": "SHUIKit",
+      "source_files": "Saiha/Classes/SHUIKit/**/*"
+    },
+    {
+      "name": "SHView",
+      "source_files": "Saiha/Classes/SHView/**/*"
+    },
     {
       "name": "Resources",
       "resources": "Saiha/Assets/**/*"

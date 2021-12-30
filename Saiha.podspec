@@ -94,6 +94,19 @@ Pod::Spec.new do |spec|
   #
 
   spec.source_files  = "Saiha/Classes/**/*"
+  
+  spec.subspec 'SHFoundation' do |ss|
+      ss.source_files = 'Saiha/Classes/SHFoundation/**/*'
+  end
+  
+  spec.subspec 'SHUIKit' do |ss|
+      ss.source_files = 'Saiha/Classes/SHUIKit/**/*'
+  end
+  
+  spec.subspec 'SHView' do |ss|
+      ss.source_files = 'Saiha/Classes/SHView/**/*'
+  end
+      
   #spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
