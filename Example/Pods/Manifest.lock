@@ -1,9 +1,9 @@
 PODS:
-  - Saiha (0.0.1):
-    - Saiha/Resources (= 0.0.1)
+  - Saiha (0.1.1):
+    - Saiha/Resources (= 0.1.1)
     - SDWebImage
     - SnapKit
-  - Saiha/Resources (0.0.1):
+  - Saiha/Resources (0.1.1):
     - SDWebImage
     - SnapKit
   - SDWebImage (5.12.1):
@@ -26,10 +26,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Saiha: 2a0fae86ede8497e072525bdf4ffc6f81d2ed00f
+  Saiha: e6acae68fc3515571a545447b34472372d5ad62d
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
 PODFILE CHECKSUM: 40f84480fe42b3c781351a8e37e829590212bba7
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.2
