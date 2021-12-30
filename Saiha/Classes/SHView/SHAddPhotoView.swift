@@ -318,7 +318,7 @@ extension SHAddPhotoView: UICollectionViewDelegate {
 extension SHAddPhotoView: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image: UIImage = info[.editedImage] as! UIImage
+        let image: UIImage = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         self.photos[self.currentSelectIndex] = image
         if self.currentSelectIndex == self.photos.count - 1 && self.currentSelectIndex < self.maxPhotos - 1 {
             self.addEmptyPhoto()
