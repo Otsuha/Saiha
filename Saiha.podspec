@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "Saiha"
-  spec.version      = "0.1.3"
+  spec.version      = "0.1.4"
   spec.summary      = "My iOS universal code."
 
   # This description is used to generate tags and improve search results.
@@ -93,7 +93,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "Saiha/Classes/**/*"
+  #spec.source_files  = "Saiha/Classes/**/*"
   
   spec.subspec 'SHFoundation' do |ss|
       ss.source_files = 'Saiha/Classes/SHFoundation/**/*'
@@ -101,11 +101,26 @@ Pod::Spec.new do |spec|
   
   spec.subspec 'SHUIKit' do |ss|
       ss.source_files = 'Saiha/Classes/SHUIKit/**/*'
+      ss.dependency 'Saiha/SHFoundation'
+      ss.dependency 'SDWebImage'
+      ss.dependency 'SnapKit'
   end
-  
-  spec.subspec 'SHView' do |ss|
-      ss.source_files = 'Saiha/Classes/SHView/**/*'
-  end
+
+#  spec.subspec 'SHView' do |ss|
+#      ss.source_files = 'Saiha/Classes/SHView/**/*'
+#      ss.dependency 'Saiha/SHUIKit'
+#      ss.dependency 'Saiha/SHFoundation'
+#      ss.dependency 'SDWebImage'
+#      ss.dependency 'SnapKit'
+#
+#      ss.subspec 'SHContentSheet' do |sss|
+#          sss.source_files = 'Saiha/Classes/SHView/SHContentSheet/*'
+#          ss.dependency 'Saiha/SHUIKit'
+#          ss.dependency 'Saiha/SHFoundation'
+#          ss.dependency 'SnapKit'
+#          ss.dependency 'SDWebImage'
+#      end
+#  end
       
   #spec.exclude_files = "Classes/Exclude"
 
