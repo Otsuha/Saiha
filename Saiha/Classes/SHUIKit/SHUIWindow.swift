@@ -13,7 +13,7 @@ open class SHUIWindow: UIWindow {
 
 public extension UIWindow {
     
-    public static func saiha_securyWindow() -> UIWindow? {
+    static func saiha_securyWindow() -> UIWindow? {
         var resultWindow: UIWindow? = UIApplication.shared.windows.last
         DispatchQueue.main.async {
             if #available(iOS 13.0, *) {
@@ -38,7 +38,7 @@ public extension UIWindow {
         return resultWindow
     }
     
-    public static func saiha_safeAreaInsets() -> UIEdgeInsets {
+    static func saiha_safeAreaInsets() -> UIEdgeInsets {
         guard let window = UIWindow.saiha_securyWindow(), let rootViewController = window.rootViewController else {
             return UIEdgeInsets.zero
         }

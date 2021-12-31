@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIViewController {
     
-    public static func saiha_currentActivityViewController() -> UIViewController? {
+    static func saiha_currentActivityViewController() -> UIViewController? {
         let rootViewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController
         guard let rootVC = rootViewController else {
             return nil
@@ -19,7 +19,7 @@ public extension UIViewController {
         return UIViewController.saiha_findCurrentActivityViewController(from: rootVC)
     }
     
-    public static func saiha_findCurrentActivityViewController(from viewController: UIViewController) -> UIViewController? {
+    static func saiha_findCurrentActivityViewController(from viewController: UIViewController) -> UIViewController? {
         var currentActivityViewController: UIViewController?
         
         // 先判断根视图控制器是否有其他视图控制器弹出，如果有，那么当前的视图控制器肯定在它之上。

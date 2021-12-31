@@ -44,7 +44,7 @@ public extension UIView {
         case all
     }
     
-    public func saiha_addRoundedCorners(cornerPositons: [UIView.CornerPosition], radius: CGFloat) {
+    func saiha_addRoundedCorners(cornerPositons: [UIView.CornerPosition], radius: CGFloat) {
         var corners: UInt = CACornerMask().rawValue
         for corner in cornerPositons {
             switch corner {
@@ -77,7 +77,7 @@ public extension UIView {
         case bottom
     }
     
-    public func saiha_addSeparator(color: UIColor = UIColor.saiha_colorWithHexString("#F2F3F7"),
+    func saiha_addSeparator(color: UIColor = UIColor.saiha_colorWithHexString("#F2F3F7"),
                              position: UIView.SeparatorPositon = .bottom,
                              leftEdge: CGFloat = 0, rightEdge: CGFloat = 0) {
         let aLine: UIView = UIView()

@@ -297,9 +297,9 @@ open class SHContentSheetTableView: SHUIView {
         Self.sharedView.dataSource = dataSource
         Self.sharedView.title = title
         switch style {
-        case let .default(completionHandler: _, cancelHandler: cancelHandler):
+        case .default(completionHandler: _, cancelHandler: _):
             break
-        case let .multipleSelection(completionHandler: completionHandler, cancelHandler: cancelHandler):
+        case let .multipleSelection(completionHandler: _, cancelHandler: cancelHandler):
             Self.sharedView.multipleSelectedCancelCallBack = cancelHandler
             Self.sharedView.multipleSelectedIndex = [Int?](repeating: nil, count: dataSource.count)
         }
@@ -308,7 +308,7 @@ open class SHContentSheetTableView: SHUIView {
             switch style {
             case let .default(completionHandler: _, cancelHandler: cancelHandler):
                 cancelHandler?()
-            case let .multipleSelection(completionHandler: completionHandler, cancelHandler: cancelHandler):
+            case let .multipleSelection(completionHandler: completionHandler, cancelHandler: _):
                 let indexs: [Int] = Self.sharedView.multipleSelectedIndexSet.sorted()
                 completionHandler(indexs)
             }
@@ -367,10 +367,10 @@ extension SHContentSheetTableView: UITableViewDelegate, UITableViewDataSource {
             cell.showSeparator = false
         }
         switch self.selectionStyle {
-        case let .default(completionHandler: completionHandler, cancelHandler: _):
+        case .default(completionHandler: _, cancelHandler: _):
             cell.showMark = false
             cell.widgeAlignment = .center
-        case let .multipleSelection(completionHandler: completionHandler, cancelHandler: _):
+        case .multipleSelection(completionHandler: _, cancelHandler: _):
             if self.multipleSelectedIndex[indexPath.row] != nil {
                 cell.showMark = true
             } else {
@@ -386,7 +386,7 @@ extension SHContentSheetTableView: UITableViewDelegate, UITableViewDataSource {
         case let .default(completionHandler: completionHandler, cancelHandler: _):
             completionHandler(indexPath.row)
             SHContentSheetView.dismiss()
-        case let .multipleSelection(completionHandler: completionHandler, cancelHandler: _):
+        case .multipleSelection(completionHandler: _, cancelHandler: _):
             self.multipleSelectedIndexSet.update(with: indexPath.row)
             if self.multipleSelectedIndex[indexPath.row] == nil {
                 self.multipleSelectedIndex[indexPath.row] = indexPath.row

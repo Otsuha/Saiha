@@ -23,11 +23,11 @@ public extension UIColor {
         }
     }
     
-    public static func saiha_colorWithHexString(_ hex: String) -> UIColor {
+    static func saiha_colorWithHexString(_ hex: String) -> UIColor {
         return UIColor.saiha_colorWithHexString(hex, alpha: 1.0)
     }
     
-    public static func saiha_colorWithHexString(_ hex: String, alpha: CGFloat) -> UIColor {
+    static func saiha_colorWithHexString(_ hex: String, alpha: CGFloat) -> UIColor {
         var cString: String = hex.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
 
         if (cString.hasPrefix("#")) {
