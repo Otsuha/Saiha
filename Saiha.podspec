@@ -106,21 +106,21 @@ Pod::Spec.new do |spec|
       ss.dependency 'SnapKit'
   end
 
-#  spec.subspec 'SHView' do |ss|
-#      ss.source_files = 'Saiha/Classes/SHView/**/*'
-#      ss.dependency 'Saiha/SHUIKit'
-#      ss.dependency 'Saiha/SHFoundation'
-#      ss.dependency 'SDWebImage'
-#      ss.dependency 'SnapKit'
-#
-#      ss.subspec 'SHContentSheet' do |sss|
-#          sss.source_files = 'Saiha/Classes/SHView/SHContentSheet/*'
-#          ss.dependency 'Saiha/SHUIKit'
-#          ss.dependency 'Saiha/SHFoundation'
-#          ss.dependency 'SnapKit'
-#          ss.dependency 'SDWebImage'
-#      end
-#  end
+  spec.subspec 'SHView' do |ss|
+      ss.source_files = 'Saiha/Classes/SHView/**/*'
+      ss.dependency 'Saiha/SHUIKit'
+      ss.dependency 'Saiha/SHFoundation'
+      ss.dependency 'SDWebImage'
+      ss.dependency 'SnapKit'
+
+      ss.subspec 'SHContentSheet' do |sss|
+          sss.source_files = 'Saiha/Classes/SHView/SHContentSheet/*'
+          ss.dependency 'Saiha/SHUIKit'
+          ss.dependency 'Saiha/SHFoundation'
+          ss.dependency 'SnapKit'
+          ss.dependency 'SDWebImage'
+      end
+  end
       
   #spec.exclude_files = "Classes/Exclude"
 
