@@ -137,6 +137,12 @@ open class SHContentSwitchSheetCell: UITableViewCell {
     
     open var showIcon: Bool = true
     
+    open var switchAllowTouch: Bool = true {
+        willSet {
+            self.switchButton.isUserInteractionEnabled = newValue
+        }
+    }
+    
     open var handleSwitch: ((_ switchButton: UISwitch) -> Void)?
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

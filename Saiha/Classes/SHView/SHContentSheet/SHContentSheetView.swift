@@ -36,7 +36,7 @@ open class SHContentSheetView: SHUIView {
         }
     }
     
-    private let animationDuration: CGFloat = 0.6
+    private static var animationDuration: CGFloat = 0.6
             
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,6 +112,7 @@ open class SHContentSheetView: SHUIView {
         }
         sheetView.mainViewHeight = contentHeight
         UIWindow.saiha_securyWindow()?.addSubview(sheetView)
+        //UIViewController.saiha_currentActivityViewController()?.view.addSubview(sheetView)
         sheetView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
@@ -123,13 +124,13 @@ open class SHContentSheetView: SHUIView {
     private func positonYAnimationShow() {
         let fromValue: CGFloat = CGFloat.saiha_screenHeight + self.contentHeight / 2
         let toValue: CGFloat = CGFloat.saiha_screenHeight - self.contentHeight + self.contentHeight / 2
-        self.mainContentView.saiha_addSimpleOnceAnimation(key: "positionY.animation.show", keyPath: "position.y", from: fromValue, to: toValue, duration: self.animationDuration, completionHandler: nil)
+        self.mainContentView.saiha_addSimpleOnceAnimation(key: "positionY.animation.show", keyPath: "position.y", from: fromValue, to: toValue, duration: Self.animationDuration, completionHandler: nil)
     }
     
     private func positonYAnimationDismiss() {
         let fromValue: CGFloat = CGFloat.saiha_screenHeight - self.contentHeight + self.contentHeight / 2
         let toValue: CGFloat = CGFloat.saiha_screenHeight + self.contentHeight / 2
-        self.mainContentView.saiha_addSimpleOnceAnimation(key: "positionY.animation.dismiss", keyPath: "position.y", from: fromValue, to: toValue, duration: self.animationDuration) {
+        self.mainContentView.saiha_addSimpleOnceAnimation(key: "positionY.animation.dismiss", keyPath: "position.y", from: fromValue, to: toValue, duration: Self.animationDuration) {
             self.dismissAllView()
         }
     }
@@ -137,20 +138,25 @@ open class SHContentSheetView: SHUIView {
     private func opacityAnimationShow() {
         let fromValue: CGFloat = 0.0
         let toValue: CGFloat = 1.0
-        self.mainContentView.saiha_addSimpleOnceAnimation(key: "opacity.animation.show", keyPath: "opacity", from: fromValue, to: toValue, duration: self.animationDuration, completionHandler: nil)
-        self.backgroundView.saiha_addSimpleOnceAnimation(key: "opacity.animation.show.backgroundView", keyPath: "opacity", from: fromValue, to: toValue, duration: self.animationDuration, completionHandler: nil)
+        self.mainContentView.saiha_addSimpleOnceAnimation(key: "opacity.animation.show", keyPath: "opacity", from: fromValue, to: toValue, duration: Self.animationDuration, completionHandler: nil)
+        self.backgroundView.saiha_addSimpleOnceAnimation(key: "opacity.animation.show.backgroundView", keyPath: "opacity", from: fromValue, to: toValue, duration: Self.animationDuration, completionHandler: nil)
     }
     
     private func opacityAnimationDismiss() {
         let fromValue: CGFloat = 1.0
         let toValue: CGFloat = 0.0
-        self.mainContentView.saiha_addSimpleOnceAnimation(key: "opacity.animation.dismiss", keyPath: "opacity", from: fromValue, to: toValue, duration: self.animationDuration, completionHandler: nil)
-        self.backgroundView.saiha_addSimpleOnceAnimation(key: "opacity.animation.dismiss.backgroundView", keyPath: "opacity", from: fromValue, to: toValue, duration: self.animationDuration, completionHandler: nil)
+        self.mainContentView.saiha_addSimpleOnceAnimation(key: "opacity.animation.dismiss", keyPath: "opacity", from: fromValue, to: toValue, duration: Self.animationDuration, completionHandler: nil)
+        self.backgroundView.saiha_addSimpleOnceAnimation(key: "opacity.animation.dismiss.backgroundView", keyPath: "opacity", from: fromValue, to: toValue, duration: Self.animationDuration, completionHandler: nil)
     }
     
     /// 自定义底部按钮标题。
     public static func setActionTitle(_ text: String) {
         Self.actionTitle = text
+    }
+    
+    /// 自定义动画时间。
+    public static func setAnimationDuration(duration: CGFloat) {
+        Self.animationDuration = duration
     }
     
     required public init?(coder: NSCoder) {

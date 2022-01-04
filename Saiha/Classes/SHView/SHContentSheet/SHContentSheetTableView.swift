@@ -343,6 +343,11 @@ open class SHContentSheetTableView: SHUIView {
     public static func showCancelButton(show: Bool) {
         Self.sharedView.showCancelButton = show
     }
+    
+    /// 自定义动画时间。
+    public static func setAnimationDuration(duration: CGFloat) {
+        SHContentSheetView.setAnimationDuration(duration: duration)
+    }
 }
 
 extension SHContentSheetTableView: UITableViewDelegate, UITableViewDataSource {

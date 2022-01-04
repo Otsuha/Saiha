@@ -106,6 +106,8 @@ open class SHSideBarTableView: SHUIView {
     
     open var dataSourceHandle: ((_ cell: UITableViewCell, _ indexPath: IndexPath) -> Void)?
     
+    open var didSelectItemHandle: ((_ index: Int, _ section: Int) -> Void)?
+    
     open var cellSeparatorStyle: UITableViewCell.SeparatorStyle = .none {
         willSet {
             self.sidebarTableView.separatorStyle = newValue
@@ -152,8 +154,8 @@ open class SHSideBarTableView: SHUIView {
         self.sidebarTableView.reloadSections(isets, with: animation)
     }
     
-    open func ee() {
-        self.sidebarTableView.separatorStyle = .none
+    open func reloadData() {
+        self.sidebarTableView.reloadData()
     }
 }
 

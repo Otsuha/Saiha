@@ -154,7 +154,7 @@ open class SHAddPhotoView: SHUIView {
     
     private var photoCollectionView: SHUICollectionView!
     
-    private var photos: [UIImage?] = [nil]
+    open var photos: [UIImage?] = [nil]
     
     open var maxPhotos: Int = 10
     
