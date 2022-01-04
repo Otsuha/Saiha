@@ -28,7 +28,7 @@ public extension UIWindow {
                 return nil
             }
         } else {
-            if let window = UIApplication.shared.delegate?.window{
+            if let window = UIApplication.shared.delegate?.window {
                 return window
             } else {
                 return nil
