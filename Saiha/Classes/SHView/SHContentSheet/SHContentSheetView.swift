@@ -112,7 +112,6 @@ open class SHContentSheetView: SHUIView {
         }
         sheetView.mainViewHeight = contentHeight
         UIWindow.saiha_securyWindow()?.addSubview(sheetView)
-        //UIViewController.saiha_currentActivityViewController()?.view.addSubview(sheetView)
         sheetView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }

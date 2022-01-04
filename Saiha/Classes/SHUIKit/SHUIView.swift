@@ -15,9 +15,13 @@ open class SHUIView: UIView {
 extension UIView {
     
     /**
-     利用 `CABasicAnimation` 产生一次简单的动画。动画在完成后会自动移除。
+     利用 `CABasicAnimation` 产生一次简单的动画。动画在完成后默认会使视图停留在动画结束后的位置。
      */
-    public func saiha_addSimpleOnceAnimation(key: String, keyPath: String, from fromValue: CGFloat, to toValue: CGFloat, duration: CGFloat, completionHandler: (() -> Void)?) {
+    public func saiha_addSimpleOnceAnimation(key: String, keyPath: String,
+                                             from fromValue: CGFloat, to toValue: CGFloat,
+                                             duration: CGFloat, isRemoveOnCompletion: Bool = false,
+                                             fillMode: CAMediaTimingFillMode = .forwards,
+                                             completionHandler: (() -> Void)?) {
         self.layer.removeAnimation(forKey: key)
         CATransaction.begin()
         let animation: CABasicAnimation = CABasicAnimation()
@@ -25,7 +29,8 @@ extension UIView {
         animation.fromValue = fromValue
         animation.toValue = toValue
         animation.duration = CFTimeInterval(duration)
-        animation.isRemovedOnCompletion = true
+        animation.isRemovedOnCompletion = isRemoveOnCompletion
+        animation.fillMode = fillMode
         CATransaction.setCompletionBlock {
             completionHandler?()
         }
