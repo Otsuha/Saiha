@@ -35,7 +35,7 @@ open class SHContentSheetTableViewCell: UITableViewCell {
     private var hasAddSeparator: Bool = false
     open var showSeparator: Bool = true
     
-    open var showMark: Bool = false
+    open var showMark: Bool = false  // 多选视图下是否显示选中后的打钩标记。
     
     open var widgeAlignment: SHContentSheetTableViewCell.WidgeAlignment = .left
     
@@ -123,19 +123,47 @@ open class SHContentSheetTableViewCell: UITableViewCell {
     }
 }
 
+@objc public protocol SHContentSwitchSheetViewDelegate {
+    
+    @objc optional func contentSwitchSheetView(_ contentSwitchSheetView: SHContentSheetTableView, didSwitchButtonStatusIn index: Int, with isOn: Bool)
+    
+    @objc optional func contentSwitchSheetView(_ contentSwitchSheetView: SHContentSheetTableView, canSwitchButtonIn index: Int) -> Bool
+}
+
 open class SHContentSheetTableView: SHUIView {
     
     public enum SelectionStyle {
         
         /**
          默认单选，点击某个 cell 后视图自动消失，并回传选择的行序号。
+         
+         - Parameters:
+            - dataSource: `tableView` 的数据源。`tuple.0` 为 cell 的标题；`tuple.1` 为 cell 图标的 `url` 地址。若 `url` 为 `nil`，则图标不显示。
+            - selectedIndex: 是否默认选中某行，传 `nil` 不进行默认选中操作，若传具体值，则对应行右边显示打钩标记。
+            - completionHandler: 点击底部按钮的回调，回传选择的行序号。
+            - cancelHandler: 若标题设置为 `nil`，即不显示标题行，那么设置此属性无任何效果。若标题行显示，并且显示了 `x` 按钮，则点击 `x` 按钮将执行此回调。
          */
-        case `default`(completionHandler: ((_ index: Int) -> Void), cancelHandler: (() -> Void)?)
+        case `default`(dataSource: [(title: String, url: String?)], selectedIndex: Int?, completionHandler: ((_ index: Int) -> Void), cancelHandler: (() -> Void)?)
         
         /**
          多选样式。可以选择多个 cell，点击底部按钮后回传选择的行序号数组。数组序号从小到大排序。选中此样式时，底部按钮标题将自动设置为“保存”。
+         
+         - Parameters:
+            - dataSource: `tableView` 的数据源。`tuple.0` 为 cell 的标题；`tuple.1` 为 cell 图标的 `url` 地址，若 `url` 为 `nil`，则图标不显示；`tuple.2` 为是否选中某个 cell。
+            - completionHandler: 点击底部按钮的回调，回传选择的行序号。
+            - cancelHandler: 若标题设置为 `nil`，即不显示标题行，那么设置此属性无任何效果。若标题行显示，并且显示了 `x` 按钮，则点击 `x` 按钮将执行此回调。
          */
-        case multipleSelection(completionHandler: ((_ indexSet: [Int]) -> Void), cancelHandler: (() -> Void)?)
+        case multipleSelection(dataSource: [(title: String, url: String?, isSelected: Bool)], completionHandler: ((_ indexSet: [Int]) -> Void), cancelHandler: (() -> Void)?)
+        
+        /**
+         开关选择样式，可以控制多个开关选项。此时底部按钮标题将默认被设置为“保存”。可以实现 `SHContentSwitchSheetViewDelegate` 协议以进行更多的自定义操作。
+         
+         - Parameters:
+            - dataSource: `tableView` 的数据源。`tuple.0` 为 cell 的标题；`tuple.1` 为 cell 图标的 `url` 地址，若 `url` 为 `nil`，则图标不显示；`tuple.2` 为是否选中某个 cell。
+            - completionHandler: 点击底部按钮的回调，回传选择的行序号。
+            - cancelHandler: 若标题设置为 `nil`，即不显示标题行，那么设置此属性无任何效果。若标题行显示，并且显示了 `x` 按钮，则点击 `x` 按钮将执行此回调。
+         */
+        case contentSwitch(dataSource: [(icon: UIImage?, title: String, isOn: Bool)], delegate: SHContentSwitchSheetViewDelegate, completionHandler: (() -> Void)?, cancelHandler: (() -> Void)?)
     }
     
     private static var sharedView: SHContentSheetTableView = SHContentSheetTableView()
@@ -158,17 +186,19 @@ open class SHContentSheetTableView: SHUIView {
     }()
     private var mainTableView: UITableView!
     
-    open var selectionStyle: SHContentSheetTableView.SelectionStyle = .default(completionHandler: { _ in }, cancelHandler: nil) {
+    open var selectionStyle: SHContentSheetTableView.SelectionStyle = .default(dataSource: [], selectedIndex: nil, completionHandler: { _ in }, cancelHandler: nil) {
         willSet {
             switch newValue {
-            case .default(completionHandler: _, cancelHandler: _):
+            case .default(dataSource: _, selectedIndex: _, completionHandler: _, cancelHandler: _):
                 Self.setActionTitle("取消")
                 self.mainTableView.allowsSelection = true
                 self.mainTableView.allowsMultipleSelection = false
-            case .multipleSelection(completionHandler: _, cancelHandler: _):
+            case .multipleSelection(dataSource: _, completionHandler: _, cancelHandler: _):
                 Self.setActionTitle("保存")
                 self.mainTableView.allowsSelection = true
                 self.mainTableView.allowsMultipleSelection = true
+            case .contentSwitch(dataSource: _, delegate: _, completionHandler: _, cancelHandler: _):
+                break
             }
         }
     }
@@ -224,13 +254,7 @@ open class SHContentSheetTableView: SHUIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.mainTableView = UITableView()
-        self.mainTableView.register(SHContentSheetTableViewCell.self, forCellReuseIdentifier: "SHContentSheetTableViewCell")
-        self.mainTableView.delegate = self
-        self.mainTableView.dataSource = self
-        self.mainTableView.rowHeight = CGFloat.saiha_verticalSize(num: 56)
-        self.mainTableView.separatorStyle = .none
-        self.addSubview(self.mainTableView)
+        self.setTableView()
         
         self.addSubview(self.titleLabel)
         
@@ -241,6 +265,20 @@ open class SHContentSheetTableView: SHUIView {
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
+    func setTableView() {
+        self.mainTableView = UITableView()
+        self.mainTableView.register(SHContentSheetTableViewCell.self, forCellReuseIdentifier: "SHContentSheetTableViewCell")
+        self.mainTableView.delegate = self
+        self.mainTableView.dataSource = self
+        self.mainTableView.rowHeight = CGFloat.saiha_verticalSize(num: 56)
+        self.mainTableView.separatorStyle = .none
+        self.addSubview(self.mainTableView)
+    }
+    
+    func setDefaultStyle(dataSource: [(title: String, url: String?)], selectedIndex: Int?) {}
+    func setMultipleSelectionStyle(dataSource: [(title: String, url: String?, isSelected: Bool)]) {}
+    func setContentSwitchStyle(dataSource: [(icon: UIImage?, title: String, isOn: Bool)], delegate: SHContentSwitchSheetViewDelegate) {}
     
     open override func layoutSubviews() {
         super.layoutSubviews()
@@ -265,7 +303,9 @@ open class SHContentSheetTableView: SHUIView {
         }
         
         switch self.selectionStyle {
-        case .multipleSelection(completionHandler: _, cancelHandler: _):
+        case .default(dataSource: _, selectedIndex: _, completionHandler: _, cancelHandler: _):
+            self.cancelButton.isHidden = true
+        case .multipleSelection(dataSource: _, completionHandler: _, cancelHandler: _):
             if self.showCancelButton && self.showTitleLabel {
                 self.cancelButton.isHidden = false
                 self.cancelButton.snp.makeConstraints { make in
@@ -276,8 +316,8 @@ open class SHContentSheetTableView: SHUIView {
             } else {
                 self.cancelButton.isHidden = true
             }
-        case .default(completionHandler: _, cancelHandler: _):
-            self.cancelButton.isHidden = true
+        case .contentSwitch(dataSource: _, delegate: _, completionHandler: _, cancelHandler: _):
+            break
         }
     }
     
@@ -286,31 +326,38 @@ open class SHContentSheetTableView: SHUIView {
     
      - Parameters:
         - title: 视图的标题。若为 `nil`，则不显示 titleLabel。若有值，则在 tableView 上方添加一个 titleLabel。
-        - dataSource: tableView 的数据源。`tuple.0` 为 cell 的标题；`tuple.1` 为 cell 图标的 url 地址。若 url 为 `nil`，则图标不显示。
         - style: 设置弹出视图的选择模式。
      */
-    public static func show(title: String?, dataSource: [(title: String, url: String?)], style: SHContentSheetTableView.SelectionStyle) {
+    public static func show(title: String?, style: SHContentSheetTableView.SelectionStyle) {
         if Self.sharedView.superview != nil {
             return
         }
+        
         Self.sharedView.selectionStyle = style
-        Self.sharedView.dataSource = dataSource
         Self.sharedView.title = title
+        
         switch style {
-        case .default(completionHandler: _, cancelHandler: _):
-            break
-        case let .multipleSelection(completionHandler: _, cancelHandler: cancelHandler):
+        case let .default(dataSource: dataSource, selectedIndex: selectedIndex, completionHandler: _, cancelHandler: _):
+            Self.sharedView.setDefaultStyle(dataSource: dataSource, selectedIndex: selectedIndex)
+            
+        case let .multipleSelection(dataSource: dataSource, completionHandler: _, cancelHandler: cancelHandler):
+            Self.sharedView.setMultipleSelectionStyle(dataSource: dataSource)
             Self.sharedView.multipleSelectedCancelCallBack = cancelHandler
             Self.sharedView.multipleSelectedIndex = [Int?](repeating: nil, count: dataSource.count)
+            
+        case let .contentSwitch(dataSource: dataSource, delegate: delegate, completionHandler: _, cancelHandler: _):
+            self.sharedView.setContentSwitchStyle(dataSource: dataSource, delegate: delegate)
         }
         
         SHContentSheetView.show(customView: Self.sharedView, contentHeight: Self.sharedView.defaultContentHeight) {
             switch style {
-            case let .default(completionHandler: _, cancelHandler: cancelHandler):
+            case let .default(dataSource: _, selectedIndex: _, completionHandler: _, cancelHandler: cancelHandler):
                 cancelHandler?()
-            case let .multipleSelection(completionHandler: completionHandler, cancelHandler: _):
+            case let .multipleSelection(dataSource: _, completionHandler: completionHandler, cancelHandler: _):
                 let indexs: [Int] = Self.sharedView.multipleSelectedIndexSet.sorted()
                 completionHandler(indexs)
+            case .contentSwitch(dataSource: _, delegate: _, completionHandler: _, cancelHandler: _):
+                break
             }
         }
     }
@@ -356,6 +403,10 @@ extension SHContentSheetTableView: UITableViewDelegate, UITableViewDataSource {
         return self.dataSource.count
     }
     
+    func setDefaultCell(cell: inout SHContentSheetTableViewCell) {}
+    func setMultipleSelectionCell(cell: inout SHContentSheetTableViewCell) {}
+    func setContentSwitchCell(cell: inout SHContentSheetTableViewCell) {}
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SHContentSheetTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SHContentSheetTableViewCell", for: indexPath) as! SHContentSheetTableViewCell
         let imageURL: String? = self.dataSource[indexPath.row].url
@@ -372,26 +423,28 @@ extension SHContentSheetTableView: UITableViewDelegate, UITableViewDataSource {
             cell.showSeparator = false
         }
         switch self.selectionStyle {
-        case .default(completionHandler: _, cancelHandler: _):
+        case .default(dataSource: _, selectedIndex: _, completionHandler: _, cancelHandler: _):
             cell.showMark = false
             cell.widgeAlignment = .center
-        case .multipleSelection(completionHandler: _, cancelHandler: _):
+        case .multipleSelection(dataSource: _, completionHandler: _, cancelHandler: _):
             if self.multipleSelectedIndex[indexPath.row] != nil {
                 cell.showMark = true
             } else {
                 cell.showMark = false
             }
             cell.widgeAlignment = .left
+        case .contentSwitch(dataSource: _, delegate: _, completionHandler: _, cancelHandler: _):
+            break
         }
         return cell
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch self.selectionStyle {
-        case let .default(completionHandler: completionHandler, cancelHandler: _):
+        case let .default(dataSource: _, selectedIndex: _, completionHandler: completionHandler, cancelHandler: _):
             completionHandler(indexPath.row)
             SHContentSheetView.dismiss()
-        case .multipleSelection(completionHandler: _, cancelHandler: _):
+        case .multipleSelection(dataSource: _, completionHandler: _, cancelHandler: _):
             self.multipleSelectedIndexSet.update(with: indexPath.row)
             if self.multipleSelectedIndex[indexPath.row] == nil {
                 self.multipleSelectedIndex[indexPath.row] = indexPath.row
@@ -399,6 +452,8 @@ extension SHContentSheetTableView: UITableViewDelegate, UITableViewDataSource {
                 self.multipleSelectedIndex[indexPath.row] = nil
             }
             self.mainTableView.reloadRows(at: [indexPath], with: .automatic)
+        case .contentSwitch(dataSource: _, delegate: _, completionHandler: _, cancelHandler: _):
+            break
         }
     }
     

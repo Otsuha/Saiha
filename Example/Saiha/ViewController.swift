@@ -10,7 +10,7 @@ import UIKit
 import Saiha
 import SnapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SHContentSwitchSheetViewDelegate {
     
     private var label: UILabel!
 
@@ -26,31 +26,43 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapAction(_ sender: Any) {
-        let dataSource: [(String, String?)] = [
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil)
-        ]
-        SHContentSheetTableView.setActionTitle("保存")
-        SHContentSheetTableView.setDefaultShowCount(count: 6)
-        SHContentSheetTableView.showSeparator(show: false)
-//        SHContentSheetTableView.show(title: "dddddd", dataSource: dataSource, style: .default(completionHandler: { index in
-//
+//        let dataSource: [(String, String?)] = [
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil)
+//        ]
+//        SHContentSheetTableView.setActionTitle("保存")
+//        SHContentSheetTableView.setDefaultShowCount(count: 6)
+//        SHContentSheetTableView.showSeparator(show: false)
+////        SHContentSheetTableView.show(title: "dddddd", dataSource: dataSource, style: .default(completionHandler: { index in
+////
+////        }, cancelHandler: nil))
+//        SHContentSheetTableView.show(title: "功能标题", dataSource: dataSource, style: .multipleSelection(completionHandler: { indexSet in
+//            print(indexSet)
 //        }, cancelHandler: nil))
-        SHContentSheetTableView.show(title: "功能标题", dataSource: dataSource, style: .multipleSelection(completionHandler: { indexSet in
-            print(indexSet)
-        }, cancelHandler: nil))
+//    }
+        
+        let _: [(icon: UIImage?, title: String, isOn: Bool)] = [
+            (nil, "ssss", true),
+            (nil, "ssss", true),
+            (nil, "ssss", true),
+            (nil, "ssss", true),
+            (nil, "ssss", true)
+        ]
+//        SHContentSwitchSheetView.show(title: "sss", dataSource: dataSource, delegate: self, contentHeight: 100) {
+//
+//        }
     }
 }
 

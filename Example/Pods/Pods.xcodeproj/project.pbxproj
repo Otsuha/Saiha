@@ -114,7 +114,6 @@
 		77046FB9B3BC96E30260F03131BC7A34 /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4CBFD47AE76E6C76E111D031680F38 /* UILayoutSupport+Extensions.swift */; };
 		776E725079D26015737E7D30A0F52B7B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDC6391E3063232D20F2FFE1617B4AA /* Foundation.framework */; };
 		79A1927E310E44D235FA8B38780DB05C /* UIImage+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = E34514DBD2BEE6A9408AA7A9606A6172 /* UIImage+Transform.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		7A9EBE6243E8844539DC79F0E2D007FD /* SHContentSwitchSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2351B89A51CC083FEAA50C567F66E0 /* SHContentSwitchSheetView.swift */; };
 		7BB42D91C3145DF6BC3788056816B090 /* SDImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E9DDDC41F2CBCA5FBD9FE76A121CA3 /* SDImageFrame.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7D895A643F2E20E2C4471195DDDA1CD9 /* SDImageGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D1374999AD7C30232ED515B7CAA05C /* SDImageGraphics.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7D9E8F8A5D02148FCC2DBD6319BCC3D1 /* SDWebImageDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = E9D95AC3AC9723CE82BB2488BCF925AA /* SDWebImageDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -442,7 +441,6 @@
 		A94D42D19AD3D592FF554405A331A893 /* SDImageCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCoder.m; path = SDWebImage/Core/SDImageCoder.m; sourceTree = "<group>"; };
 		A95058BABEB001F98D0DDC0AD1C70F8F /* LayoutConstraintItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutConstraintItem.swift; path = Source/LayoutConstraintItem.swift; sourceTree = "<group>"; };
 		A9F73941B5EE31707A5F0550EC173074 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+HighlightedWebCache.m"; path = "SDWebImage/Core/UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
-		AB2351B89A51CC083FEAA50C567F66E0 /* SHContentSwitchSheetView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHContentSwitchSheetView.swift; path = Saiha/Classes/SHView/SHContentSheet/SHContentSwitchSheetView.swift; sourceTree = "<group>"; };
 		AD87C80E73C882378CFE2859D3D63865 /* SHAddPhotoView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHAddPhotoView.swift; path = Saiha/Classes/SHView/SHAddPhotoView.swift; sourceTree = "<group>"; };
 		AF722A7754B5484CCE8C8DB483C45052 /* SDWebImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SDWebImage.release.xcconfig; sourceTree = "<group>"; };
 		AF9D84179A4DACAFC68C8F307C80E585 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
@@ -829,7 +827,6 @@
 			children = (
 				FBB1696BED88E7734355EF0E6A97FEAA /* SHContentSheetTableView.swift */,
 				CE761A9229A7B42787B9CBF52D5C912A /* SHContentSheetView.swift */,
-				AB2351B89A51CC083FEAA50C567F66E0 /* SHContentSwitchSheetView.swift */,
 			);
 			name = SHContentSheet;
 			sourceTree = "<group>";
@@ -1340,7 +1337,6 @@
 				492A6B68B90526189C51CDBEB5A8A72B /* SHCGFloat.swift in Sources */,
 				5BBF7C7B301DFBAD2341A6E50F58E2BC /* SHContentSheetTableView.swift in Sources */,
 				FA35C85A67989E92E0E3C7384DA98D73 /* SHContentSheetView.swift in Sources */,
-				7A9EBE6243E8844539DC79F0E2D007FD /* SHContentSwitchSheetView.swift in Sources */,
 				C97BA50160F380721D63069D2BBA819C /* SHDate.swift in Sources */,
 				3D7885E52675222937BA1704B8234D8A /* SHSideBarTableView.swift in Sources */,
 				B2F0999DB93A57AC4BD9F8212F159758 /* SHUIButton.swift in Sources */,
