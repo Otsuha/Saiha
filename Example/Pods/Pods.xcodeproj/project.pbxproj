@@ -16,6 +16,9 @@
 		0AB4710BE7325D1026F1D1AC38D4E4AF /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679703016FFEA760CEDFA7F114C9C6C /* ConstraintDSL.swift */; };
 		0B0F60E613D1CF7B715D220DD12D5732 /* SHAddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87C80E73C882378CFE2859D3D63865 /* SHAddPhotoView.swift */; };
 		0BFA90EFCD3407716FFC60D140325188 /* UIImageView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = F5DBFCB61A9BF7E5A46AD609741ABFA6 /* UIImageView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E4C1A68278BB55E00379630 /* SHContentSheetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C1A67278BB55E00379630 /* SHContentSheetTableViewCell.swift */; };
+		0E4C1A6A278BB5BB00379630 /* SHContentSheetMultipleSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C1A69278BB5BB00379630 /* SHContentSheetMultipleSelectionTableViewCell.swift */; };
+		0E4C1A6C278BB72600379630 /* SHContentSheetMultipleSelectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C1A6B278BB72600379630 /* SHContentSheetMultipleSelectionTableView.swift */; };
 		0EDBD47EB727226433C431B9DC8D5EAB /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EE8D326846EA65F6D774D47ABD2F06 /* SDWebImagePrefetcher.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0F4322740A001E3D7BFD2C333BCF907D /* SDImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = D58E884C89446F05E2985030C98056B2 /* SDImageCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FFA0C960F26666918569059FB8E92BC /* SDImageCoder.h in Headers */ = {isa = PBXBuildFile; fileRef = EA25B2C00FD9A0D9A92DECCAD3D2E233 /* SDImageCoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -286,6 +289,9 @@
 		0A9549F4282BDCCF6F3F49BE6593BA0A /* SDWebImageDownloaderRequestModifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderRequestModifier.h; path = SDWebImage/Core/SDWebImageDownloaderRequestModifier.h; sourceTree = "<group>"; };
 		0D6AA561C719D0C7367D6AD3DCE65C95 /* SDWebImageOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageOperation.h; path = SDWebImage/Core/SDWebImageOperation.h; sourceTree = "<group>"; };
 		0E4373D074FB50C55D719C3254EEFAA4 /* Saiha-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Saiha-dummy.m"; sourceTree = "<group>"; };
+		0E4C1A67278BB55E00379630 /* SHContentSheetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHContentSheetTableViewCell.swift; sourceTree = "<group>"; };
+		0E4C1A69278BB5BB00379630 /* SHContentSheetMultipleSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHContentSheetMultipleSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		0E4C1A6B278BB72600379630 /* SHContentSheetMultipleSelectionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHContentSheetMultipleSelectionTableView.swift; sourceTree = "<group>"; };
 		0F7426275563FDD6F18ECD49BB6DE8D4 /* Pods-Saiha_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Saiha_Tests-umbrella.h"; sourceTree = "<group>"; };
 		0F8B10ED8EE6543446ADAD64AF447AB1 /* ConstraintRelation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintRelation.swift; path = Source/ConstraintRelation.swift; sourceTree = "<group>"; };
 		10105359AC0ACDE33BBCEB9ACFD27D1B /* UIButton+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+WebCache.m"; path = "SDWebImage/Core/UIButton+WebCache.m"; sourceTree = "<group>"; };
@@ -827,6 +833,9 @@
 			children = (
 				FBB1696BED88E7734355EF0E6A97FEAA /* SHContentSheetTableView.swift */,
 				CE761A9229A7B42787B9CBF52D5C912A /* SHContentSheetView.swift */,
+				0E4C1A67278BB55E00379630 /* SHContentSheetTableViewCell.swift */,
+				0E4C1A69278BB5BB00379630 /* SHContentSheetMultipleSelectionTableViewCell.swift */,
+				0E4C1A6B278BB72600379630 /* SHContentSheetMultipleSelectionTableView.swift */,
 			);
 			name = SHContentSheet;
 			sourceTree = "<group>";
@@ -1332,6 +1341,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E4C1A6A278BB5BB00379630 /* SHContentSheetMultipleSelectionTableViewCell.swift in Sources */,
+				0E4C1A6C278BB72600379630 /* SHContentSheetMultipleSelectionTableView.swift in Sources */,
 				745874B1AEA2E165894412A625939B6B /* Saiha-dummy.m in Sources */,
 				0B0F60E613D1CF7B715D220DD12D5732 /* SHAddPhotoView.swift in Sources */,
 				492A6B68B90526189C51CDBEB5A8A72B /* SHCGFloat.swift in Sources */,
@@ -1348,6 +1359,7 @@
 				BDF3046D5638E27624C47A8D22745625 /* SHUITextView.swift in Sources */,
 				FBCF48BE79402ED7544595646E1CFEC8 /* SHUIView.swift in Sources */,
 				C086F2B924BFF5F089D0F9F7CBCBAF5C /* SHUIViewController.swift in Sources */,
+				0E4C1A68278BB55E00379630 /* SHContentSheetTableViewCell.swift in Sources */,
 				B3D48243236E03CF3CF73F14D216DA67 /* SHUIWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

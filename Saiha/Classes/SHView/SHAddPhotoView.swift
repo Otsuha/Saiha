@@ -38,6 +38,8 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.contentView.backgroundColor = UIColor.defaultViewColor
+        
         self.addImageView = UIImageView()
         self.addImageView.image = UIImage(named: "camera_add")
         self.addImageView.contentMode = .scaleAspectFit
@@ -167,7 +169,7 @@ open class SHAddPhotoView: SHUIView {
     
     private var currentSelectIndex: Int = 0
     
-    weak var delegate: SHAddPhotoViewDelegate?
+    open weak var delegate: SHAddPhotoViewDelegate?
     
     /// 如果需要动态拓展视图高度，可以用此属性计算视图高度来对视图做约束。
     open var viewHeight: CGFloat {
@@ -185,6 +187,8 @@ open class SHAddPhotoView: SHUIView {
     }
     
     private func initialize() {
+        self.backgroundColor = UIColor.defaultViewColor
+        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: self.itemEdge, height: self.itemEdge)
         layout.sectionInset.left = CGFloat.saiha_horizontalSize(num: 10)
@@ -194,6 +198,7 @@ open class SHAddPhotoView: SHUIView {
         layout.minimumInteritemSpacing = CGFloat.saiha_horizontalSize(num: 10)
         layout.minimumLineSpacing = CGFloat.saiha_verticalSize(num: 10)
         self.photoCollectionView = SHUICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        self.photoCollectionView.backgroundColor = UIColor.defaultViewColor
         self.photoCollectionView.register(SHAddPhotoCollectionCell.self, forCellWithReuseIdentifier: "PhotoCell")
         self.photoCollectionView.dataSource = self
         self.photoCollectionView.delegate = self
@@ -258,6 +263,17 @@ open class SHAddPhotoView: SHUIView {
         let addIndex: Int = self.photos.count - 1
         self.photos[addIndex] = image
         self.addEmptyPhoto()
+    }
+    
+    /**
+     手动更新照片。
+     */
+    public func updatePhotos(indexs: [Int]) {
+        var indexPaths: [IndexPath] = []
+        for item in indexs {
+            indexPaths.append(IndexPath(item: item, section: 0))
+        }
+        self.photoCollectionView.reloadItems(at: indexPaths)
     }
 }
 

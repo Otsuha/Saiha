@@ -9,6 +9,14 @@ import UIKit
 
 public extension UIColor {
     
+    static var defaultViewColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor.systemBackground
+        } else {
+            return UIColor.white
+        }
+    }
+    
     static var defaultLabelColor: UIColor {
         if #available(iOS 13.0, *) {
             return UIColor { traitCollection in

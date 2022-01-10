@@ -8,121 +8,6 @@
 import UIKit
 import SnapKit
 
-open class SHContentSheetTableViewCell: UITableViewCell {
-    
-    public enum WidgeAlignment: Int {
-        case left
-        case center
-    }
-    
-    open var iconImageView: UIImageView?
-    open var titleLabel: SHUILabel!
-    open var markButton: UIButton = {
-        let button: UIButton = UIButton()
-        if #available(iOS 13.0, *) {
-            button.setImage(UIImage(systemName: "checkmark"), for: .normal)
-            button.tintColor = UIColor.defaultLabelColor
-        } else {
-            button.setImage(UIImage(named: "checkmark"), for: .normal)
-        }
-        button.imageView?.contentMode = .scaleAspectFit
-        button.isUserInteractionEnabled = false
-        return button
-    }()
-    
-    open var showIcon: Bool = true
-    
-    private var hasAddSeparator: Bool = false
-    open var showSeparator: Bool = true
-    
-    open var showMark: Bool = false  // 多选视图下是否显示选中后的打钩标记。
-    
-    open var widgeAlignment: SHContentSheetTableViewCell.WidgeAlignment = .left
-    
-    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        if self.showIcon {
-            self.iconImageView = UIImageView()
-            self.iconImageView!.contentMode = .scaleAspectFit
-            self.contentView.addSubview(self.iconImageView!)
-            
-            self.titleLabel = SHUILabel()
-            self.titleLabel.text = "中通快递"
-            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16))
-            self.contentView.addSubview(self.titleLabel)
-        } else {
-            self.titleLabel = SHUILabel()
-            self.titleLabel.text = "中通快递"
-            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16))
-            self.contentView.addSubview(self.titleLabel)
-        }
-        
-        self.contentView.addSubview(self.markButton)
-    }
-    
-    required public init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    open override func layoutSubviews() {
-        if self.showIcon {
-            if self.iconImageView != nil {
-                let edge: CGFloat = self.widgeAlignment == .left ? CGFloat.saiha_horizontalSize(num: 20) : CGFloat.saiha_horizontalSize(num: 140)
-                self.iconImageView!.snp.makeConstraints { make in
-                    make.left.equalToSuperview().offset(edge)
-                    make.centerY.equalToSuperview()
-                    make.width.height.equalTo(CGFloat.saiha_verticalSize(num: 24))
-                }
-            }
-            if self.titleLabel != nil {
-                self.titleLabel.textAlignment = .left
-                self.titleLabel.snp.makeConstraints { make in
-                    make.left.equalTo(self.iconImageView!.snp.right).offset(CGFloat.saiha_horizontalSize(num: 8))
-                    make.centerY.equalToSuperview()
-                    make.width.greaterThanOrEqualTo(CGFloat.saiha_horizontalSize(num: 64))
-                    make.height.greaterThanOrEqualTo(CGFloat.saiha_verticalSize(num: 16))
-                }
-            }
-        } else {
-            if self.titleLabel != nil {
-                if self.widgeAlignment == .left {
-                    let edge: CGFloat = self.widgeAlignment == .left ? CGFloat.saiha_horizontalSize(num: 20) : CGFloat.saiha_horizontalSize(num: 140)
-                    self.titleLabel.snp.makeConstraints { make in
-                        make.left.equalToSuperview().offset(edge)
-                        make.centerY.equalToSuperview()
-                        make.width.greaterThanOrEqualTo(CGFloat.saiha_horizontalSize(num: 64))
-                        make.height.greaterThanOrEqualTo(CGFloat.saiha_verticalSize(num: 16))
-                    }
-                } else {
-                    self.titleLabel.snp.makeConstraints { make in
-                        make.centerX.equalToSuperview()
-                        make.centerY.equalToSuperview()
-                        make.width.greaterThanOrEqualTo(CGFloat.saiha_horizontalSize(num: 64))
-                        make.height.greaterThanOrEqualTo(CGFloat.saiha_verticalSize(num: 16))
-                    }
-                }
-            }
-        }
-        
-        if self.showSeparator && self.hasAddSeparator == false {
-            self.contentView.saiha_addSeparator(color: UIColor.saiha_colorWithHexString("#D8D8D8", alpha: 0.5), position: .bottom, leftEdge: CGFloat.saiha_horizontalSize(num: 16), rightEdge: CGFloat.saiha_horizontalSize(num: 18))
-            self.hasAddSeparator = true
-        }
-        
-        if self.showMark {
-            self.markButton.isHidden = false
-            self.markButton.snp.makeConstraints { make in
-                make.right.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -20))
-                make.centerY.equalTo(self.titleLabel)
-                make.width.height.equalTo(CGFloat.saiha_verticalSize(num: 20))
-            }
-        } else {
-            self.markButton.isHidden = true
-        }
-    }
-}
-
 @objc public protocol SHContentSwitchSheetViewDelegate {
     
     @objc optional func contentSwitchSheetView(_ contentSwitchSheetView: SHContentSheetTableView, didSwitchButtonStatusIn index: Int, with isOn: Bool)
@@ -131,6 +16,12 @@ open class SHContentSheetTableViewCell: UITableViewCell {
 }
 
 open class SHContentSheetTableView: SHUIView {
+    
+    enum Style {
+        case `default`
+        case multipleSelection(dataSource: [(title: String, url: String?, isSelected: Bool)])
+        case contentSwitch
+    }
     
     public enum SelectionStyle {
         
@@ -146,16 +37,6 @@ open class SHContentSheetTableView: SHUIView {
         case `default`(dataSource: [(title: String, url: String?)], selectedIndex: Int?, completionHandler: ((_ index: Int) -> Void), cancelHandler: (() -> Void)?)
         
         /**
-         多选样式。可以选择多个 cell，点击底部按钮后回传选择的行序号数组。数组序号从小到大排序。选中此样式时，底部按钮标题将自动设置为“保存”。
-         
-         - Parameters:
-            - dataSource: `tableView` 的数据源。`tuple.0` 为 cell 的标题；`tuple.1` 为 cell 图标的 `url` 地址，若 `url` 为 `nil`，则图标不显示；`tuple.2` 为是否选中某个 cell。
-            - completionHandler: 点击底部按钮的回调，回传选择的行序号。
-            - cancelHandler: 若标题设置为 `nil`，即不显示标题行，那么设置此属性无任何效果。若标题行显示，并且显示了 `x` 按钮，则点击 `x` 按钮将执行此回调。
-         */
-        case multipleSelection(dataSource: [(title: String, url: String?, isSelected: Bool)], completionHandler: ((_ indexSet: [Int]) -> Void), cancelHandler: (() -> Void)?)
-        
-        /**
          开关选择样式，可以控制多个开关选项。此时底部按钮标题将默认被设置为“保存”。可以实现 `SHContentSwitchSheetViewDelegate` 协议以进行更多的自定义操作。
          
          - Parameters:
@@ -168,12 +49,12 @@ open class SHContentSheetTableView: SHUIView {
     
     private static var sharedView: SHContentSheetTableView = SHContentSheetTableView()
 
-    private var titleLabel: SHUILabel = {
+    var titleLabel: SHUILabel = {
         let label: SHUILabel = SHUILabel()
         label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16), weight: .medium)
         return label
     }()
-    private var cancelButton: SHUIButton = {
+    var cancelButton: SHUIButton = {
         let button: SHUIButton = SHUIButton()
         if #available(iOS 13.0, *) {
             button.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -184,7 +65,7 @@ open class SHContentSheetTableView: SHUIView {
         button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
-    private var mainTableView: UITableView!
+    var mainTableView: UITableView!
     
     open var selectionStyle: SHContentSheetTableView.SelectionStyle = .default(dataSource: [], selectedIndex: nil, completionHandler: { _ in }, cancelHandler: nil) {
         willSet {
@@ -193,23 +74,18 @@ open class SHContentSheetTableView: SHUIView {
                 Self.setActionTitle("取消")
                 self.mainTableView.allowsSelection = true
                 self.mainTableView.allowsMultipleSelection = false
-            case .multipleSelection(dataSource: _, completionHandler: _, cancelHandler: _):
-                Self.setActionTitle("保存")
-                self.mainTableView.allowsSelection = true
-                self.mainTableView.allowsMultipleSelection = true
             case .contentSwitch(dataSource: _, delegate: _, completionHandler: _, cancelHandler: _):
                 break
             }
         }
     }
     
-    private var dataSource: [(title: String, url: String?)] = []
-    private var multipleSelectedIndexSet: Set<Int> = []
-    private var multipleSelectedIndex: [Int?] = []
-    private var multipleSelectedCancelCallBack: (() -> Void)?
+    var style: SHContentSheetTableView.Style!
     
-    private var showTitleLabel: Bool = true
-    private var title: String? {
+    var dataSourceCount: Int = 0
+        
+    var showTitleLabel: Bool = true
+    var title: String? {
         willSet {
             self.titleLabel.text = newValue
             if newValue == nil {
@@ -222,13 +98,13 @@ open class SHContentSheetTableView: SHUIView {
         }
     }
     
-    private var showCancelButton: Bool = false
+    var showCancelButton: Bool = false
     
-    private var actionTitle: String = "取消"
+    var actionTitle: String = "取消"
     
-    private var showSeparator: Bool = true
+    var showSeparator: Bool = true
     
-    private var defaultContentHeight: CGFloat {
+    var defaultContentHeight: CGFloat {
         get {
             if self.showTitleLabel {
                 return self.tableViewHeight + CGFloat.saiha_verticalSize(num: 60)
@@ -238,12 +114,12 @@ open class SHContentSheetTableView: SHUIView {
         }
     }
     
-    private var defaultShowCount: Int = 8
-    private var tableViewHeight: CGFloat {
+    var defaultShowCount: Int = 8
+    var tableViewHeight: CGFloat {
         get {
             var height: CGFloat = 0
-            if self.dataSource.count <= self.defaultShowCount {
-                height = CGFloat(self.dataSource.count) * CGFloat.saiha_verticalSize(num: 56)
+            if self.dataSourceCount <= self.defaultShowCount {
+                height = CGFloat(self.dataSourceCount) * CGFloat.saiha_verticalSize(num: 56)
             } else {
                 height = CGFloat(self.defaultShowCount) * CGFloat.saiha_verticalSize(num: 56)
             }
@@ -268,7 +144,6 @@ open class SHContentSheetTableView: SHUIView {
     
     func setTableView() {
         self.mainTableView = UITableView()
-        self.mainTableView.register(SHContentSheetTableViewCell.self, forCellReuseIdentifier: "SHContentSheetTableViewCell")
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
         self.mainTableView.rowHeight = CGFloat.saiha_verticalSize(num: 56)
@@ -305,21 +180,39 @@ open class SHContentSheetTableView: SHUIView {
         switch self.selectionStyle {
         case .default(dataSource: _, selectedIndex: _, completionHandler: _, cancelHandler: _):
             self.cancelButton.isHidden = true
-        case .multipleSelection(dataSource: _, completionHandler: _, cancelHandler: _):
-            if self.showCancelButton && self.showTitleLabel {
-                self.cancelButton.isHidden = false
-                self.cancelButton.snp.makeConstraints { make in
-                    make.right.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -20))
-                    make.centerY.equalTo(self.titleLabel)
-                    make.width.height.equalTo(CGFloat.saiha_verticalSize(num: 20))
-                }
-            } else {
-                self.cancelButton.isHidden = true
-            }
+            
         case .contentSwitch(dataSource: _, delegate: _, completionHandler: _, cancelHandler: _):
             break
         }
     }
+    
+    func universalCellConfig(cell: SHContentSheetTableViewCell, index: Int) {
+        switch self.style! {
+        case let .multipleSelection(dataSource: dataSource):
+            let imageURL: String? = dataSource[index].url
+            if imageURL == nil {
+                cell.showIcon = false
+            } else {
+                cell.showIcon = true
+                cell.iconImageView?.saiha_loadImage(with: imageURL!)
+            }
+            cell.titleLabel.text = dataSource[index].title
+            if index < dataSource.count - 1 {
+                cell.showSeparator = self.showSeparator
+            } else {
+                cell.showSeparator = false
+            }
+        default:
+            break
+        }
+    }
+    func setDefaultCell(cell: SHContentSheetTableViewCell, index: Int) {
+        self.universalCellConfig(cell: cell, index: index)
+    }
+    func setMultipleSelectionCell(cell: SHContentSheetMultipleSelectionTableViewCell, index: Int) {
+        self.universalCellConfig(cell: cell, index: index)
+    }
+    func setContentSwitchCell(cell: SHContentSheetTableViewCell, index: Int) {}
     
     /**
      从底部弹出 `tableView`。
@@ -340,11 +233,6 @@ open class SHContentSheetTableView: SHUIView {
         case let .default(dataSource: dataSource, selectedIndex: selectedIndex, completionHandler: _, cancelHandler: _):
             Self.sharedView.setDefaultStyle(dataSource: dataSource, selectedIndex: selectedIndex)
             
-        case let .multipleSelection(dataSource: dataSource, completionHandler: _, cancelHandler: cancelHandler):
-            Self.sharedView.setMultipleSelectionStyle(dataSource: dataSource)
-            Self.sharedView.multipleSelectedCancelCallBack = cancelHandler
-            Self.sharedView.multipleSelectedIndex = [Int?](repeating: nil, count: dataSource.count)
-            
         case let .contentSwitch(dataSource: dataSource, delegate: delegate, completionHandler: _, cancelHandler: _):
             self.sharedView.setContentSwitchStyle(dataSource: dataSource, delegate: delegate)
         }
@@ -353,18 +241,14 @@ open class SHContentSheetTableView: SHUIView {
             switch style {
             case let .default(dataSource: _, selectedIndex: _, completionHandler: _, cancelHandler: cancelHandler):
                 cancelHandler?()
-            case let .multipleSelection(dataSource: _, completionHandler: completionHandler, cancelHandler: _):
-                let indexs: [Int] = Self.sharedView.multipleSelectedIndexSet.sorted()
-                completionHandler(indexs)
             case .contentSwitch(dataSource: _, delegate: _, completionHandler: _, cancelHandler: _):
                 break
             }
         }
     }
     
-    @objc private func dismissWithCallBack() {
+    @objc func dismissWithCallBack() {
         SHContentSheetView.dismiss()
-        self.multipleSelectedCancelCallBack?()
     }
     
     /// 自定义底部按钮标题。
@@ -400,14 +284,22 @@ open class SHContentSheetTableView: SHUIView {
 extension SHContentSheetTableView: UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource.count
+        return self.dataSourceCount
     }
     
-    func setDefaultCell(cell: inout SHContentSheetTableViewCell) {}
-    func setMultipleSelectionCell(cell: inout SHContentSheetTableViewCell) {}
-    func setContentSwitchCell(cell: inout SHContentSheetTableViewCell) {}
-    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch self.style! {
+        case .default:
+            break
+        case .multipleSelection:
+            var cell: SHContentSheetMultipleSelectionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SHContentSheetMultipleSelectionTableViewCell", for: indexPath) as! SHContentSheetMultipleSelectionTableViewCell
+            self.setMultipleSelectionCell(cell: cell, index: indexPath.row)
+        case .contentSwitch:
+            break
+        }
+        
+        
+        
         let cell: SHContentSheetTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SHContentSheetTableViewCell", for: indexPath) as! SHContentSheetTableViewCell
         let imageURL: String? = self.dataSource[indexPath.row].url
         if imageURL == nil {
