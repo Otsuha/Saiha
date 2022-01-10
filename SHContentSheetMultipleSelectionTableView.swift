@@ -11,7 +11,11 @@ open class SHContentSheetMultipleSelectionTableView: SHContentSheetTableView {
     
     private static var sharedView: SHContentSheetMultipleSelectionTableView = SHContentSheetMultipleSelectionTableView()
 
-    private var dataSource: [(title: String, url: String?, isSelected: Bool)] = []
+    private var dataSource: [(title: String, url: String?, isSelected: Bool)] = [] {
+        willSet {
+            self.style = .multipleSelection(dataSource: newValue)
+        }
+    }
     
     private var multipleSelectedIndexSet: Set<Int> = []
     private var multipleSelectedIndex: [Int?] = []
@@ -20,7 +24,7 @@ open class SHContentSheetMultipleSelectionTableView: SHContentSheetTableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.style = .multipleSelection
+        self.style = .multipleSelection(dataSource: [])
         Self.setActionTitle("保存")
     }
     

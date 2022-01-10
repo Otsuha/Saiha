@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 @objc public protocol SHContentSwitchSheetViewDelegate {
     
@@ -294,11 +295,10 @@ extension SHContentSheetTableView: UITableViewDelegate, UITableViewDataSource {
         case .multipleSelection:
             var cell: SHContentSheetMultipleSelectionTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SHContentSheetMultipleSelectionTableViewCell", for: indexPath) as! SHContentSheetMultipleSelectionTableViewCell
             self.setMultipleSelectionCell(cell: cell, index: indexPath.row)
+            return cell
         case .contentSwitch:
             break
         }
-        
-        
         
         let cell: SHContentSheetTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SHContentSheetTableViewCell", for: indexPath) as! SHContentSheetTableViewCell
         let imageURL: String? = self.dataSource[indexPath.row].url
