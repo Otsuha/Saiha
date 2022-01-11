@@ -41,7 +41,7 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
         self.contentView.backgroundColor = UIColor.defaultViewColor
         
         self.addImageView = UIImageView()
-        self.addImageView.image = UIImage(named: "camera_add")
+        self.addImageView.image = UIImage.saiha_imageInSaihaBundle(name: "camera_add")
         self.addImageView.contentMode = .scaleAspectFit
         self.contentView.addSubview(self.addImageView)
         
@@ -62,7 +62,7 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
         self.photoImageView.isHidden = true
         
         self.deleteButton = SHUIButton()
-        self.deleteButton.setImage(UIImage(named: "camera_del"), for: .normal)
+        self.deleteButton.setImage(UIImage.saiha_imageInSaihaBundle(name: "camera_del"), for: .normal)
         self.deleteButton.addTarget(self, action: #selector(self.touchRemoveButton(sender:)), for: .touchUpInside)
         self.contentView.addSubview(self.deleteButton)
         

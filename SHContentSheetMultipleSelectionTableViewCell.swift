@@ -9,29 +9,31 @@ import Foundation
 
 open class SHContentSheetMultipleSelectionTableViewCell: SHContentSheetTableViewCell {
     
-    open var markButton: UIButton = {
-        let button: UIButton = UIButton()
+    open var markButton: SHUIButton = {
+        let button: SHUIButton = SHUIButton()
         if #available(iOS 13.0, *) {
             button.setImage(UIImage(systemName: "checkmark"), for: .normal)
             button.tintColor = UIColor.defaultLabelColor
         } else {
-            button.setImage(UIImage(named: "checkmark"), for: .normal)
+            button.setImage(UIImage.saiha_imageInSaihaBundle(name: "checkmark"), for: .normal)
         }
         button.imageView?.contentMode = .scaleAspectFit
         button.isUserInteractionEnabled = false
         return button
     }()
     
-    open var showMark: Bool = false  // 多选视图下是否显示选中后的打钩标记。
+    open var showMark: Bool = true  // 多选视图下是否显示选中后的打钩标记。
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.widgeAlignment = .left
+        
+        self.contentView.addSubview(self.markButton)
     }
     
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
-        
-        self.contentView.addSubview(self.markButton)
     }
     
     override open func layoutSubviews() {

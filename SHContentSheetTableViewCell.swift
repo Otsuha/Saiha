@@ -22,7 +22,7 @@ open class SHContentSheetTableViewCell: UITableViewCell {
     private var hasAddSeparator: Bool = false
     open var showSeparator: Bool = true
     
-    open var widgeAlignment: SHContentSheetTableViewCell.WidgeAlignment = .left
+    open var widgeAlignment: SHContentSheetTableViewCell.WidgeAlignment = .center
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

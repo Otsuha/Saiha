@@ -19,8 +19,8 @@ open class SHSideBarHeaderView: SHUIView {
     
     private func initialize() {
         self.accessButton = UIButton()
-        self.accessButton!.setImage(UIImage(named: "arrow_down"), for: .normal)
-        self.accessButton!.setImage(UIImage(named: "arrow_up"), for: .selected)
+        self.accessButton!.setImage(UIImage.saiha_imageInSaihaBundle(name: "arrow_down"), for: .normal)
+        self.accessButton!.setImage(UIImage.saiha_imageInSaihaBundle(name: "arrow_up"), for: .selected)
         self.accessButton!.isSelected = false
         self.accessButton!.addTarget(self, action: #selector(self.handleButton(sender:)), for: .touchUpInside)
         self.addSubview(self.accessButton!)

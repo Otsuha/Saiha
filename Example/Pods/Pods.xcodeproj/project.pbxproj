@@ -16,6 +16,9 @@
 		0AB4710BE7325D1026F1D1AC38D4E4AF /* ConstraintDSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679703016FFEA760CEDFA7F114C9C6C /* ConstraintDSL.swift */; };
 		0B0F60E613D1CF7B715D220DD12D5732 /* SHAddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD87C80E73C882378CFE2859D3D63865 /* SHAddPhotoView.swift */; };
 		0BFA90EFCD3407716FFC60D140325188 /* UIImageView+WebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = F5DBFCB61A9BF7E5A46AD609741ABFA6 /* UIImageView+WebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E30F613278D19E700B1B362 /* SHContentSheetDefaultTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E30F612278D19E700B1B362 /* SHContentSheetDefaultTableView.swift */; };
+		0E30F615278D214200B1B362 /* SHContentSheetSwitchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E30F614278D214200B1B362 /* SHContentSheetSwitchTableView.swift */; };
+		0E30F617278D219A00B1B362 /* SHContentSheetSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E30F616278D219A00B1B362 /* SHContentSheetSwitchTableViewCell.swift */; };
 		0E4C1A68278BB55E00379630 /* SHContentSheetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C1A67278BB55E00379630 /* SHContentSheetTableViewCell.swift */; };
 		0E4C1A6A278BB5BB00379630 /* SHContentSheetMultipleSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C1A69278BB5BB00379630 /* SHContentSheetMultipleSelectionTableViewCell.swift */; };
 		0E4C1A6C278BB72600379630 /* SHContentSheetMultipleSelectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4C1A6B278BB72600379630 /* SHContentSheetMultipleSelectionTableView.swift */; };
@@ -289,6 +292,9 @@
 		0A911EFCB16F608D4AC0E5941DFD7B1A /* ConstraintLayoutGuideDSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutGuideDSL.swift; path = Source/ConstraintLayoutGuideDSL.swift; sourceTree = "<group>"; };
 		0A9549F4282BDCCF6F3F49BE6593BA0A /* SDWebImageDownloaderRequestModifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderRequestModifier.h; path = SDWebImage/Core/SDWebImageDownloaderRequestModifier.h; sourceTree = "<group>"; };
 		0D6AA561C719D0C7367D6AD3DCE65C95 /* SDWebImageOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageOperation.h; path = SDWebImage/Core/SDWebImageOperation.h; sourceTree = "<group>"; };
+		0E30F612278D19E700B1B362 /* SHContentSheetDefaultTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHContentSheetDefaultTableView.swift; sourceTree = "<group>"; };
+		0E30F614278D214200B1B362 /* SHContentSheetSwitchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHContentSheetSwitchTableView.swift; sourceTree = "<group>"; };
+		0E30F616278D219A00B1B362 /* SHContentSheetSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHContentSheetSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		0E4373D074FB50C55D719C3254EEFAA4 /* Saiha-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Saiha-dummy.m"; sourceTree = "<group>"; };
 		0E4C1A67278BB55E00379630 /* SHContentSheetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHContentSheetTableViewCell.swift; sourceTree = "<group>"; };
 		0E4C1A69278BB5BB00379630 /* SHContentSheetMultipleSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHContentSheetMultipleSelectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -838,6 +844,9 @@
 				0E4C1A67278BB55E00379630 /* SHContentSheetTableViewCell.swift */,
 				0E4C1A69278BB5BB00379630 /* SHContentSheetMultipleSelectionTableViewCell.swift */,
 				0E4C1A6B278BB72600379630 /* SHContentSheetMultipleSelectionTableView.swift */,
+				0E30F612278D19E700B1B362 /* SHContentSheetDefaultTableView.swift */,
+				0E30F614278D214200B1B362 /* SHContentSheetSwitchTableView.swift */,
+				0E30F616278D219A00B1B362 /* SHContentSheetSwitchTableViewCell.swift */,
 			);
 			name = SHContentSheet;
 			sourceTree = "<group>";
@@ -1350,10 +1359,13 @@
 				0B0F60E613D1CF7B715D220DD12D5732 /* SHAddPhotoView.swift in Sources */,
 				492A6B68B90526189C51CDBEB5A8A72B /* SHCGFloat.swift in Sources */,
 				5BBF7C7B301DFBAD2341A6E50F58E2BC /* SHContentSheetTableView.swift in Sources */,
+				0E30F617278D219A00B1B362 /* SHContentSheetSwitchTableViewCell.swift in Sources */,
 				FA35C85A67989E92E0E3C7384DA98D73 /* SHContentSheetView.swift in Sources */,
 				C97BA50160F380721D63069D2BBA819C /* SHDate.swift in Sources */,
 				3D7885E52675222937BA1704B8234D8A /* SHSideBarTableView.swift in Sources */,
 				B2F0999DB93A57AC4BD9F8212F159758 /* SHUIButton.swift in Sources */,
+				0E30F615278D214200B1B362 /* SHContentSheetSwitchTableView.swift in Sources */,
+				0E30F613278D19E700B1B362 /* SHContentSheetDefaultTableView.swift in Sources */,
 				38A5DEAB12620722FB9A0C290A848A7C /* SHUICollectionView.swift in Sources */,
 				5F3A463993CF0120FD80534E84B6140F /* SHUIColor.swift in Sources */,
 				5CDE8EC97C09241723601AA2FD1CD69C /* SHUIImageView.swift in Sources */,
