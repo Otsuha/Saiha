@@ -14,11 +14,11 @@ open class SHContentSheetView: SHUIView {
     
     private static var sharedView: SHContentSheetView?
 
-    private var backgroundView: UIView!
-    private var mainContentView: UIView!
-    private var sepratorLine: UIView!
-    private var cancelButton: UIButton!
-    private var mainView: UIView!
+    private var backgroundView: SHUIView!
+    private var mainContentView: SHUIView!
+    private var sepratorLine: SHUIView!
+    private var cancelButton: SHUIButton!
+    private var mainView: SHUIView!
     
     private var mainViewHeight: CGFloat = 0
     private var contentHeight: CGFloat {
@@ -41,14 +41,14 @@ open class SHContentSheetView: SHUIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
-        self.backgroundView = UIView()
+        self.backgroundView = SHUIView()
         self.backgroundView.backgroundColor = UIColor.saiha_colorWithHexString("#000000", alpha: 0.7)
         self.addSubview(self.backgroundView)
         self.backgroundView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
         
-        self.mainContentView = UIView()
+        self.mainContentView = SHUIView()
         self.backgroundView.addSubview(self.mainContentView)
         self.mainContentView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
@@ -72,7 +72,7 @@ open class SHContentSheetView: SHUIView {
             make.height.equalTo(CGFloat.saiha_verticalSize(num: 56) + UIWindow.saiha_safeAreaInsets().bottom)
         }
         
-        self.sepratorLine = UIView()
+        self.sepratorLine = SHUIView()
         self.sepratorLine.backgroundColor = UIColor.saiha_colorWithHexString("#F2F2F2")
         self.mainContentView.addSubview(self.sepratorLine)
         self.sepratorLine.snp.makeConstraints { make in
@@ -81,7 +81,7 @@ open class SHContentSheetView: SHUIView {
             make.height.equalTo(CGFloat.saiha_verticalSize(num: 8))
         }
         
-        self.mainView = UIView()
+        self.mainView = SHUIView()
         self.mainView.backgroundColor = .white
         self.mainContentView.addSubview(self.mainView)
         self.mainView.snp.makeConstraints { make in
@@ -190,7 +190,7 @@ open class SHContentSheetView: SHUIView {
         Self.sharedView = nil
     }
     
-    @objc private func touchCancelAction(sender: UIButton) {
+    @objc private func touchCancelAction(sender: SHUIButton) {
         self.dismissWithAnimation()
         self.completionHandler?()
     }

@@ -12,13 +12,13 @@ import SnapKit
 
 open class SHSideBarHeaderView: SHUIView {
     
-    open var titleLabel: UILabel?
-    open var accessButton: UIButton?
+    open var titleLabel: SHUILabel?
+    open var accessButton: SHUIButton?
     
-    open var touchAccessButtonHandle: ((_ button: UIButton) -> Void)?
+    open var touchAccessButtonHandle: ((_ button: SHUIButton) -> Void)?
     
     private func initialize() {
-        self.accessButton = UIButton()
+        self.accessButton = SHUIButton()
         self.accessButton!.setImage(UIImage.saiha_imageInSaihaBundle(name: "arrow_down"), for: .normal)
         self.accessButton!.setImage(UIImage.saiha_imageInSaihaBundle(name: "arrow_up"), for: .selected)
         self.accessButton!.isSelected = false
@@ -30,7 +30,7 @@ open class SHSideBarHeaderView: SHUIView {
             make.width.equalTo(CGFloat.saiha_horizontalSize(num: 24))
         }
         
-        self.titleLabel = UILabel()
+        self.titleLabel = SHUILabel()
         self.titleLabel!.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16))
         self.titleLabel!.textAlignment = .left
         self.addSubview(titleLabel!)
@@ -51,7 +51,7 @@ open class SHSideBarHeaderView: SHUIView {
         super.init(coder: coder)
     }
     
-    @objc private func handleButton(sender: UIButton) {
+    @objc private func handleButton(sender: SHUIButton) {
         sender.isSelected = !sender.isSelected
         self.touchAccessButtonHandle?(sender)
     }

@@ -24,9 +24,9 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
     }
     
     private var addImageView: UIImageView!
-    private var titleLabel: UILabel!
+    private var titleLabel: SHUILabel!
     private var photoImageView: UIImageView!
-    private var deleteButton: UIButton!
+    private var deleteButton: SHUIButton!
     
     var index: Int!
     var addPhotoView: SHAddPhotoView!
@@ -45,7 +45,7 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
         self.addImageView.contentMode = .scaleAspectFit
         self.contentView.addSubview(self.addImageView)
         
-        self.titleLabel = UILabel()
+        self.titleLabel = SHUILabel()
         self.titleLabel.text = "添加照片"
         self.titleLabel.textAlignment = .center
         self.titleLabel.textColor = UIColor.saiha_colorWithHexString("#858B9C")
@@ -126,7 +126,7 @@ class SHAddPhotoCollectionCell: UICollectionViewCell {
         }
     }
     
-    @objc private func touchRemoveButton(sender: UIButton) {
+    @objc private func touchRemoveButton(sender: SHUIButton) {
         if self.delegate == nil {
             self.setImage(image: nil)
             self.removePhotoCallBack?(self.index)
