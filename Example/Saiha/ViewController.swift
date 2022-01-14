@@ -18,6 +18,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+//        DispatchQueue.main.async {
+//            SHProgressView.show()
+//            SHProgressView.showWithSignal()
+//            SHProgressView.showWithSignal()
+//        }
+//        DispatchQueue.global().async {
+//            Thread.sleep(forTimeInterval: 3)
+//            DispatchQueue.main.async {
+//                SHProgressView.dismiss()
+////                SHProgressView.dismiss()
+////                SHProgressView.dismiss()
+////                SHProgressView.dismiss()
+//            }
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,22 +40,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapAction(_ sender: Any) {
-        let multipleSelectionDataSource: [(String, String?, Bool)] = [
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, true),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, true),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, true),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false)
-        ]
+//        let multipleSelectionDataSource: [(String, String?, Bool)] = [
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, true),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, true),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, true),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false)
+//        ]
         let contentSwitchDataSource: [(String, String?, Bool)] = [
             ("dsfadasfd", nil, false),
             ("dsfadasfd", nil, false),

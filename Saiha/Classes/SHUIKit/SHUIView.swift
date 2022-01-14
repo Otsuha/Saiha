@@ -16,6 +16,16 @@ extension UIView {
     
     /**
      利用 `CABasicAnimation` 产生一次简单的动画。动画在完成后默认会使视图停留在动画结束后的位置。
+     
+     - Parameters:
+        - key: 动画标识符。
+        - keyPath: 指定哪个属性产生动画。
+        - from: 从什么数值开始。
+        - to: 从什么数值结束。
+        - duration: 动画持续时间。
+        - isRemoveOnCompletion: 是否完成后移除动画。
+        - fillMode: 动画模式。
+        - completionHandler: 动画完成后的回调。
      */
     public func saiha_addSimpleOnceAnimation(key: String, keyPath: String,
                                              from fromValue: CGFloat, to toValue: CGFloat,
@@ -62,7 +72,7 @@ public extension UIView {
             case .bottomRight:
                 corners = corners | CACornerMask.layerMaxXMaxYCorner.rawValue
             case .all:
-                corners = CACornerMask().rawValue
+                corners = corners | CACornerMask.layerMinXMinYCorner.rawValue | CACornerMask.layerMaxXMinYCorner.rawValue | CACornerMask.layerMinXMaxYCorner.rawValue | CACornerMask.layerMaxXMaxYCorner.rawValue
             }
         }
         if #available(iOS 11.0, *) {
