@@ -131,6 +131,9 @@ open class SHProgressView: SHUIView {
     public static func dismiss() {
         Self.shared.signalLock.lock()
         Self.shared.signal -= 1
+        if Self.shared.signal < 0 {
+            Self.shared.signal = 0
+        }
         Self.shared.signalLock.unlock()
         if Self.shared.signal == 0 {
             Self.shared.dismissAllView()
@@ -145,5 +148,12 @@ open class SHProgressView: SHUIView {
         Self.shared.signal = 0
         Self.shared.signalLock.unlock()
         Self.shared.dismissAllView()
+    }
+    
+    /**
+     获取当前计数。
+     */
+    public static func getSignal() -> Int {
+        return Self.shared.signal
     }
 }

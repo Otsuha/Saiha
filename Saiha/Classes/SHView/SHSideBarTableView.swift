@@ -210,4 +210,8 @@ extension SHSideBarTableView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return self.headerHeight
     }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.didSelectItemHandle?(indexPath.row, indexPath.section)
+    }
 }
