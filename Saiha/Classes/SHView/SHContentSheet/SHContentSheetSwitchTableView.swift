@@ -73,6 +73,7 @@ open class SHContentSheetSwitchTableView: SHContentSheetTableView {
             return
         }
         
+        Self.sharedView.setTableView()
         Self.sharedView.title = title
         Self.sharedView.cancelHandler = cancelHandler
         Self.sharedView.delegate = delegate

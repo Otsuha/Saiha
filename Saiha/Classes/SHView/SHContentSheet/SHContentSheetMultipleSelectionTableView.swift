@@ -74,6 +74,7 @@ open class SHContentSheetMultipleSelectionTableView: SHContentSheetTableView {
             return
         }
         
+        Self.sharedView.setTableView()
         Self.sharedView.title = title
         Self.sharedView.cancelHandler = cancelHandler
         

@@ -62,6 +62,7 @@ open class SHContentSheetDefaultTableView: SHContentSheetTableView {
             return
         }
         
+        Self.sharedView.setTableView()
         Self.sharedView.title = title
         Self.sharedView.completionHandler = completionHandler
         Self.sharedView.cancelHandler = cancelHandler
