@@ -99,6 +99,11 @@ Pod::Spec.new do |spec|
       ss.source_files = 'Saiha/Classes/SHFoundation/**/*'
   end
   
+  spec.subspec 'SHCommon' do |ss|
+    ss.source_files = 'Saiha/Classes/SHCommon/**/*'
+    ss.dependency 'Saiha/SHFoundation'
+  end
+  
   spec.subspec 'SHUIKit' do |ss|
       ss.source_files = 'Saiha/Classes/SHUIKit/**/*'
       ss.dependency 'Saiha/SHFoundation'
