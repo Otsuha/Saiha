@@ -99,8 +99,9 @@ open class SHContentSheetView: SHUIView {
      - Parameters:
         - customView: 自定义视图。
         - contentHeight: 自定义视图的高度。
+        - inViewController: 默认弹框视图添加在主窗口上，但是你也可以选择将视图添加在当前活跃的控制器上。
      */
-    public static func show(customView: UIView, contentHeight: CGFloat, completionHandler: ((() -> Void)?)) {
+    public static func show(customView: UIView, contentHeight: CGFloat, inViewController: Bool = false, completionHandler: ((() -> Void)?)) {
         if Self.sharedView?.superview != nil {
             return
         }
@@ -111,7 +112,11 @@ open class SHContentSheetView: SHUIView {
             make.left.top.right.bottom.equalToSuperview()
         }
         sheetView.mainViewHeight = contentHeight
-        UIWindow.saiha_securyWindow()?.addSubview(sheetView)
+        if inViewController {
+            UIViewController.saiha_currentActivityViewController()?.view.addSubview(sheetView)
+        } else {
+            UIWindow.saiha_securyWindow()?.addSubview(sheetView)
+        }
         sheetView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }

@@ -19,7 +19,7 @@ public extension UIViewController {
         return UIViewController.saiha_findCurrentActivityViewController(from: rootVC)
     }
     
-    static func saiha_findCurrentActivityViewController(from viewController: UIViewController) -> UIViewController? {
+    private static func saiha_findCurrentActivityViewController(from viewController: UIViewController) -> UIViewController? {
         var currentActivityViewController: UIViewController?
         
         // 先判断根视图控制器是否有其他视图控制器弹出，如果有，那么当前的视图控制器肯定在它之上。
