@@ -86,32 +86,32 @@ class ViewController: UIViewController {
 //            print(index)
 //        }, cancelHandler: nil)
         
-        SHAlertView.show(title: "ddddddd") { alertView in
-            alertView.addLabel(text: "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd") { label in
-            }
-            
-            alertView.addTextField(placeholder: "sfsfsdfsdf") { textField in
-                textField.placeholder = "sfsfsdfsdf"
-            }
-            
-            alertView.addAction(title: "取消") { button in
-                button.setTitleColor(UIColor.gray, for: .normal)
-            } completionHandler: {
-                print("点击了取消")
-            }
-            alertView.addAction(title: "确定") { button in
-
-            } completionHandler: {
-                print("点击了确定")
-                print(alertView.textFieldSave.first?.text)
-            }
+//        SHAlertView.show(title: nil) { alertView in
+//            alertView.addLabel(text: "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd") { label in
+//            }
+//
+////            alertView.addTextField(placeholder: "sfsfsdfsdf") { textField in
+////                textField.placeholder = "sfsfsdfsdf"
+////            }
+//
+//            alertView.addAction(title: "取消") { button in
+//                button.setTitleColor(UIColor.gray, for: .normal)
+//            } completionHandler: {
+//                print("点击了取消")
+//            }
+//            alertView.addAction(title: "确定") { button in
+//
+//            } completionHandler: {
+//                print("点击了确定")
+//                print(alertView.textFieldSave.first?.text)
+//            }
 //            alertView.addAction(title: "dddd") { button in
 //
 //            } completionHandler: {
 //
 //            }
 
-        }
+//        }
     }
     
 }
