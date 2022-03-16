@@ -8,21 +8,21 @@
 import Foundation
 import UIKit
 
-open class SHContentSheetSwitchTableViewCell: SHContentSheetTableViewCell {
+class SHContentSheetSwitchTableViewCell: SHContentSheetTableViewCell {
     
-    open var switchButton: UISwitch = {
+    var switchButton: UISwitch = {
         let switchButton: UISwitch = UISwitch()
         switchButton.isOn = true
         return switchButton
     }()
     
-    open var switchAllowTouch: Bool = true {
+    var switchAllowTouch: Bool = true {
         willSet {
             self.switchButton.isUserInteractionEnabled = newValue
         }
     }
     
-    open var handleSwitch: ((_ switchButton: UISwitch) -> Void)?
+    var handleSwitch: ((_ switchButton: UISwitch) -> Void)?
     
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

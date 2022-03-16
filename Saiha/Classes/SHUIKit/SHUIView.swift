@@ -9,6 +9,14 @@ import UIKit
 import SnapKit
 
 open class SHUIView: UIView {
+    
+    open var enableTouchToCancelAllEditing: Bool = true
+    
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        UIWindow.saiha_securyWindow()?.endEditing(self.enableTouchToCancelAllEditing)
+    }
 
 }
 
@@ -93,8 +101,8 @@ public extension UIView {
     }
     
     func saiha_addSeparator(color: UIColor = UIColor.saiha_colorWithHexString("#F2F3F7"),
-                             position: UIView.SeparatorPositon = .bottom,
-                             leftEdge: CGFloat = 0, rightEdge: CGFloat = 0) {
+                            position: UIView.SeparatorPositon = .bottom,
+                            leftEdge: CGFloat = 0, rightEdge: CGFloat = 0) {
         let aLine: UIView = UIView()
         aLine.backgroundColor = color
         self.addSubview(aLine)

@@ -14,6 +14,7 @@ public extension UITableView {
         case grouped = 1
         case sidebar = 2
     }
+    
 }
 
 open class SHUITableView: UITableView {
@@ -22,6 +23,8 @@ open class SHUITableView: UITableView {
     open var sh_style: SHUITableView.SHStyle {
         return self._sh_style
     }
+    
+    open var enableTouchToCancelAllEditing: Bool = true
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -43,4 +46,9 @@ open class SHUITableView: UITableView {
         super.init(coder: coder)
     }
     
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        UIWindow.saiha_securyWindow()?.endEditing(self.enableTouchToCancelAllEditing)
+    }
 }

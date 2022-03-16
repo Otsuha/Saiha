@@ -24,6 +24,11 @@ open class SHContentSheetTableView: SHUIView {
         case contentSwitch
     }
     
+    public enum WidgeAlignment: Int {
+        case left
+        case center
+    }
+    
     var titleLabel: SHUILabel = {
         let label: SHUILabel = SHUILabel()
         label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16), weight: .medium)
@@ -65,6 +70,8 @@ open class SHContentSheetTableView: SHUIView {
     static var actionTitle: String = "取消"
     
     static var showSeparator: Bool = true
+    
+    static var widgeAlignment: SHContentSheetTableView.WidgeAlignment?
     
     var cancelHandler: (() -> Void)?
     
@@ -119,7 +126,7 @@ open class SHContentSheetTableView: SHUIView {
         super.layoutSubviews()
         
         if self.mainTableView != nil {
-            self.mainTableView.snp.makeConstraints { make in
+            self.mainTableView.snp.remakeConstraints { make in
                 make.left.right.bottom.equalToSuperview()
                 make.height.equalTo(self.tableViewHeight)
             }
@@ -200,6 +207,11 @@ open class SHContentSheetTableView: SHUIView {
     /// 是否显示每行的底部分割线。最后一行始终不显示底部分割线。
     public static func showSeparator(show: Bool) {
         Self.showSeparator = show
+    }
+    
+    /// 设置每行组件的位置。
+    public static func setWidgeAlignment(alignment: SHContentSheetTableView.WidgeAlignment) {
+        Self.widgeAlignment = alignment
     }
     
     /// 是否显示标题行旁边的 `x` 按钮。如果因为 `title` 属性为 `nil` 导致标题行隐藏，则设置此属性无任何效果。默认不显示。

@@ -54,6 +54,9 @@
         "Saiha/SHFoundation": [
 
         ],
+        "Saiha/SHCommon": [
+
+        ],
         "SDWebImage": [
 
         ],
@@ -66,10 +69,13 @@
       "name": "SHView",
       "source_files": "Saiha/Classes/SHView/*",
       "dependencies": {
-        "Saiha/SHUIKit": [
+        "Saiha/SHFoundation": [
 
         ],
-        "Saiha/SHFoundation": [
+        "Saiha/SHCommon": [
+
+        ],
+        "Saiha/SHUIKit": [
 
         ],
         "SDWebImage": [
@@ -78,13 +84,49 @@
         "SnapKit": [
 
         ]
-      },
-      "subspecs": [
-        {
-          "name": "SHContentSheet",
-          "source_files": "Saiha/Classes/SHView/SHContentSheet/*"
-        }
-      ]
+      }
+    },
+    {
+      "name": "SHContentSheet",
+      "source_files": "Saiha/Classes/SHContentSheet/*",
+      "dependencies": {
+        "Saiha/SHFoundation": [
+
+        ],
+        "Saiha/SHCommon": [
+
+        ],
+        "Saiha/SHUIKit": [
+
+        ],
+        "SnapKit": [
+
+        ],
+        "SDWebImage": [
+
+        ]
+      }
+    },
+    {
+      "name": "SHAlertView",
+      "source_files": "Saiha/Classes/SHAlertView/*",
+      "dependencies": {
+        "Saiha/SHFoundation": [
+
+        ],
+        "Saiha/SHCommon": [
+
+        ],
+        "Saiha/SHUIKit": [
+
+        ],
+        "SnapKit": [
+
+        ],
+        "SDWebImage": [
+
+        ]
+      }
     },
     {
       "name": "Resources",

@@ -40,6 +40,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapAction(_ sender: Any) {
+//        let defaultDataSource: [(String, String?)] = [
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil)
+//        ]
 //        let multipleSelectionDataSource: [(String, String?, Bool)] = [
 //            ("dsfadasfd", nil, false),
 //            ("dsfadasfd", nil, false),
@@ -75,6 +84,10 @@ class ViewController: UIViewController {
 //        SHContentSheetTableView.setActionTitle("保存")
 //        SHContentSheetTableView.setDefaultShowCount(count: 6)
 //        SHContentSheetTableView.showSeparator(show: false)
+//        SHContentSheetTableView.setWidgeAlignment(alignment: .center)
+//        SHContentSheetDefaultTableView.show(title: nil, dataSource: defaultDataSource, selectedIndex: nil, completionHandler: { index in
+//            saiha_print(index)
+//        }, cancelHandler: nil)
 //        SHContentSheetSwitchTableView.show(title: "ddd", dataSource: contentSwitchDataSource, delegate: nil, completionHandler: { dataSource in
 //            print(dataSource)
 //        }, cancelHandler: nil)
@@ -86,32 +99,19 @@ class ViewController: UIViewController {
 //            print(index)
 //        }, cancelHandler: nil)
         
-//        SHAlertView.show(title: nil) { alertView in
-//            alertView.addLabel(text: "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd") { label in
-//            }
-//
-////            alertView.addTextField(placeholder: "sfsfsdfsdf") { textField in
-////                textField.placeholder = "sfsfsdfsdf"
-////            }
-//
-//            alertView.addAction(title: "取消") { button in
-//                button.setTitleColor(UIColor.gray, for: .normal)
-//            } completionHandler: {
-//                print("点击了取消")
-//            }
-//            alertView.addAction(title: "确定") { button in
-//
-//            } completionHandler: {
-//                print("点击了确定")
-//                print(alertView.textFieldSave.first?.text)
-//            }
-//            alertView.addAction(title: "dddd") { button in
-//
-//            } completionHandler: {
-//
-//            }
-
+//        SHMessageAlertView.show(title: "提示", message: "dsfasfasdfasfadfaf的解放军打了发件埃里克森京东方考虑君安收到了咖啡机考虑萨芬结案率肯德基飞洒懒得看 sfdasdfsf", viewConfiguration: nil, cancelAction: nil) { button in
+//            saiha_print("qqqqqqqq")
 //        }
+        
+        SHMessageAlertView.show(title: "dfsfsdf", message: "dsfasfasdfasfadfaf的解放军打了发件埃里克森京东方考虑君安收到了咖啡机考虑萨芬结案率肯德基飞洒懒得看 sfdasdfsf") { label in
+            label.textColor = .red
+            label.font = .systemFont(ofSize: 20)
+        } cancelAction: { button in
+            
+        } confirmAction: { button in
+            
+        }
+
     }
     
 }

@@ -1,7 +1,9 @@
 PODS:
   - Saiha (0.1.11):
     - Saiha/Resources (= 0.1.11)
+    - Saiha/SHAlertView (= 0.1.11)
     - Saiha/SHCommon (= 0.1.11)
+    - Saiha/SHContentSheet (= 0.1.11)
     - Saiha/SHFoundation (= 0.1.11)
     - Saiha/SHUIKit (= 0.1.11)
     - Saiha/SHView (= 0.1.11)
@@ -10,24 +12,32 @@ PODS:
   - Saiha/Resources (0.1.11):
     - SDWebImage
     - SnapKit
+  - Saiha/SHAlertView (0.1.11):
+    - Saiha/SHCommon
+    - Saiha/SHFoundation
+    - Saiha/SHUIKit
+    - SDWebImage
+    - SnapKit
   - Saiha/SHCommon (0.1.11):
     - Saiha/SHFoundation
+    - SDWebImage
+    - SnapKit
+  - Saiha/SHContentSheet (0.1.11):
+    - Saiha/SHCommon
+    - Saiha/SHFoundation
+    - Saiha/SHUIKit
     - SDWebImage
     - SnapKit
   - Saiha/SHFoundation (0.1.11):
     - SDWebImage
     - SnapKit
   - Saiha/SHUIKit (0.1.11):
+    - Saiha/SHCommon
     - Saiha/SHFoundation
     - SDWebImage
     - SnapKit
   - Saiha/SHView (0.1.11):
-    - Saiha/SHFoundation
-    - Saiha/SHUIKit
-    - Saiha/SHView/SHContentSheet (= 0.1.11)
-    - SDWebImage
-    - SnapKit
-  - Saiha/SHView/SHContentSheet (0.1.11):
+    - Saiha/SHCommon
     - Saiha/SHFoundation
     - Saiha/SHUIKit
     - SDWebImage
@@ -52,7 +62,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Saiha: 5cf1ff3995869e48b7bc8492863c986d215eaafb
+  Saiha: e8de4392efabfb77fbb8f69cc20fc4daec540e1b
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 

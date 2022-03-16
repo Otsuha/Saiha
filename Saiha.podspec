@@ -100,31 +100,43 @@ Pod::Spec.new do |spec|
   end
   
   spec.subspec 'SHCommon' do |ss|
-    ss.source_files = 'Saiha/Classes/SHCommon/**/*'
-    ss.dependency 'Saiha/SHFoundation'
+      ss.source_files = 'Saiha/Classes/SHCommon/**/*'
+      ss.dependency 'Saiha/SHFoundation'
   end
   
   spec.subspec 'SHUIKit' do |ss|
       ss.source_files = 'Saiha/Classes/SHUIKit/**/*'
       ss.dependency 'Saiha/SHFoundation'
+      ss.dependency 'Saiha/SHCommon'
       ss.dependency 'SDWebImage'
       ss.dependency 'SnapKit'
   end
 
   spec.subspec 'SHView' do |ss|
       ss.source_files = 'Saiha/Classes/SHView/*'
-      ss.dependency 'Saiha/SHUIKit'
       ss.dependency 'Saiha/SHFoundation'
+      ss.dependency 'Saiha/SHCommon'
+      ss.dependency 'Saiha/SHUIKit'
       ss.dependency 'SDWebImage'
       ss.dependency 'SnapKit'
-
-      ss.subspec 'SHContentSheet' do |sss|
-          sss.source_files = 'Saiha/Classes/SHView/SHContentSheet/*'
-          ss.dependency 'Saiha/SHUIKit'
-          ss.dependency 'Saiha/SHFoundation'
-          ss.dependency 'SnapKit'
-          ss.dependency 'SDWebImage'
-      end
+  end
+      
+  spec.subspec 'SHContentSheet' do |ss|
+      ss.source_files = 'Saiha/Classes/SHContentSheet/*'
+      ss.dependency 'Saiha/SHFoundation'
+      ss.dependency 'Saiha/SHCommon'
+      ss.dependency 'Saiha/SHUIKit'
+      ss.dependency 'SnapKit'
+      ss.dependency 'SDWebImage'
+  end
+  
+  spec.subspec 'SHAlertView' do |ss|
+      ss.source_files = 'Saiha/Classes/SHAlertView/*'
+      ss.dependency 'Saiha/SHFoundation'
+      ss.dependency 'Saiha/SHCommon'
+      ss.dependency 'Saiha/SHUIKit'
+      ss.dependency 'SnapKit'
+      ss.dependency 'SDWebImage'
   end
       
   #spec.exclude_files = "Classes/Exclude"

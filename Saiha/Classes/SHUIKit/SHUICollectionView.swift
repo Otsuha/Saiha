@@ -9,12 +9,12 @@ import UIKit
 
 open class SHUICollectionView: UICollectionView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    open var enableTouchToCancelAllEditing: Bool = true
 
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        UIWindow.saiha_securyWindow()?.endEditing(self.enableTouchToCancelAllEditing)
+    }
+    
 }

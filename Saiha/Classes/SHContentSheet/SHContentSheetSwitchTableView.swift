@@ -49,6 +49,7 @@ open class SHContentSheetSwitchTableView: SHContentSheetTableView {
     override func setContentSwitchCell(cell: SHContentSheetSwitchTableViewCell, index: Int) {
         super.setContentSwitchCell(cell: cell, index: index)
         
+        cell.showMark = false
         cell.switchButton.isOn = self.dataSource[index].isOn
         cell.handleSwitch = { [weak self] switchButton in
             guard let strongSelf = self else { return }
@@ -58,22 +59,27 @@ open class SHContentSheetSwitchTableView: SHContentSheetTableView {
         if let allowTouch = self.delegate?.contentSheetSwitchTableView?(self, canSwitchButtonIn: index) {
             cell.switchAllowTouch = allowTouch
         }
+        if Self.widgeAlignment != nil {
+            cell.widgeAlignment = Self.widgeAlignment!
+        }
     }
     
     /**
      开关样式弹框。你可以实现 `SHContentSheetSwitchTableViewDelegate` 来实现每个开关的操作，或者更多自定义操作。
      
      - Parameters:
+        - title: 底部弹框标题，显示在最上面一行。若为 `nil` 则不显示标题行。
         - dataSource: `tableView` 的数据源。`tuple.0` 为 cell 的标题；`tuple.1` 为 cell 图标的 `url` 地址，若 `url` 为 `nil`，则图标不显示；`tuple.2` 为某个开关是否打开。
+        - delegate: 代理对象。
+        - inViewController: 默认弹框视图添加在主窗口上，但是你也可以选择将视图添加在当前活跃的控制器上。
         - completionHandler: 在此样式下，该回调返回 `tableView` 的数据源，数据源保持原来的元组格式并记录了每个开关的状态。
         - cancelHandler: 若标题设置为 `nil`，即不显示标题行，那么设置此属性无任何效果。若标题行显示，并且显示了 `x` 按钮，则点击 `x` 按钮将执行此回调。
      */
-    public static func show(title: String?, dataSource: [(title: String, url: String?, isOn: Bool)], delegate: SHContentSheetSwitchTableViewDelegate?, completionHandler: ((_ dataSource: [(title: String, url: String?, isOn: Bool)]) -> Void)?, cancelHandler: (() -> Void)?) {
+    public static func show(title: String?, dataSource: [(title: String, url: String?, isOn: Bool)], delegate: SHContentSheetSwitchTableViewDelegate?, inViewController: Bool = false, completionHandler: ((_ dataSource: [(title: String, url: String?, isOn: Bool)]) -> Void)?, cancelHandler: (() -> Void)?) {
         if Self.sharedView.superview != nil {
             return
         }
         
-        Self.sharedView.setTableView()
         Self.sharedView.title = title
         Self.sharedView.cancelHandler = cancelHandler
         Self.sharedView.delegate = delegate
