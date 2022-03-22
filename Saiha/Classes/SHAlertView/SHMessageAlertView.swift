@@ -7,11 +7,13 @@
 
 import Foundation
 
-open class SHMessageAlertView: SHAlertView {
+open class SHMessageAlertView: SHUIView {
     
-    private var label: SHUILabel = {
+    open var label: SHUILabel = {
         let label: SHUILabel = SHUILabel()
         label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 19))
         return label
     }()
     
@@ -21,6 +23,7 @@ open class SHMessageAlertView: SHAlertView {
         self.addSubview(self.label)
         self.label.snp.makeConstraints { make in
             make.left.top.right.bottom.equalToSuperview()
+            make.height.greaterThanOrEqualTo(CGFloat.saiha_verticalSize(num: 85))
         }
     }
     
@@ -28,10 +31,9 @@ open class SHMessageAlertView: SHAlertView {
         super.init(coder: coder)
     }
     
-    public static func show(title: String?, message: String, inViewController: Bool = false, viewConfiguration: ((_ label: SHUILabel) -> Void)?, cancelAction: ((_ button: SHUIButton) -> Void)?, confirmAction: @escaping ((_ button: SHUIButton) -> Void)) {
+    public static func show(title: String?, message: String, inViewController: Bool = false, cancelAction: (() -> Void)?, confirmAction: @escaping (() -> Void)) {
         let messageAlertView: SHMessageAlertView = SHMessageAlertView()
         messageAlertView.label.text = message
-        viewConfiguration?(messageAlertView.label)
-        SHAlertView.show(title: title, customView: messageAlertView, inViewController: inViewController, cancelAction: cancelAction, confirmAction: confirmAction)
+        SHAlertView.show(title: title, customView: messageAlertView, inViewController: inViewController, viewConfiguration: nil, cancelAction: cancelAction, confirmAction: confirmAction)
     }
 }

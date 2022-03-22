@@ -10,13 +10,41 @@ import UIKit
 
 open class SHAlertView: SHUIView {
     
+    private var defaultConfirmButtonTitleColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor { traitCollection in
+                if traitCollection.userInterfaceStyle == .light {
+                    return UIColor.systemBlue
+                } else {
+                    return UIColor.blue
+                }
+            }
+        } else {
+            return UIColor.blue
+        }
+    }
+    
+    private var defaultCancelButtonTitleColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor { traitCollection in
+                if traitCollection.userInterfaceStyle == .light {
+                    return UIColor.systemRed
+                } else {
+                    return UIColor.red
+                }
+            }
+        } else {
+            return UIColor.red
+        }
+    }
+    
     private var backgroundView: SHUIView = {
         let view: SHUIView = SHUIView()
         view.backgroundColor = UIColor.saiha_colorWithHexString("#000000", alpha: 0.7)
         return view
     }()
     
-    private var mainContentView: SHUIView = {
+    open var mainContentView: SHUIView = {
         let view: SHUIView = SHUIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 8
@@ -24,39 +52,41 @@ open class SHAlertView: SHUIView {
         return view
     }()
     
-    private var title: String?
-    private lazy var titleLabel: SHUILabel = {
+    open var title: String? {
+        didSet {
+            self.titleLabel.text = title
+        }
+    }
+    open lazy var titleLabel: SHUILabel = {
         let label: SHUILabel = SHUILabel()
         label.text = self.title
-        label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 17))
+        label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 17), weight: .semibold)
         label.textAlignment = .center
         return label
     }()
     
-    private var cancelAction: ((_ button: SHUIButton) -> Void)?
-    private var cancelButton: SHUIButton = {
+    private var cancelAction: (() -> Void)?
+    open var cancelButton: SHUIButton = {
         let button: SHUIButton = SHUIButton()
         button.setTitle("取消", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 17))
         button.titleLabel?.textAlignment = .center
         return button
     }()
     
-    private var confirmAction: ((_ button: SHUIButton) -> Void)?
-    private var confirmButton: SHUIButton = {
+    private var confirmAction: (() -> Void)?
+    open var confirmButton: SHUIButton = {
         let button: SHUIButton = SHUIButton()
         button.setTitle("确认", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 17))
         button.titleLabel?.textAlignment = .center
         return button
     }()
     
-    private var viewEdge: CGFloat = 15
-    private var leftViewEdge: CGFloat = 15
+    private var viewEdge: CGFloat = 22
+    private var leftViewEdge: CGFloat = 11
     private var separatorEdge: CGFloat = 8.0
-    private var separatorColor: UIColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1.0)
+    private var separatorColor: UIColor = UIColor.saiha_colorWithHexString("#F2F3F7")
     
     private var allViews: [UIView] = []
             
@@ -75,7 +105,10 @@ open class SHAlertView: SHUIView {
             make.centerY.equalToSuperview()
         }
         
+        self.cancelButton.setTitleColor(self.defaultCancelButtonTitleColor, for: .normal)
         self.cancelButton.addTarget(self, action: #selector(self.handleCancelAction(sender:)), for: .touchUpInside)
+        
+        self.confirmButton.setTitleColor(self.defaultConfirmButtonTitleColor, for: .normal)
         self.confirmButton.addTarget(self, action: #selector(self.handleConfirmAction(sender:)), for: .touchUpInside)
     }
     
@@ -84,12 +117,12 @@ open class SHAlertView: SHUIView {
     }
     
     @objc private func handleCancelAction(sender: SHUIButton) {
-        self.cancelAction?(self.cancelButton)
+        self.cancelAction?()
         self.dismiss()
     }
     
     @objc private func handleConfirmAction(sender: SHUIButton) {
-        self.confirmAction?(self.confirmButton)
+        self.confirmAction?()
         self.dismiss()
     }
     
@@ -159,7 +192,7 @@ open class SHAlertView: SHUIView {
         }
     }
     
-    public static func show(title: String?, customView: UIView, inViewController: Bool = false, cancelAction: ((_ button: SHUIButton) -> Void)?, confirmAction: @escaping ((_ button: SHUIButton) -> Void)) {
+    public static func show(title: String?, customView: UIView, inViewController: Bool = false, viewConfiguration: ((_ alertView: SHAlertView) -> Void)?, cancelAction: (() -> Void)?, confirmAction: @escaping (() -> Void)) {
         let alertView: SHAlertView = SHAlertView()
         if inViewController {
             UIViewController.saiha_currentActivityViewController()?.view.addSubview(alertView)
@@ -176,6 +209,7 @@ open class SHAlertView: SHUIView {
         } else {
             alertView.allViews.insert(customView, at: 0)
         }
+        viewConfiguration?(alertView)
         alertView.cancelAction = cancelAction
         alertView.confirmAction = confirmAction
         alertView.setUI()

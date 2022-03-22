@@ -103,17 +103,6 @@ class ViewController: UIViewController {
 //            saiha_print("qqqqqqqq")
 //        }
         
-        SHMessageAlertView.show(title: "dfsfsdf", message: "dsfasfasdfasfadfaf的解放军打了发件埃里克森京东方考虑君安收到了咖啡机考虑萨芬结案率肯德基飞洒懒得看 sfdasdfsf") { label in
-            label.textColor = .red
-            label.font = .systemFont(ofSize: 20)
-        } cancelAction: { button in
-            
-        } confirmAction: { button in
-            
-        }
-
     }
     
 }
-
-
