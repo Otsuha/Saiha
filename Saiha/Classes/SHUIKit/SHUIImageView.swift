@@ -19,26 +19,3 @@ public extension UIImageView {
     }
     
 }
-
-public extension UIImage {
-    
-    static func saiha_image(name: String, in bundle: Bundle) -> UIImage? {
-        let image: UIImage? = UIImage(named: name, in: bundle, compatibleWith: nil)
-        image?.withRenderingMode(.alwaysOriginal)
-        return image
-    }
-    
-    static func saiha_image(name: String, in bundle: Bundle, compatibleWith: UITraitCollection? = nil, with renderingMode: UIImage.RenderingMode = .alwaysOriginal) -> UIImage? {
-        let image: UIImage? = UIImage(named: name, in: bundle, compatibleWith: compatibleWith)
-        image?.withRenderingMode(renderingMode)
-        return image
-    }
-}
-
-extension UIImage {
-    
-    static func saiha_imageInSaihaBundle(name: String) -> UIImage? {
-        let image: UIImage? = UIImage.saiha_image(name: name, in: Bundle.saihaBundle())
-        return image
-    }
-}

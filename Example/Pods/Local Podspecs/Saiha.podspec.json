@@ -20,27 +20,17 @@
     "tag": "0.1.11"
   },
   "prefix_header_contents": "#import <Saiha/Saiha-Swift.h>",
-  "frameworks": [
-    "UIKit",
-    "Foundation"
-  ],
-  "dependencies": {
-    "SnapKit": [
-
-    ],
-    "SDWebImage": [
-
-    ]
-  },
   "static_framework": true,
   "subspecs": [
     {
       "name": "SHFoundation",
-      "source_files": "Saiha/Classes/SHFoundation/**/*"
+      "source_files": "Saiha/Classes/SHFoundation/**/*",
+      "frameworks": "Foundation"
     },
     {
       "name": "SHCommon",
       "source_files": "Saiha/Classes/SHCommon/**/*",
+      "frameworks": "Foundation",
       "dependencies": {
         "Saiha/SHFoundation": [
 
@@ -50,6 +40,10 @@
     {
       "name": "SHUIKit",
       "source_files": "Saiha/Classes/SHUIKit/**/*",
+      "frameworks": [
+        "Foundation",
+        "UIKit"
+      ],
       "dependencies": {
         "Saiha/SHFoundation": [
 
@@ -68,6 +62,10 @@
     {
       "name": "SHView",
       "source_files": "Saiha/Classes/SHView/*",
+      "frameworks": [
+        "Foundation",
+        "UIKit"
+      ],
       "dependencies": {
         "Saiha/SHFoundation": [
 
@@ -89,6 +87,10 @@
     {
       "name": "SHContentSheet",
       "source_files": "Saiha/Classes/SHContentSheet/*",
+      "frameworks": [
+        "Foundation",
+        "UIKit"
+      ],
       "dependencies": {
         "Saiha/SHFoundation": [
 
@@ -110,6 +112,10 @@
     {
       "name": "SHAlertView",
       "source_files": "Saiha/Classes/SHAlertView/*",
+      "frameworks": [
+        "Foundation",
+        "UIKit"
+      ],
       "dependencies": {
         "Saiha/SHFoundation": [
 
