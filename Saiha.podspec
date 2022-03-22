@@ -97,15 +97,18 @@ Pod::Spec.new do |spec|
   
   spec.subspec 'SHFoundation' do |ss|
       ss.source_files = 'Saiha/Classes/SHFoundation/**/*'
+      ss.frameworks = "Foundation"
   end
   
   spec.subspec 'SHCommon' do |ss|
       ss.source_files = 'Saiha/Classes/SHCommon/**/*'
+      ss.frameworks = "Foundation"
       ss.dependency 'Saiha/SHFoundation'
   end
   
   spec.subspec 'SHUIKit' do |ss|
       ss.source_files = 'Saiha/Classes/SHUIKit/**/*'
+      ss.frameworks = "Foundation", "UIKit"
       ss.dependency 'Saiha/SHFoundation'
       ss.dependency 'Saiha/SHCommon'
       ss.dependency 'SDWebImage'
@@ -114,6 +117,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'SHView' do |ss|
       ss.source_files = 'Saiha/Classes/SHView/*'
+      ss.frameworks = "Foundation", "UIKit"
       ss.dependency 'Saiha/SHFoundation'
       ss.dependency 'Saiha/SHCommon'
       ss.dependency 'Saiha/SHUIKit'
@@ -123,6 +127,7 @@ Pod::Spec.new do |spec|
       
   spec.subspec 'SHContentSheet' do |ss|
       ss.source_files = 'Saiha/Classes/SHContentSheet/*'
+      ss.frameworks = "Foundation", "UIKit"
       ss.dependency 'Saiha/SHFoundation'
       ss.dependency 'Saiha/SHCommon'
       ss.dependency 'Saiha/SHUIKit'
@@ -132,6 +137,7 @@ Pod::Spec.new do |spec|
   
   spec.subspec 'SHAlertView' do |ss|
       ss.source_files = 'Saiha/Classes/SHAlertView/*'
+      ss.frameworks = "Foundation", "UIKit"
       ss.dependency 'Saiha/SHFoundation'
       ss.dependency 'Saiha/SHCommon'
       ss.dependency 'Saiha/SHUIKit'
@@ -161,9 +167,9 @@ Pod::Spec.new do |spec|
 #  }
   
   spec.subspec "Resources" do |subspec|
-    subspec.resource_bundles = {
-      "Saiha" => ["Saiha/Assets/*.xcassets"]
-    }
+      subspec.resource_bundles = {
+          "Saiha" => ["Saiha/Assets/*.xcassets"]
+      }
   end
 
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
@@ -176,7 +182,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.framework  = "SomeFramework"
-  spec.frameworks = "UIKit", "Foundation"
+  #spec.frameworks = "UIKit", "Foundation"
 
   # spec.library   = "iconv"
   # spec.libraries = "iconv", "xml2"
@@ -192,8 +198,8 @@ Pod::Spec.new do |spec|
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"
-  spec.dependency "SnapKit"
-  spec.dependency "SDWebImage"
+  #spec.dependency "SnapKit"
+  #spec.dependency "SDWebImage"
   spec.static_framework = true
 
 end
