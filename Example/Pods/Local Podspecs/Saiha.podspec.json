@@ -135,6 +135,25 @@
       }
     },
     {
+      "name": "SHEmptyView",
+      "source_files": "Saiha/Classes/SHEmptyView/*",
+      "frameworks": [
+        "Foundation",
+        "UIKit"
+      ],
+      "dependencies": {
+        "Saiha/SHFoundation": [
+
+        ],
+        "Saiha/SHUIKit": [
+
+        ],
+        "SnapKit": [
+
+        ]
+      }
+    },
+    {
       "name": "Resources",
       "resource_bundles": {
         "Saiha": [

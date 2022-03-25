@@ -99,9 +99,15 @@ class ViewController: UIViewController {
 //            print(index)
 //        }, cancelHandler: nil)
         
-//        SHMessageAlertView.show(title: "提示", message: "dsfasfasdfasfadfaf的解放军打了发件埃里克森京东方考虑君安收到了咖啡机考虑萨芬结案率肯德基飞洒懒得看 sfdasdfsf", viewConfiguration: nil, cancelAction: nil) { button in
-//            saiha_print("qqqqqqqq")
-//        }
+        SHMessageAlertView.show(title: "提示", message: "dfadafsafads") { messageAlertView in
+            messageAlertView.cancelButton.setTitleColor(.gray, for: .normal)
+            messageAlertView.cancelButton.setTitle("dsfsdf", for: .normal)
+        } cancelAction: {
+            
+        } confirmAction: {
+            saiha_print("dfsfasfadf")
+        }
+
         
     }
     

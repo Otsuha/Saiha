@@ -192,27 +192,25 @@ open class SHAlertView: SHUIView {
         }
     }
     
-    public static func show(title: String?, customView: UIView, inViewController: Bool = false, viewConfiguration: ((_ alertView: SHAlertView) -> Void)?, cancelAction: (() -> Void)?, confirmAction: @escaping (() -> Void)) {
-        let alertView: SHAlertView = SHAlertView()
+    func addView(title: String?, customView: UIView, inViewController: Bool = false, cancelAction: (() -> Void)?, confirmAction: @escaping (() -> Void)) {
         if inViewController {
-            UIViewController.saiha_currentActivityViewController()?.view.addSubview(alertView)
+            UIViewController.saiha_currentActivityViewController()?.view.addSubview(self)
         } else {
-            UIWindow.saiha_securyWindow()?.addSubview(alertView)
+            UIWindow.saiha_securyWindow()?.addSubview(self)
         }
-        alertView.snp.makeConstraints { make in
+        self.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
         if title != nil {
-            alertView.title = title
-            alertView.allViews.insert(alertView.titleLabel, at: 0)
-            alertView.allViews.insert(customView, at: 1)
+            self.title = title
+            self.allViews.insert(self.titleLabel, at: 0)
+            self.allViews.insert(customView, at: 1)
         } else {
-            alertView.allViews.insert(customView, at: 0)
+            self.allViews.insert(customView, at: 0)
         }
-        viewConfiguration?(alertView)
-        alertView.cancelAction = cancelAction
-        alertView.confirmAction = confirmAction
-        alertView.setUI()
+        self.cancelAction = cancelAction
+        self.confirmAction = confirmAction
+        self.setUI()
     }
     
 }
