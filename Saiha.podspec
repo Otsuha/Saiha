@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "Saiha"
-  spec.version      = "0.1.12"
+  spec.version      = "0.1.13"
   spec.summary      = "My iOS universal code."
 
   # This description is used to generate tags and improve search results.
@@ -145,13 +145,13 @@ Pod::Spec.new do |spec|
       ss.dependency 'SDWebImage'
   end
   
-  spec.subspec 'SHEmptyView' do |ss|
-      ss.source_files = 'Saiha/Classes/SHEmptyView/*'
-      ss.frameworks = "Foundation", "UIKit"
-      ss.dependency 'Saiha/SHFoundation'
-      ss.dependency 'Saiha/SHUIKit'
-      ss.dependency 'SnapKit'
-  end
+#  spec.subspec 'SHEmptyView' do |ss|
+#      ss.source_files = 'Saiha/Classes/SHEmptyView/*'
+#      ss.frameworks = "Foundation", "UIKit"
+#      ss.dependency 'Saiha/SHFoundation'
+#      ss.dependency 'Saiha/SHUIKit'
+#      ss.dependency 'SnapKit'
+#  end
       
   #spec.exclude_files = "Classes/Exclude"
 
