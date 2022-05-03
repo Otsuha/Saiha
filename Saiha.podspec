@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "Saiha"
-  spec.version      = "0.1.13"
+  spec.version      = "0.1.14"
   spec.summary      = "My iOS universal code."
 
   # This description is used to generate tags and improve search results.
