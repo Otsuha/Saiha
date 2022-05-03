@@ -1,56 +1,53 @@
 PODS:
-  - Saiha (0.1.11):
-    - Saiha/Resources (= 0.1.11)
-    - Saiha/SHAlertView (= 0.1.11)
-    - Saiha/SHCommon (= 0.1.11)
-    - Saiha/SHContentSheet (= 0.1.11)
-    - Saiha/SHEmptyView (= 0.1.11)
-    - Saiha/SHFoundation (= 0.1.11)
-    - Saiha/SHUIKit (= 0.1.11)
-    - Saiha/SHView (= 0.1.11)
-  - Saiha/Resources (0.1.11)
-  - Saiha/SHAlertView (0.1.11):
+  - IQKeyboardManagerSwift (6.5.9)
+  - Saiha (0.1.13):
+    - Saiha/Resources (= 0.1.13)
+    - Saiha/SHAlertView (= 0.1.13)
+    - Saiha/SHCommon (= 0.1.13)
+    - Saiha/SHContentSheet (= 0.1.13)
+    - Saiha/SHFoundation (= 0.1.13)
+    - Saiha/SHUIKit (= 0.1.13)
+    - Saiha/SHView (= 0.1.13)
+  - Saiha/Resources (0.1.13)
+  - Saiha/SHAlertView (0.1.13):
     - Saiha/SHCommon
     - Saiha/SHFoundation
     - Saiha/SHUIKit
     - SDWebImage
     - SnapKit
-  - Saiha/SHCommon (0.1.11):
+  - Saiha/SHCommon (0.1.13):
     - Saiha/SHFoundation
-  - Saiha/SHContentSheet (0.1.11):
+  - Saiha/SHContentSheet (0.1.13):
     - Saiha/SHCommon
     - Saiha/SHFoundation
     - Saiha/SHUIKit
     - SDWebImage
     - SnapKit
-  - Saiha/SHEmptyView (0.1.11):
-    - Saiha/SHFoundation
-    - Saiha/SHUIKit
-    - SnapKit
-  - Saiha/SHFoundation (0.1.11)
-  - Saiha/SHUIKit (0.1.11):
+  - Saiha/SHFoundation (0.1.13)
+  - Saiha/SHUIKit (0.1.13):
+    - IQKeyboardManagerSwift
     - Saiha/SHCommon
     - Saiha/SHFoundation
     - SDWebImage
     - SnapKit
-  - Saiha/SHView (0.1.11):
+  - Saiha/SHView (0.1.13):
+    - IQKeyboardManagerSwift
     - Saiha/SHCommon
     - Saiha/SHFoundation
     - Saiha/SHUIKit
     - SDWebImage
     - SnapKit
-  - SDWebImage (5.12.1):
-    - SDWebImage/Core (= 5.12.1)
-  - SDWebImage/Core (5.12.1)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Saiha (from `../`)
-  - SDWebImage
-  - SnapKit
 
 SPEC REPOS:
   trunk:
+    - IQKeyboardManagerSwift
     - SDWebImage
     - SnapKit
 
@@ -59,10 +56,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Saiha: 521b3867969d44d48720729121ad5234d3ff0285
-  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
+  IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  Saiha: edfa93148635d5be51180627396344a0bf42a45c
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 646846f5bcb15b15de08f8470fb1bcf49a6dd5c1
+PODFILE CHECKSUM: e8e7fc568ce4d4386105a7716401d9d4f3165a47
 
 COCOAPODS: 1.10.2

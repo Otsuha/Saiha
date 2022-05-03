@@ -113,6 +113,7 @@ Pod::Spec.new do |spec|
       ss.dependency 'Saiha/SHCommon'
       ss.dependency 'SDWebImage'
       ss.dependency 'SnapKit'
+      ss.dependency 'IQKeyboardManagerSwift'
   end
 
   spec.subspec 'SHView' do |ss|
@@ -123,6 +124,7 @@ Pod::Spec.new do |spec|
       ss.dependency 'Saiha/SHUIKit'
       ss.dependency 'SDWebImage'
       ss.dependency 'SnapKit'
+      ss.dependency 'IQKeyboardManagerSwift'
   end
       
   spec.subspec 'SHContentSheet' do |ss|

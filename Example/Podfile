@@ -4,9 +4,6 @@ platform :ios, '10.0'
 
 target 'Saiha_Example' do
   pod 'Saiha', :path => '../'
-  
-  pod 'SnapKit', :inhibit_warnings => true
-  pod 'SDWebImage', :inhibit_warnings => true
 
   target 'Saiha_Tests' do
     inherit! :search_paths

@@ -116,17 +116,17 @@ open class SHAlertView: SHUIView {
         super.init(coder: coder)
     }
     
-    @objc private func handleCancelAction(sender: SHUIButton) {
+    @objc func handleCancelAction(sender: SHUIButton) {
         self.cancelAction?()
         self.dismiss()
     }
     
-    @objc private func handleConfirmAction(sender: SHUIButton) {
+    @objc func handleConfirmAction(sender: SHUIButton) {
         self.confirmAction?()
         self.dismiss()
     }
     
-    private func dismiss() {
+    func dismiss() {
         self.isHidden = true
         self.removeFromSuperview()
     }
@@ -212,5 +212,4 @@ open class SHAlertView: SHUIView {
         self.confirmAction = confirmAction
         self.setUI()
     }
-    
 }

@@ -99,16 +99,31 @@ class ViewController: UIViewController {
 //            print(index)
 //        }, cancelHandler: nil)
         
-        SHMessageAlertView.show(title: "提示", message: "dfadafsafads") { messageAlertView in
-            messageAlertView.cancelButton.setTitleColor(.gray, for: .normal)
-            messageAlertView.cancelButton.setTitle("dsfsdf", for: .normal)
+//        SHMessageAlertView.show(title: "提示", message: "dfadafsafads") { messageAlertView in
+//            messageAlertView.cancelButton.setTitleColor(.gray, for: .normal)
+//            messageAlertView.cancelButton.setTitle("dsfsdf", for: .normal)
+//        } cancelAction: {
+//
+//        } confirmAction: {
+//            saiha_print("dfsfasfadf")
+//        }
+
+//        SHSingleButtonMessageAlertView.show(title: "提示", message: "dfadafsafads") { singleButtonMessageAlertView in
+//            singleButtonMessageAlertView.confirmButton.setTitleColor(.gray, for: .normal)
+//            singleButtonMessageAlertView.confirmButton.setTitle("dsfsdf", for: .normal)
+//        } confirmAction: {
+//
+//        }
+        
+        SHInputAlertView.show(title: nil, placeholder: "dddddd") { inputAlertView in
+            
         } cancelAction: {
             
-        } confirmAction: {
-            saiha_print("dfsfasfadf")
+        } confirmAction: { inputAlertView in
+            print(inputAlertView.textField.text!)
         }
 
-        
+
     }
     
 }

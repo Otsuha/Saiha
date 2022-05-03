@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - 字符串序号及字串操作。
+
 extension String {
     
     subscript(i: Int) -> String {
@@ -84,7 +86,8 @@ extension String {
     }
 }
 
-// 字符串正则判断。
+// MARK: - 字符串正则判断。
+
 extension String {
 
     public func saiha_isTelPhone() -> Bool {
@@ -219,5 +222,19 @@ extension String {
         default:
             return false
         }
+    }
+}
+
+// MARK: - 编码。
+
+extension String {
+    
+    public func urlEncoded() -> String {
+        let encodeUrlString: String? = addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return encodeUrlString ?? ""
+    }
+    
+    public func urlDecoded() -> String {
+        return self.removingPercentEncoding ?? ""
     }
 }

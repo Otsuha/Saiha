@@ -46,3 +46,27 @@ extension UIImage {
         }
     }
 }
+
+extension UIImage {
+    
+    /// 将图片转为 base64 编码字符串。`suffix` 为图片后缀名，可以为：`png`、`jpg`、`jpeg`。
+    public func base64EncodedString(suffix: String) -> String? {
+        if suffix == "png" {
+            let imageData: Data? = self.pngData()
+            if imageData != nil {
+                return imageData!.base64EncodedString()
+            } else {
+                return nil
+            }
+        } else if suffix == "jpg" || suffix == "jpeg" {
+            let imageData: Data? = self.jpegData(compressionQuality: 1.0)
+            if imageData != nil {
+                return imageData!.base64EncodedString()
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+}

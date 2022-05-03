@@ -46,7 +46,11 @@ open class SHUITextView: UITextView, UITextViewDelegate {
     }
     
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        return textView.text.count + (text.count - range.length) <= self.maxCharactersEnable
+        if range.length + range.location > textView.text.count {
+            return false
+        }
+        let newLength: Int = textView.text.count + text.count - range.length
+        return newLength <= self.maxCharactersEnable
     }
     
     private func changeTextStatus() {
