@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
 
 public extension UITableView {
     
@@ -40,9 +39,7 @@ open class SHUITableView: UITableView {
         case .sidebar:
             super.init(frame: frame, style: .grouped)
             self._sh_style = shStyle
-        }
-        
-        IQKeyboardManager.shared.enable = true
+        }        
     }
     
     required public init?(coder: NSCoder) {
@@ -53,9 +50,5 @@ open class SHUITableView: UITableView {
         super.touchesBegan(touches, with: event)
         
         UIWindow.saiha_securyWindow()?.endEditing(self.enableTouchToCancelAllEditing)
-    }
-    
-    deinit {
-        IQKeyboardManager.shared.enable = false
     }
 }

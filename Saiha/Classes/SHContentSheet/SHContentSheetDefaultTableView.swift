@@ -19,6 +19,7 @@ open class SHContentSheetDefaultTableView: SHContentSheetTableView {
         super.init(frame: frame)
         
         self.style = .default
+        Self.setActionTitle("取消")
         
         self.cancelButton.isHidden = true
     }
@@ -71,8 +72,8 @@ open class SHContentSheetDefaultTableView: SHContentSheetTableView {
         - dataSource: `tableView` 的数据源。`tuple.0` 为 cell 的标题；`tuple.1` 为 cell 图标的 `url` 地址。若 `url` 为 `nil`，则图标不显示。
         - selectedIndex: 是否默认选中某行，传 `nil` 不进行默认选中操作且每行内容居中，若传具体值，则对应行右边显示打钩标记，且每行内容居左。
         - inViewController: 默认弹框视图添加在主窗口上，但是你也可以选择将视图添加在当前活跃的控制器上。
-        - completionHandler: 点击底部按钮的回调，回传选择的行序号。
-        - cancelHandler: 若标题设置为 `nil`，即不显示标题行，那么设置此属性无任何效果。若标题行显示，并且显示了 `x` 按钮，则点击 `x` 按钮将执行此回调。
+        - completionHandler: 点击某一行的回调，回传选择的行序号。
+        - cancelHandler: 点击底部按钮的回调。若标题行显示，并且显示了 `x` 按钮，则点击 `x` 按钮也将执行此回调。
      */
     public static func show(title: String?, dataSource: [(title: String, url: String?)], selectedIndex: Int?, inViewController: Bool = false, completionHandler: @escaping ((_ index: Int) -> Void), cancelHandler: (() -> Void)?) {
         if Self.sharedView.superview != nil {

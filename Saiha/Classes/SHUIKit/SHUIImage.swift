@@ -70,3 +70,31 @@ extension UIImage {
         }
     }
 }
+
+extension UIImage {
+    
+    public func convertSampleBufferToUIImage(sampleBuffer: CMSampleBuffer) -> UIImage? {
+        let imageBuffer: CVPixelBuffer? = CMSampleBufferGetImageBuffer(sampleBuffer)
+        if imageBuffer != nil {
+            let ciImage: CIImage = CIImage(cvPixelBuffer: imageBuffer!)
+            if let resultImage = self.convertCIImageToUIImage(ciImage: ciImage) {
+                return resultImage
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    public func convertCIImageToUIImage(ciImage: CIImage) -> UIImage? {
+        let context: CIContext = CIContext(options: nil)
+        let cgImage: CGImage? = context.createCGImage(ciImage, from: ciImage.extent)
+        if cgImage != nil {
+            let image: UIImage = UIImage(cgImage: cgImage!)
+            return image
+        } else {
+            return nil
+        }
+    }
+}

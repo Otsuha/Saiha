@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "Saiha"
-  spec.version      = "0.1.14"
+  spec.version      = "0.1.15"
   spec.summary      = "My iOS universal code."
 
   # This description is used to generate tags and improve search results.
@@ -113,7 +113,7 @@ Pod::Spec.new do |spec|
       ss.dependency 'Saiha/SHCommon'
       ss.dependency 'SDWebImage'
       ss.dependency 'SnapKit'
-      ss.dependency 'IQKeyboardManagerSwift'
+      #ss.dependency 'IQKeyboardManagerSwift'
   end
 
   spec.subspec 'SHView' do |ss|
@@ -124,7 +124,7 @@ Pod::Spec.new do |spec|
       ss.dependency 'Saiha/SHUIKit'
       ss.dependency 'SDWebImage'
       ss.dependency 'SnapKit'
-      ss.dependency 'IQKeyboardManagerSwift'
+      #ss.dependency 'IQKeyboardManagerSwift'
   end
       
   spec.subspec 'SHContentSheet' do |ss|
