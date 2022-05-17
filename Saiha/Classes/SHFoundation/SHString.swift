@@ -229,12 +229,12 @@ extension String {
 
 extension String {
     
-    public func urlEncoded() -> String {
+    public func saiha_urlEncoded() -> String {
         let encodeUrlString: String? = addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         return encodeUrlString ?? ""
     }
     
-    public func urlDecoded() -> String {
+    public func saiha_urlDecoded() -> String {
         return self.removingPercentEncoding ?? ""
     }
 }

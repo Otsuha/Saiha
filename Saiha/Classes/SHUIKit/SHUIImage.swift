@@ -50,7 +50,7 @@ extension UIImage {
 extension UIImage {
     
     /// 将图片转为 base64 编码字符串。`suffix` 为图片后缀名，可以为：`png`、`jpg`、`jpeg`。
-    public func base64EncodedString(suffix: String) -> String? {
+    public func saiha_base64EncodedString(suffix: String) -> String? {
         if suffix == "png" {
             let imageData: Data? = self.pngData()
             if imageData != nil {
@@ -73,11 +73,11 @@ extension UIImage {
 
 extension UIImage {
     
-    public func convertSampleBufferToUIImage(sampleBuffer: CMSampleBuffer) -> UIImage? {
+    public func saiha_convertSampleBufferToUIImage(sampleBuffer: CMSampleBuffer) -> UIImage? {
         let imageBuffer: CVPixelBuffer? = CMSampleBufferGetImageBuffer(sampleBuffer)
         if imageBuffer != nil {
             let ciImage: CIImage = CIImage(cvPixelBuffer: imageBuffer!)
-            if let resultImage = self.convertCIImageToUIImage(ciImage: ciImage) {
+            if let resultImage = self.saiha_convertCIImageToUIImage(ciImage: ciImage) {
                 return resultImage
             } else {
                 return nil
@@ -87,7 +87,7 @@ extension UIImage {
         }
     }
     
-    public func convertCIImageToUIImage(ciImage: CIImage) -> UIImage? {
+    public func saiha_convertCIImageToUIImage(ciImage: CIImage) -> UIImage? {
         let context: CIContext = CIContext(options: nil)
         let cgImage: CGImage? = context.createCGImage(ciImage, from: ciImage.extent)
         if cgImage != nil {
