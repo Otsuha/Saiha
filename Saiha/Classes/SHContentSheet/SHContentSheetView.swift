@@ -30,13 +30,15 @@ open class SHContentSheetView: SHUIView {
     
     open var completionHandler: (() -> Void)?
     
-    private static var actionTitle: String = "取消" {
+    /// 自定义底部按钮标题。
+    public var actionTitle: String = "取消" {
         willSet {
-            Self.sharedView?.cancelButton.setTitle(newValue, for: .normal)
+            self.cancelButton.setTitle(newValue, for: .normal)
         }
     }
     
-    private static var animationDuration: CGFloat = 0.6
+    /// 自定义动画时间。
+    public var animationDuration: CGFloat = 0.6
             
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,7 +59,7 @@ open class SHContentSheetView: SHUIView {
         
         self.cancelButton = SHUIButton()
         self.cancelButton.backgroundColor = .white
-        self.cancelButton.setTitle(Self.actionTitle, for: .normal)
+        self.cancelButton.setTitle(self.actionTitle, for: .normal)
         self.cancelButton.setTitleColor(.black, for: .normal)
         self.cancelButton.titleLabel?.bounds = self.cancelButton.bounds
         self.cancelButton.titleLabel?.textAlignment = .center
@@ -100,8 +102,10 @@ open class SHContentSheetView: SHUIView {
         - customView: 自定义视图。
         - contentHeight: 自定义视图的高度。
         - inViewController: 默认弹框视图添加在主窗口上，但是你也可以选择将视图添加在当前活跃的控制器上。
+        - viewConfiguration: 可以对弹框视图进行某些设置。
+        - completionHandler: 点击底部按钮的回调。
      */
-    public static func show(customView: UIView, contentHeight: CGFloat, inViewController: Bool = false, completionHandler: ((() -> Void)?)) {
+    public static func show(customView: UIView, contentHeight: CGFloat, inViewController: Bool = false, viewConfiguration: ((_ sheetView: SHContentSheetView) -> Void)? = nil, completionHandler: ((() -> Void)?)) {
         if Self.sharedView?.superview != nil {
             return
         }
@@ -121,6 +125,7 @@ open class SHContentSheetView: SHUIView {
             make.left.right.top.bottom.equalToSuperview()
         }
         sheetView.mainContentView.saiha_addRoundedCorners(cornerPositons: [.topLeft, .topRight], radius: 10)
+        viewConfiguration?(sheetView)
         Self.sharedView = sheetView
         Self.sharedView?.showWithAnimation()
     }
@@ -128,39 +133,29 @@ open class SHContentSheetView: SHUIView {
     private func positonYAnimationShow() {
         let fromValue: CGFloat = CGFloat.saiha_screenHeight + self.contentHeight / 2
         let toValue: CGFloat = CGFloat.saiha_screenHeight - self.contentHeight + self.contentHeight / 2
-        self.mainContentView.saiha_addSimpleOnceAnimation(key: "positionY.animation.show", keyPath: "position.y", from: fromValue, to: toValue, duration: Self.animationDuration, completionHandler: nil)
+        self.mainContentView.saiha_addSimpleOnceAnimation(key: "positionY.animation.show", keyPath: "position.y", from: fromValue, to: toValue, duration: self.animationDuration, completionHandler: nil)
     }
     
     private func positonYAnimationDismiss() {
         let fromValue: CGFloat = CGFloat.saiha_screenHeight - self.contentHeight + self.contentHeight / 2
         let toValue: CGFloat = CGFloat.saiha_screenHeight + self.contentHeight / 2
-        self.mainContentView.saiha_addSimpleOnceAnimation(key: "positionY.animation.dismiss", keyPath: "position.y", from: fromValue, to: toValue, duration: Self.animationDuration) {
-            self.dismissAllView()
+        self.mainContentView.saiha_addSimpleOnceAnimation(key: "positionY.animation.dismiss", keyPath: "position.y", from: fromValue, to: toValue, duration: self.animationDuration) { [weak self] in
+            self?.dismissAllView()
         }
     }
     
     private func opacityAnimationShow() {
         let fromValue: CGFloat = 0.0
         let toValue: CGFloat = 1.0
-        self.mainContentView.saiha_addSimpleOnceAnimation(key: "opacity.animation.show", keyPath: "opacity", from: fromValue, to: toValue, duration: Self.animationDuration, completionHandler: nil)
-        self.backgroundView.saiha_addSimpleOnceAnimation(key: "opacity.animation.show.backgroundView", keyPath: "opacity", from: fromValue, to: toValue, duration: Self.animationDuration, completionHandler: nil)
+        self.mainContentView.saiha_addSimpleOnceAnimation(key: "opacity.animation.show", keyPath: "opacity", from: fromValue, to: toValue, duration: self.animationDuration, completionHandler: nil)
+        self.backgroundView.saiha_addSimpleOnceAnimation(key: "opacity.animation.show.backgroundView", keyPath: "opacity", from: fromValue, to: toValue, duration: self.animationDuration, completionHandler: nil)
     }
     
     private func opacityAnimationDismiss() {
         let fromValue: CGFloat = 1.0
         let toValue: CGFloat = 0.0
-        self.mainContentView.saiha_addSimpleOnceAnimation(key: "opacity.animation.dismiss", keyPath: "opacity", from: fromValue, to: toValue, duration: Self.animationDuration, completionHandler: nil)
-        self.backgroundView.saiha_addSimpleOnceAnimation(key: "opacity.animation.dismiss.backgroundView", keyPath: "opacity", from: fromValue, to: toValue, duration: Self.animationDuration, completionHandler: nil)
-    }
-    
-    /// 自定义底部按钮标题。
-    public static func setActionTitle(_ text: String) {
-        Self.actionTitle = text
-    }
-    
-    /// 自定义动画时间。
-    public static func setAnimationDuration(duration: CGFloat) {
-        Self.animationDuration = duration
+        self.mainContentView.saiha_addSimpleOnceAnimation(key: "opacity.animation.dismiss", keyPath: "opacity", from: fromValue, to: toValue, duration: self.animationDuration, completionHandler: nil)
+        self.backgroundView.saiha_addSimpleOnceAnimation(key: "opacity.animation.dismiss.backgroundView", keyPath: "opacity", from: fromValue, to: toValue, duration: self.animationDuration, completionHandler: nil)
     }
     
     required public init?(coder: NSCoder) {

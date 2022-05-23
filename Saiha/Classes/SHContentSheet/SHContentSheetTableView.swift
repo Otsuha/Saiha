@@ -29,12 +29,12 @@ open class SHContentSheetTableView: SHUIView {
         case center
     }
     
-    var titleLabel: SHUILabel = {
+    public var titleLabel: SHUILabel = {
         let label: SHUILabel = SHUILabel()
         label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16), weight: .medium)
         return label
     }()
-    var cancelButton: SHUIButton = {
+    public var cancelButton: SHUIButton = {
         let button: SHUIButton = SHUIButton()
         if #available(iOS 13.0, *) {
             button.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -52,26 +52,33 @@ open class SHContentSheetTableView: SHUIView {
     var dataSource: [SHContentSheetTableView.DataModel] = []
         
     var showTitleLabel: Bool = true
-    var title: String? {
+    public var title: String? {
         willSet {
             self.titleLabel.text = newValue
             if newValue == nil {
                 self.showTitleLabel = false
-                Self.showCancelButton = false
+                self.showCancelButton = false
             } else {
                 self.showTitleLabel = true
-                Self.showCancelButton = true
+                self.showCancelButton = true
             }
         }
     }
     
-    static var showCancelButton: Bool = false
+    /// 是否显示标题行旁边的 `x` 按钮。如果因为 `title` 属性为 `nil` 导致标题行隐藏，则设置此属性无任何效果。默认不显示。
+    public var showCancelButton: Bool = false
     
-    static var actionTitle: String = "取消"
+    /// 自定义底部按钮标题。
+    public var actionTitle: String = "取消"
     
-    static var showSeparator: Bool = true
+    /// 是否显示每行的底部分割线。最后一行始终不显示底部分割线。
+    public var showSeparator: Bool = true
     
-    static var widgeAlignment: SHContentSheetTableView.WidgeAlignment?
+    /// 设置每行组件的位置。
+    public var widgeAlignment: SHContentSheetTableView.WidgeAlignment?
+    
+    /// 自定义动画时间。
+    public var animationDuration: CGFloat = 0.6
     
     var cancelHandler: (() -> Void)?
     
@@ -85,14 +92,19 @@ open class SHContentSheetTableView: SHUIView {
         }
     }
     
-    static var defaultShowCount: Int = 8
+    /**
+     设置 `tableView` 默认显示的行个数。
+     - Parameters:
+        - count: 当数据源个数小于 `count` 时，`tableView` 会自适应高度并显示所有行。当数据源个数大于 `count` 时，`tableView` 将默认显示 `count` 个数，其余的滑动显示。
+     */
+    public var defaultShowCount: Int = 8
     var tableViewHeight: CGFloat {
         get {
             var height: CGFloat = 0
-            if self.dataSource.count <= Self.defaultShowCount {
+            if self.dataSource.count <= self.defaultShowCount {
                 height = CGFloat(self.dataSource.count) * CGFloat.saiha_verticalSize(num: 56)
             } else {
-                height = CGFloat(Self.defaultShowCount) * CGFloat.saiha_verticalSize(num: 56)
+                height = CGFloat(self.defaultShowCount) * CGFloat.saiha_verticalSize(num: 56) + CGFloat.saiha_verticalSize(num: 56 / 2)
             }
             return height
         }
@@ -144,7 +156,7 @@ open class SHContentSheetTableView: SHUIView {
             self.titleLabel.isHidden = true
         }
         
-        if Self.showCancelButton && self.showTitleLabel {
+        if self.showCancelButton && self.showTitleLabel {
             self.cancelButton.isHidden = false
             self.cancelButton.snp.makeConstraints { make in
                 make.right.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -20))
@@ -154,6 +166,11 @@ open class SHContentSheetTableView: SHUIView {
         } else {
             self.cancelButton.isHidden = true
         }
+    }
+    
+    func sheetViewDefaultSetting(sheetView: SHContentSheetView) {
+        sheetView.actionTitle = self.actionTitle
+        sheetView.animationDuration = self.animationDuration
     }
     
     func universalCellConfig(cell: SHContentSheetTableViewCell, index: Int) {
@@ -166,7 +183,7 @@ open class SHContentSheetTableView: SHUIView {
         }
         cell.titleLabel.text = self.dataSource[index].title
         if index < self.dataSource.count - 1 {
-            cell.showSeparator = Self.showSeparator
+            cell.showSeparator = self.showSeparator
         } else {
             cell.showSeparator = false
         }
@@ -188,40 +205,6 @@ open class SHContentSheetTableView: SHUIView {
     @objc func dismissWithCallBack() {
         SHContentSheetView.dismiss()
         self.cancelHandler?()
-    }
-    
-    /// 自定义底部按钮标题。
-    public static func setActionTitle(_ text: String) {
-        SHContentSheetView.setActionTitle(text)
-    }
-    
-    /**
-     设置 `tableView` 默认显示的行个数。
-    - Parameters:
-        - count: 当数据源个数小于 `count` 时，`tableView` 会自适应高度并显示所有行。当数据源个数大于 `count` 时，`tableView` 将默认显示 `count` 个数，其余的滑动显示。
-     */
-    public static func setDefaultShowCount(count: Int) {
-        Self.defaultShowCount = count
-    }
-    
-    /// 是否显示每行的底部分割线。最后一行始终不显示底部分割线。
-    public static func showSeparator(show: Bool) {
-        Self.showSeparator = show
-    }
-    
-    /// 设置每行组件的位置。
-    public static func setWidgeAlignment(alignment: SHContentSheetTableView.WidgeAlignment) {
-        Self.widgeAlignment = alignment
-    }
-    
-    /// 是否显示标题行旁边的 `x` 按钮。如果因为 `title` 属性为 `nil` 导致标题行隐藏，则设置此属性无任何效果。默认不显示。
-    public static func showCancelButton(show: Bool) {
-        Self.showCancelButton = show
-    }
-    
-    /// 自定义动画时间。
-    public static func setAnimationDuration(duration: CGFloat) {
-        SHContentSheetView.setAnimationDuration(duration: duration)
     }
 }
 

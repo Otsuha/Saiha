@@ -8,9 +8,7 @@
 import Foundation
 
 open class SHContentSheetMultipleSelectionTableView: SHContentSheetTableView {
-    
-    private static var sharedView: SHContentSheetMultipleSelectionTableView = SHContentSheetMultipleSelectionTableView()
-    
+        
     private var multipleSelectedIndexSet: Set<Int> = []
     private var multipleSelectedIndex: [Int?] = []
     
@@ -18,8 +16,8 @@ open class SHContentSheetMultipleSelectionTableView: SHContentSheetTableView {
         super.init(frame: frame)
         
         self.style = .multipleSelection
-        Self.setActionTitle("保存")
-        Self.showCancelButton = true
+        self.actionTitle = "保存"
+        self.showCancelButton = true
         self.showTitleLabel = true
     }
     
@@ -45,8 +43,8 @@ open class SHContentSheetMultipleSelectionTableView: SHContentSheetTableView {
         cell.showMark = self.dataSource[index].isSelected
         cell.widgeAlignment = .left
         
-        if Self.widgeAlignment != nil {
-            cell.widgeAlignment = Self.widgeAlignment!
+        if self.widgeAlignment != nil {
+            cell.widgeAlignment = self.widgeAlignment!
         }
     }
     
@@ -72,32 +70,34 @@ open class SHContentSheetMultipleSelectionTableView: SHContentSheetTableView {
         - title: 底部弹框标题，显示在最上面一行。若为 `nil` 则不显示标题行。
         - dataSource: `tableView` 的数据源。`tuple.0` 为 cell 的标题；`tuple.1` 为 cell 图标的 `url` 地址，若 `url` 为 `nil`，则图标不显示；`tuple.2` 为某行是否选择。
         - inViewController: 默认弹框视图添加在主窗口上，但是你也可以选择将视图添加在当前活跃的控制器上。
+        - viewConfiguration: 可以对弹框视图进行某些设置。
         - completionHandler: 点击底部按钮的回调，回传选择的行序号。
         - cancelHandler: 若标题设置为 `nil`，即不显示标题行，那么设置此属性无任何效果。若标题行显示，并且显示了 `x` 按钮，则点击 `x` 按钮将执行此回调。
      */
-    public static func show(title: String?, dataSource: [(title: String, url: String?, isSelected: Bool)], inViewController: Bool = false, completionHandler: @escaping ((_ indexSet: [Int]) -> Void), cancelHandler: (() -> Void)?) {
-        if Self.sharedView.superview != nil {
-            return
-        }
+    public static func show(title: String?, dataSource: [(title: String, url: String?, isSelected: Bool)], inViewController: Bool = false, viewConfiguration: ((_ multipleSelectionTableView: SHContentSheetMultipleSelectionTableView) -> Void)? = nil, completionHandler: @escaping ((_ indexSet: [Int]) -> Void), cancelHandler: (() -> Void)?) {
+        let multipleSelectionTableView: SHContentSheetMultipleSelectionTableView = SHContentSheetMultipleSelectionTableView()
+        multipleSelectionTableView.title = title
+        multipleSelectionTableView.cancelHandler = cancelHandler
+        viewConfiguration?(multipleSelectionTableView)
         
-        Self.sharedView.title = title
-        Self.sharedView.cancelHandler = cancelHandler
-        
-        Self.sharedView.multipleSelectedIndex = [Int?](repeating: nil, count: dataSource.count)
-        Self.sharedView.multipleSelectedIndexSet.removeAll()
-        Self.sharedView.dataSource.removeAll()
+        multipleSelectionTableView.multipleSelectedIndex = [Int?](repeating: nil, count: dataSource.count)
+        multipleSelectionTableView.multipleSelectedIndexSet.removeAll()
+        multipleSelectionTableView.dataSource.removeAll()
         for (index, item) in dataSource.enumerated() {
             if item.isSelected {
-                Self.sharedView.multipleSelectedIndex[index] = index
-                Self.sharedView.multipleSelectedIndexSet.update(with: index)
+                multipleSelectionTableView.multipleSelectedIndex[index] = index
+                multipleSelectionTableView.multipleSelectedIndexSet.update(with: index)
             }
-            Self.sharedView.dataSource.append(SHContentSheetTableView.DataModel(title: item.title, iconURL: item.url, isSelected: item.isSelected))
+            multipleSelectionTableView.dataSource.append(SHContentSheetTableView.DataModel(title: item.title, iconURL: item.url, isSelected: item.isSelected))
         }
-        Self.sharedView.mainTableView.reloadData()
+        multipleSelectionTableView.mainTableView.reloadData()
         
-        SHContentSheetView.show(customView: Self.sharedView, contentHeight: Self.sharedView.defaultContentHeight, inViewController: inViewController) {
-            let indexs: [Int] = Self.sharedView.multipleSelectedIndexSet.sorted()
+        SHContentSheetView.show(customView: multipleSelectionTableView, contentHeight: multipleSelectionTableView.defaultContentHeight, inViewController: inViewController) { sheetView in
+            multipleSelectionTableView.sheetViewDefaultSetting(sheetView: sheetView)
+        } completionHandler: {
+            let indexs: [Int] = multipleSelectionTableView.multipleSelectedIndexSet.sorted()
             completionHandler(indexs)
         }
+
     }
 }

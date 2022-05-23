@@ -8,9 +8,7 @@
 import Foundation
 
 open class SHContentSheetDefaultTableView: SHContentSheetTableView {
-    
-    private static var sharedView: SHContentSheetDefaultTableView = SHContentSheetDefaultTableView()
-    
+        
     private var selectedIndex: Int?
     
     private var completionHandler: ((_ index: Int) -> Void)?
@@ -19,7 +17,7 @@ open class SHContentSheetDefaultTableView: SHContentSheetTableView {
         super.init(frame: frame)
         
         self.style = .default
-        Self.setActionTitle("取消")
+        self.actionTitle = "取消"
         
         self.cancelButton.isHidden = true
     }
@@ -52,8 +50,8 @@ open class SHContentSheetDefaultTableView: SHContentSheetTableView {
             }
             cell.widgeAlignment = .left
         }
-        if Self.widgeAlignment != nil {
-            cell.widgeAlignment = Self.widgeAlignment!
+        if self.widgeAlignment != nil {
+            cell.widgeAlignment = self.widgeAlignment!
         }
     }
     
@@ -72,32 +70,32 @@ open class SHContentSheetDefaultTableView: SHContentSheetTableView {
         - dataSource: `tableView` 的数据源。`tuple.0` 为 cell 的标题；`tuple.1` 为 cell 图标的 `url` 地址。若 `url` 为 `nil`，则图标不显示。
         - selectedIndex: 是否默认选中某行，传 `nil` 不进行默认选中操作且每行内容居中，若传具体值，则对应行右边显示打钩标记，且每行内容居左。
         - inViewController: 默认弹框视图添加在主窗口上，但是你也可以选择将视图添加在当前活跃的控制器上。
+        - viewConfiguration: 可以对弹框视图进行某些设置。
         - completionHandler: 点击某一行的回调，回传选择的行序号。
         - cancelHandler: 点击底部按钮的回调。若标题行显示，并且显示了 `x` 按钮，则点击 `x` 按钮也将执行此回调。
      */
-    public static func show(title: String?, dataSource: [(title: String, url: String?)], selectedIndex: Int?, inViewController: Bool = false, completionHandler: @escaping ((_ index: Int) -> Void), cancelHandler: (() -> Void)?) {
-        if Self.sharedView.superview != nil {
-            return
-        }
+    public static func show(title: String?, dataSource: [(title: String, url: String?)], selectedIndex: Int?, inViewController: Bool = false, viewConfiguration: ((_ defaultTableView: SHContentSheetDefaultTableView) -> Void)? = nil, completionHandler: @escaping ((_ index: Int) -> Void), cancelHandler: (() -> Void)?) {
+        let defaultTableView: SHContentSheetDefaultTableView = SHContentSheetDefaultTableView()
+        defaultTableView.title = title
+        defaultTableView.selectedIndex = selectedIndex
+        defaultTableView.completionHandler = completionHandler
+        defaultTableView.cancelHandler = cancelHandler
+        viewConfiguration?(defaultTableView)
         
-        Self.sharedView.setTableView()
-        Self.sharedView.title = title
-        Self.sharedView.selectedIndex = selectedIndex
-        Self.sharedView.completionHandler = completionHandler
-        Self.sharedView.cancelHandler = cancelHandler
-        
-        Self.sharedView.dataSource.removeAll()
+        defaultTableView.dataSource.removeAll()
         for (index, item) in dataSource.enumerated() {
             var isSelected: Bool = false
             if selectedIndex != nil && index == selectedIndex! {
                 isSelected = true
             }
-            Self.sharedView.dataSource.append(SHContentSheetTableView.DataModel(title: item.title, iconURL: item.url, isSelected: isSelected))
+            defaultTableView.dataSource.append(SHContentSheetTableView.DataModel(title: item.title, iconURL: item.url, isSelected: isSelected))
         }
         
-        Self.sharedView.mainTableView.reloadData()
+        defaultTableView.mainTableView.reloadData()
         
-        SHContentSheetView.show(customView: Self.sharedView, contentHeight: Self.sharedView.defaultContentHeight, inViewController: inViewController) {
+        SHContentSheetView.show(customView: defaultTableView, contentHeight: defaultTableView.defaultContentHeight, inViewController: inViewController) { sheetView in
+            defaultTableView.sheetViewDefaultSetting(sheetView: sheetView)
+        } completionHandler: {
             cancelHandler?()
         }
     }
