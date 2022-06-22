@@ -1,24 +1,23 @@
 {
   "name": "Saiha",
-  "version": "0.1.14",
+  "version": "0.1.20",
   "summary": "My iOS universal code.",
-  "description": "自己制作的一些通用代码，可以在 iOS 项目中进行使用。",
-  "homepage": "https://gitee.com/saiha/saiha",
+  "homepage": "https://github.com/Otsuha/Saiha.git",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "Saiha": "grass.usagi@outlook.com"
+    "otsuha": "grass.ichika@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Otsuha/Saiha.git",
+    "tag": "0.1.20"
   },
   "platforms": {
     "ios": "10.0"
   },
   "swift_versions": "5.0",
-  "source": {
-    "git": "https://gitee.com/saiha/saiha.git",
-    "tag": "0.1.14"
-  },
   "prefix_header_contents": "#import <Saiha/Saiha-Swift.h>",
   "static_framework": true,
   "subspecs": [
@@ -103,9 +102,6 @@
         ],
         "SnapKit": [
 
-        ],
-        "SDWebImage": [
-
         ]
       }
     },
@@ -127,9 +123,6 @@
 
         ],
         "SnapKit": [
-
-        ],
-        "SDWebImage": [
 
         ]
       }

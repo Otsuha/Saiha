@@ -34,14 +34,14 @@ extension UIImage {
 
 extension UIImage {
     
-    public func saiha_writeToSavedPhotosAlbum(completionHandler: @escaping ((_ success: Bool, _ error: Error?) -> Void)) {
+    public func saiha_writeToSavedPhotosAlbum(completionHandler: ((_ success: Bool, _ error: Error?) -> Void)?) {
         PHPhotoLibrary.shared().performChanges {
             PHAssetChangeRequest.creationRequestForAsset(from: self)
         } completionHandler: { success, error in
             if success {
-                completionHandler(true, nil)
+                completionHandler?(true, nil)
             } else {
-                completionHandler(false, error)
+                completionHandler?(false, error)
             }
         }
     }

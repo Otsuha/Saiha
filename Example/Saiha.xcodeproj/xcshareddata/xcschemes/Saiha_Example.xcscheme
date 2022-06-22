@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CA45767A2862A783004C8AA1"
+               BuildableName = "SaihaTests.xctest"
+               BlueprintName = "SaihaTests"
+               ReferencedContainer = "container:Saiha.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

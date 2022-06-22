@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
     
   spec.name         = "Saiha"
-  spec.version      = "0.1.20"
+  spec.version      = "0.1.21"
   spec.summary      = "My iOS universal code."
   spec.homepage     = "https://github.com/Otsuha/Saiha.git"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
@@ -57,7 +57,6 @@ Pod::Spec.new do |spec|
       ss.dependency 'Saiha/SHCommon'
       ss.dependency 'Saiha/SHUIKit'
       ss.dependency 'SnapKit'
-      ss.dependency 'SDWebImage'
   end
   
   spec.subspec 'SHAlertView' do |ss|
@@ -67,7 +66,6 @@ Pod::Spec.new do |spec|
       ss.dependency 'Saiha/SHCommon'
       ss.dependency 'Saiha/SHUIKit'
       ss.dependency 'SnapKit'
-      ss.dependency 'SDWebImage'
   end
   
   spec.subspec "Resources" do |subspec|

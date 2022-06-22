@@ -1,46 +1,45 @@
 PODS:
-  - Saiha (0.1.14):
-    - Saiha/Resources (= 0.1.14)
-    - Saiha/SHAlertView (= 0.1.14)
-    - Saiha/SHCommon (= 0.1.14)
-    - Saiha/SHContentSheet (= 0.1.14)
-    - Saiha/SHFoundation (= 0.1.14)
-    - Saiha/SHUIKit (= 0.1.14)
-    - Saiha/SHView (= 0.1.14)
-  - Saiha/Resources (0.1.14)
-  - Saiha/SHAlertView (0.1.14):
+  - Saiha (0.1.20):
+    - Saiha/Resources (= 0.1.20)
+    - Saiha/SHAlertView (= 0.1.20)
+    - Saiha/SHCommon (= 0.1.20)
+    - Saiha/SHContentSheet (= 0.1.20)
+    - Saiha/SHFoundation (= 0.1.20)
+    - Saiha/SHUIKit (= 0.1.20)
+    - Saiha/SHView (= 0.1.20)
+  - Saiha/Resources (0.1.20)
+  - Saiha/SHAlertView (0.1.20):
+    - Saiha/SHCommon
+    - Saiha/SHFoundation
+    - Saiha/SHUIKit
+    - SnapKit
+  - Saiha/SHCommon (0.1.20):
+    - Saiha/SHFoundation
+  - Saiha/SHContentSheet (0.1.20):
+    - Saiha/SHCommon
+    - Saiha/SHFoundation
+    - Saiha/SHUIKit
+    - SnapKit
+  - Saiha/SHFoundation (0.1.20)
+  - Saiha/SHUIKit (0.1.20):
+    - Saiha/SHCommon
+    - Saiha/SHFoundation
+    - SDWebImage
+    - SnapKit
+  - Saiha/SHView (0.1.20):
     - Saiha/SHCommon
     - Saiha/SHFoundation
     - Saiha/SHUIKit
     - SDWebImage
     - SnapKit
-  - Saiha/SHCommon (0.1.14):
-    - Saiha/SHFoundation
-  - Saiha/SHContentSheet (0.1.14):
-    - Saiha/SHCommon
-    - Saiha/SHFoundation
-    - Saiha/SHUIKit
-    - SDWebImage
-    - SnapKit
-  - Saiha/SHFoundation (0.1.14)
-  - Saiha/SHUIKit (0.1.14):
-    - Saiha/SHCommon
-    - Saiha/SHFoundation
-    - SDWebImage
-    - SnapKit
-  - Saiha/SHView (0.1.14):
-    - Saiha/SHCommon
-    - Saiha/SHFoundation
-    - Saiha/SHUIKit
-    - SDWebImage
-    - SnapKit
-  - SDWebImage (5.12.5):
-    - SDWebImage/Core (= 5.12.5)
-  - SDWebImage/Core (5.12.5)
+  - SDWebImage (5.12.6):
+    - SDWebImage/Core (= 5.12.6)
+  - SDWebImage/Core (5.12.6)
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Saiha (from `../`)
+  - SDWebImage
 
 SPEC REPOS:
   trunk:
@@ -52,10 +51,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Saiha: 0ffa05ad4a30fcc88ea25c6498da9516f29a4b0e
-  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+  Saiha: d137061a29c8814f2bb743fa61759083826f1e25
+  SDWebImage: a47aea9e3d8816015db4e523daff50cfd294499d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: e8e7fc568ce4d4386105a7716401d9d4f3165a47
+PODFILE CHECKSUM: 4cd9c4a9e8ac81b1dbff38349fd050f4e3c1a9b3
 
 COCOAPODS: 1.10.2

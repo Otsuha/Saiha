@@ -83,12 +83,24 @@ open class SHAlertView: SHUIView {
         return button
     }()
     
-    private var viewEdge: CGFloat = 22
-    private var leftViewEdge: CGFloat = 11
-    private var separatorEdge: CGFloat = 8.0
-    private var separatorColor: UIColor = UIColor.saiha_colorWithHexString("#F2F3F7")
+    var viewEdge: CGFloat = 22
+    var leftViewEdge: CGFloat = 11
+    var separatorEdge: CGFloat = 8.0
+    var separatorColor: UIColor = UIColor.saiha_colorWithHexString("#F2F3F7")
     
-    private var allViews: [UIView] = []
+    var allViews: [UIView] = []
+    
+    /// 控制点击背景视图是否会让弹框消失。
+    public var touchBackgroundToCancel: Bool = false {
+        didSet {
+            if self.touchBackgroundToCancel {
+                self.addBackgroundViewGesture()
+            } else {
+                self.removeBackgroundViewGesture()
+            }
+        }
+    }
+    private var tapGesture: UITapGestureRecognizer?
             
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -131,7 +143,20 @@ open class SHAlertView: SHUIView {
         self.removeFromSuperview()
     }
     
-    private func setUI() {
+    func addBackgroundViewGesture() {
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleCancelAction(sender:)))
+        self.tapGesture = tapGesture
+        self.backgroundView.addGestureRecognizer(self.tapGesture!)
+    }
+    
+    func removeBackgroundViewGesture() {
+        if self.tapGesture != nil {
+            self.backgroundView.removeGestureRecognizer(self.tapGesture!)
+            self.tapGesture = nil
+        }
+    }
+    
+    func setUI() {
         for (index, view) in self.allViews.enumerated() {
             self.mainContentView.addSubview(view)
             
