@@ -41,6 +41,16 @@ open class SHSingleButtonMessageAlertView: SHSingleButtonAlertView {
         
     }
     
+    /**
+     带消息提示 `label` 的警告框，底部有一个按钮。
+     
+     - Parameters:
+        - title: 警告弹框标题。若为 `nil` 则不显示标题行。
+        - message: 需要提示的消息。
+        - inViewController: 默认弹框视图添加在主窗口上，但是你也可以选择将视图添加在当前活跃的控制器上。
+        - viewConfiguration: 可以对弹框视图进行某些设置。
+        - confirmAction: 点击底部确定按钮的事件。
+     */
     public static func show(title: String?, message: String, inViewController: Bool = false, viewConfiguration: ((_ messageAlertView: SHSingleButtonMessageAlertView) -> Void)?, confirmAction: @escaping (() -> Void)) {
         let messageAlertView: SHSingleButtonMessageAlertView = SHSingleButtonMessageAlertView()
         messageAlertView.label.text = message

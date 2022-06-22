@@ -1,32 +1,32 @@
 PODS:
-  - Saiha (0.1.20):
-    - Saiha/Resources (= 0.1.20)
-    - Saiha/SHAlertView (= 0.1.20)
-    - Saiha/SHCommon (= 0.1.20)
-    - Saiha/SHContentSheet (= 0.1.20)
-    - Saiha/SHFoundation (= 0.1.20)
-    - Saiha/SHUIKit (= 0.1.20)
-    - Saiha/SHView (= 0.1.20)
-  - Saiha/Resources (0.1.20)
-  - Saiha/SHAlertView (0.1.20):
+  - Saiha (0.1.21):
+    - Saiha/Resources (= 0.1.21)
+    - Saiha/SHAlertView (= 0.1.21)
+    - Saiha/SHCommon (= 0.1.21)
+    - Saiha/SHContentSheet (= 0.1.21)
+    - Saiha/SHFoundation (= 0.1.21)
+    - Saiha/SHUIKit (= 0.1.21)
+    - Saiha/SHView (= 0.1.21)
+  - Saiha/Resources (0.1.21)
+  - Saiha/SHAlertView (0.1.21):
     - Saiha/SHCommon
     - Saiha/SHFoundation
     - Saiha/SHUIKit
     - SnapKit
-  - Saiha/SHCommon (0.1.20):
+  - Saiha/SHCommon (0.1.21):
     - Saiha/SHFoundation
-  - Saiha/SHContentSheet (0.1.20):
+  - Saiha/SHContentSheet (0.1.21):
     - Saiha/SHCommon
     - Saiha/SHFoundation
     - Saiha/SHUIKit
     - SnapKit
-  - Saiha/SHFoundation (0.1.20)
-  - Saiha/SHUIKit (0.1.20):
+  - Saiha/SHFoundation (0.1.21)
+  - Saiha/SHUIKit (0.1.21):
     - Saiha/SHCommon
     - Saiha/SHFoundation
     - SDWebImage
     - SnapKit
-  - Saiha/SHView (0.1.20):
+  - Saiha/SHView (0.1.21):
     - Saiha/SHCommon
     - Saiha/SHFoundation
     - Saiha/SHUIKit
@@ -40,6 +40,7 @@ PODS:
 DEPENDENCIES:
   - Saiha (from `../`)
   - SDWebImage
+  - SnapKit
 
 SPEC REPOS:
   trunk:
@@ -51,10 +52,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Saiha: d137061a29c8814f2bb743fa61759083826f1e25
+  Saiha: b67334ebcb8c453179cad5102f7f2a8bc604e415
   SDWebImage: a47aea9e3d8816015db4e523daff50cfd294499d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 4cd9c4a9e8ac81b1dbff38349fd050f4e3c1a9b3
+PODFILE CHECKSUM: 01dab7cc812a73e17cfed431ada573aa5c406997
 
 COCOAPODS: 1.10.2

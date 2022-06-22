@@ -49,8 +49,4 @@ open class SHSingleButtonAlertView: SHAlertView {
         }
         firstButton.saiha_addSeparator(color: self.separatorColor, position: .top, leftEdge: self.separatorEdge, rightEdge: 0)
     }
-    
-    deinit {
-        saiha_print("弹框消失")
-    }
 }

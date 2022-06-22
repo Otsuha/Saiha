@@ -9,7 +9,7 @@ import Foundation
 
 public extension Bundle {
     
-    static func resource(forBundleName name: String) -> Bundle? {
+    static func saiha_resource(forBundleName name: String) -> Bundle? {
         guard let bundle = Bundle.main.url(forResource: name, withExtension: "bundle") else {
             return nil
         }
@@ -17,7 +17,7 @@ public extension Bundle {
         return currentBundle
     }
     
-    static func resource(forClass aClass: AnyClass, resource: String) -> Bundle? {
+    static func saiha_resource(forClass aClass: AnyClass, resource: String) -> Bundle? {
         let bundle: Bundle = Bundle(for: aClass)
         guard let url = bundle.url(forResource: resource, withExtension: "bundle") else {
             return nil
@@ -26,6 +26,6 @@ public extension Bundle {
     }
     
     static func saihaBundle() -> Bundle {
-        return Bundle.resource(forBundleName: "Saiha")!
+        return Bundle.saiha_resource(forBundleName: "Saiha")!
     }
 }

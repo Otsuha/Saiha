@@ -1,6 +1,6 @@
 {
   "name": "Saiha",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "summary": "My iOS universal code.",
   "homepage": "https://github.com/Otsuha/Saiha.git",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/Otsuha/Saiha.git",
-    "tag": "0.1.20"
+    "tag": "0.1.21"
   },
   "platforms": {
     "ios": "10.0"

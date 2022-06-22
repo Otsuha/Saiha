@@ -6,7 +6,8 @@ platform :ios, '10.0'
 target 'Saiha_Example' do
   pod 'Saiha', :path => '../'
   
-  pod 'SDWebImage'
+  pod 'SDWebImage', :inhibit_warnings => true
+  pod 'SnapKit', :inhibit_warnings => true
 
 end
 

@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
     
   spec.name         = "Saiha"
-  spec.version      = "0.1.21"
+  spec.version      = "0.1.22"
   spec.summary      = "My iOS universal code."
   spec.homepage     = "https://github.com/Otsuha/Saiha.git"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
