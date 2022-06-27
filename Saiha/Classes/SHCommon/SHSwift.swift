@@ -7,7 +7,7 @@
 
 import Foundation
 
-public var enablePrintInRelease: Bool = true
+public var enablePrintInRelease: Bool = false
 
 public func saiha_print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
 #if DEBUG

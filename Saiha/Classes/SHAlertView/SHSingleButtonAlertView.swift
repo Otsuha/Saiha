@@ -47,6 +47,6 @@ open class SHSingleButtonAlertView: SHAlertView {
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: 0))
         }
-        firstButton.saiha_addSeparator(color: self.separatorColor, position: .top, leftEdge: self.separatorEdge, rightEdge: 0)
+        firstButton.saiha_addSeparator(color: self.separatorColor, position: .top, leftEdge: self.separatorEdge, rightEdge: self.separatorEdge)
     }
 }
