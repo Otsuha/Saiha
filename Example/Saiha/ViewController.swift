@@ -32,6 +32,23 @@ class ViewController: UIViewController {
 ////                SHProgressView.dismiss()
 //            }
 //        }
+        
+        let aview: UIView = UIView()
+        aview.backgroundColor = .red
+        self.view.addSubview(aview)
+        aview.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            if #available(iOS 11.0, *) {
+                make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            } else {
+                // Fallback on earlier versions
+            }
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                // Fallback on earlier versions
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,66 +57,63 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapAction(_ sender: Any) {
-//        let defaultDataSource: [(String, String?)] = [
-//            ("dsfadasfd", nil),
-//            ("dsfadasfd", nil),
-//            ("dsfadasfd", nil),
-//            ("dsfadasfd", nil),
-//            ("dsfadasfd", nil),
-//            ("dsfadasfd", nil),
-//            ("dsfadasfd", nil)
-//        ]
-//        let multipleSelectionDataSource: [(String, String?, Bool)] = [
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, true),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, true),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, true),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false)
-//        ]
-//        let contentSwitchDataSource: [(String, String?, Bool)] = [
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, true),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, true),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, true),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false),
-//            ("dsfadasfd", nil, false)
-//        ]
-//        SHContentSheetTableView.setActionTitle("保存")
-//        SHContentSheetTableView.setDefaultShowCount(count: 6)
-//        SHContentSheetTableView.showSeparator(show: false)
-//        SHContentSheetTableView.setWidgeAlignment(alignment: .center)
-//        SHContentSheetDefaultTableView.show(title: nil, dataSource: defaultDataSource, selectedIndex: nil, completionHandler: { index in
+        let defaultDataSource: [(String, String?)] = [
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil),
+            ("dsfadasfd", nil)
+        ]
+        let multipleSelectionDataSource: [(String, String?, Bool)] = [
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, true),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, true),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, true),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false)
+        ]
+        let contentSwitchDataSource: [(String, String?, Bool)] = [
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, true),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, true),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, true),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false),
+            ("dsfadasfd", nil, false)
+        ]
+//        SHContentSheetDefaultTableView.show(title: "nil", dataSource: defaultDataSource, selectedIndex: nil, completionHandler: { index in
 //            saiha_print(index)
 //        }, cancelHandler: nil)
-//        SHContentSheetSwitchTableView.show(title: "ddd", dataSource: contentSwitchDataSource, delegate: nil, completionHandler: { dataSource in
-//            print(dataSource)
-//        }, cancelHandler: nil)
+        
+        SHContentSheetSwitchTableView.show(title: "ddd", dataSource: contentSwitchDataSource, delegate: nil, completionHandler: { dataSource in
+            print(dataSource)
+        }, cancelHandler: nil)
 
 //        SHContentSheetMultipleSelectionTableView.show(title: nil, dataSource: multipleSelectionDataSource, completionHandler: { indexSet in
 //            print(indexSet)
 //        }, cancelHandler: nil)
-//        SHContentSheetDefaultTableView.show(title: "功能标题", dataSource: dataSource, selectedIndex: nil, completionHandler: { index in
+//        SHContentSheetDefaultTableView.show(title: "功能标题", dataSource: defaultDataSource, selectedIndex: nil, completionHandler: { index in
 //            print(index)
 //        }, cancelHandler: nil)
         
-//        SHMessageAlertView.show(title: "提示", message: "dfadafsafads") { messageAlertView in
+//        SHMessageAlertView.show(title: nil, message: "dsfasdfasdfasf") { messageAlertView in
 //            messageAlertView.cancelButton.setTitleColor(.gray, for: .normal)
 //            messageAlertView.cancelButton.setTitle("dsfsdf", for: .normal)
 //        } cancelAction: {
@@ -123,11 +137,11 @@ class ViewController: UIViewController {
 //            print(inputAlertView.textField.text!)
 //        }
         
-        SHInputAlertView.show(title: "请输入手机号", placeholder: "请输入手机号", regular: "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", warnTip: "手机号不正确", viewConfiguration: nil) {
-            
-        } confirmAction: { inputAlertView in
-            saiha_print("点击了确认")
-        }
+//        SHInputAlertView.show(title: "请输入手机号", placeholder: "请输入手机号", regular: "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", warnTip: "手机号不正确", viewConfiguration: nil) {
+//
+//        } confirmAction: { inputAlertView in
+//            saiha_print("点击了确认")
+//        }
 
 
 //        SHSingleButtonMessageAlertView.show(title: "nil", message: "1、注释：当共配中心的快件包含了多家快递品牌，且部分需发往下一站（做发件），部分快件本站直接派送（做派件）时，适用于发派混扫功能；\n2、使用：未选择的快递品牌运单扫描类型为派件，选择的快递品牌及其下一站，运单扫描类型则为发件。") { messageAlertView in
@@ -139,7 +153,14 @@ class ViewController: UIViewController {
 //            saiha_print("点击了确认")
 //        }
 
-
+        SHDoubleInputAlertView.show(title: "dddd", subTitles: ["dd", "dd"], placeholders: ["1111", "2222"], regulars: ["^[\\d\\*]{11}$", nil], warnTips: ["aaa", "bbb"]) { inputAlertView in
+            
+        } cancelAction: {
+            
+        } confirmAction: { inputAlertView in
+            
+        }
+        
     }
     
 }

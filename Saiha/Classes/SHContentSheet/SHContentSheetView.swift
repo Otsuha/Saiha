@@ -23,8 +23,8 @@ open class SHContentSheetView: SHUIView {
     private var mainViewHeight: CGFloat = 0
     private var contentHeight: CGFloat {
         var height: CGFloat = self.mainViewHeight
-        height += CGFloat.saiha_verticalSize(num: 56) + UIWindow.saiha_safeAreaInsets().bottom
-        height += CGFloat.saiha_verticalSize(num: 8)
+        height += 56 + UIWindow.saiha_safeAreaInsets().bottom
+        height += 8
         return height
     }
     
@@ -38,7 +38,7 @@ open class SHContentSheetView: SHUIView {
     }
     
     /// 自定义动画时间。
-    public var animationDuration: CGFloat = 0.6
+    public var animationDuration: CGFloat = 0.5
             
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -63,7 +63,7 @@ open class SHContentSheetView: SHUIView {
         self.cancelButton.setTitleColor(.black, for: .normal)
         self.cancelButton.titleLabel?.bounds = self.cancelButton.bounds
         self.cancelButton.titleLabel?.textAlignment = .center
-        self.cancelButton.titleLabel?.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 17))
+        self.cancelButton.titleLabel?.font = .systemFont(ofSize: 17)
         self.cancelButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: UIWindow.saiha_safeAreaInsets().bottom, right: 0)
         self.cancelButton.layer.backgroundColor = UIColor.white.cgColor
         self.cancelButton.addTarget(self, action: #selector(self.touchCancelAction(sender:)), for: .touchUpInside)
@@ -71,7 +71,7 @@ open class SHContentSheetView: SHUIView {
         self.cancelButton.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.bottom.equalTo(self.snp.bottom)
-            make.height.equalTo(CGFloat.saiha_verticalSize(num: 56) + UIWindow.saiha_safeAreaInsets().bottom)
+            make.height.equalTo(56 + UIWindow.saiha_safeAreaInsets().bottom)
         }
         
         self.sepratorLine = SHUIView()
@@ -80,7 +80,7 @@ open class SHContentSheetView: SHUIView {
         self.sepratorLine.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
             make.bottom.equalTo(self.cancelButton.snp.top)
-            make.height.equalTo(CGFloat.saiha_verticalSize(num: 8))
+            make.height.equalTo(8)
         }
         
         self.mainView = SHUIView()

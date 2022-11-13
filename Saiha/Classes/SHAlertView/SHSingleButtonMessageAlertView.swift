@@ -20,7 +20,7 @@ open class SHSingleButtonMessageAlertView: SHSingleButtonAlertView {
         let label: SHUILabel = SHUILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 19))
+        label.font = .systemFont(ofSize: 17)
         return label
     }()
     
@@ -32,7 +32,7 @@ open class SHSingleButtonMessageAlertView: SHSingleButtonAlertView {
         self.contentView.addSubview(self.label)
         self.label.snp.makeConstraints { make in
             make.left.top.right.bottom.equalToSuperview()
-            make.height.greaterThanOrEqualTo(CGFloat.saiha_verticalSize(num: 85))
+            make.height.greaterThanOrEqualTo(65)
         }
     }
     

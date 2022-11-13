@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
     
   spec.name         = "Saiha"
   spec.version      = "0.1.23"
-  spec.summary      = "My iOS universal code."
+  spec.summary      = "iOS UI 组件层"
   spec.homepage     = "https://github.com/Otsuha/Saiha.git"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
   spec.author             = { "otsuha" => "grass.ichika@gmail.com" }
@@ -31,6 +31,7 @@ Pod::Spec.new do |spec|
       ss.dependency 'Saiha/SHFoundation'
   end
   
+  # 通用 UIKit 组件。
   spec.subspec 'SHUIKit' do |ss|
       ss.source_files = 'Saiha/Classes/SHUIKit/**/*'
       ss.frameworks = "Foundation", "UIKit"
@@ -50,6 +51,7 @@ Pod::Spec.new do |spec|
       ss.dependency 'SnapKit'
   end
       
+  # 底部 contentSheet 弹框。
   spec.subspec 'SHContentSheet' do |ss|
       ss.source_files = 'Saiha/Classes/SHContentSheet/*'
       ss.frameworks = "Foundation", "UIKit"
@@ -59,6 +61,7 @@ Pod::Spec.new do |spec|
       ss.dependency 'SnapKit'
   end
   
+  # 警告框。
   spec.subspec 'SHAlertView' do |ss|
       ss.source_files = 'Saiha/Classes/SHAlertView/*'
       ss.frameworks = "Foundation", "UIKit"

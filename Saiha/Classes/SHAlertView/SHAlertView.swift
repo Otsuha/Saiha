@@ -60,7 +60,7 @@ open class SHAlertView: SHUIView {
     open lazy var titleLabel: SHUILabel = {
         let label: SHUILabel = SHUILabel()
         label.text = self.title
-        label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 17), weight: .semibold)
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
         label.textAlignment = .center
         return label
     }()
@@ -69,7 +69,7 @@ open class SHAlertView: SHUIView {
     open var cancelButton: SHUIButton = {
         let button: SHUIButton = SHUIButton()
         button.setTitle("取消", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 17))
+        button.titleLabel?.font = .systemFont(ofSize: 20)
         button.titleLabel?.textAlignment = .center
         return button
     }()
@@ -78,13 +78,17 @@ open class SHAlertView: SHUIView {
     open var confirmButton: SHUIButton = {
         let button: SHUIButton = SHUIButton()
         button.setTitle("确认", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 17))
+        button.titleLabel?.font = .systemFont(ofSize: 20)
         button.titleLabel?.textAlignment = .center
         return button
     }()
     
-    var viewEdge: CGFloat = 22
-    var leftViewEdge: CGFloat = 11
+    /// 是否显示标题栏下面的分割线。
+    open var showTitleSeparator: Bool = false
+    
+    var mainContentViewLeftViewEdge: CGFloat = 28
+    var viewEdge: CGFloat = 10
+    var leftViewEdge: CGFloat = 20
     var separatorEdge: CGFloat = 8.0
     var separatorColor: UIColor = UIColor.saiha_colorWithHexString("#F2F3F7")
     
@@ -112,8 +116,8 @@ open class SHAlertView: SHUIView {
         
         self.addSubview(self.mainContentView)
         self.mainContentView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.saiha_horizontalSize(num: 28))
-            make.right.equalToSuperview().offset(CGFloat.saiha_horizontalSize(num: -27))
+            make.left.equalToSuperview().offset(self.mainContentViewLeftViewEdge)
+            make.right.equalToSuperview().offset(-self.mainContentViewLeftViewEdge)
             make.centerY.equalToSuperview()
         }
         
@@ -164,18 +168,20 @@ open class SHAlertView: SHUIView {
                 self.titleLabel.text = self.title
                 view.snp.makeConstraints { make in
                     make.left.right.top.equalToSuperview()
-                    make.height.equalTo(CGFloat.saiha_verticalSize(num: 56))
+                    make.height.equalTo(56)
                 }
-                view.saiha_addSeparator(color: self.separatorColor, position: .bottom, leftEdge: self.separatorEdge, rightEdge: self.separatorEdge)
+                if self.showTitleSeparator {
+                    view.saiha_addSeparator(color: self.separatorColor, position: .bottom, leftEdge: self.separatorEdge, rightEdge: self.separatorEdge)
+                }
             } else {
                 let preView: UIView? = index == 0 ? nil : self.allViews[index - 1]
                 view.snp.remakeConstraints { make in
-                    make.left.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: self.leftViewEdge))
-                    make.right.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -self.leftViewEdge))
+                    make.left.equalToSuperview().offset(self.leftViewEdge)
+                    make.right.equalToSuperview().offset(-self.leftViewEdge)
                     if preView != nil {
-                        make.top.equalTo(preView!.snp.bottom).offset(CGFloat.saiha_verticalSize(num: self.viewEdge))
+                        make.top.equalTo(preView!.snp.bottom).offset(0)
                     } else {
-                        make.top.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: self.viewEdge))
+                        make.top.equalToSuperview().offset(self.viewEdge)
                     }
                 }
             }
@@ -189,20 +195,20 @@ open class SHAlertView: SHUIView {
         firstButton.snp.remakeConstraints { make in
             make.left.equalToSuperview()
             if lastView != nil {
-                make.top.equalTo(lastView!.snp.bottom).offset(CGFloat.saiha_verticalSize(num: self.viewEdge))
+                make.top.equalTo(lastView!.snp.bottom).offset(self.viewEdge)
             } else {
-                make.top.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: self.viewEdge))
+                make.top.equalToSuperview().offset(self.viewEdge)
             }
-            make.height.equalTo(CGFloat.saiha_verticalSize(num: 58))
+            make.height.equalTo(58)
             make.width.equalTo(secondButton)
             make.right.equalTo(secondButton.snp.left)
-            make.bottom.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: 0))
+            make.bottom.equalToSuperview().offset(0)
         }
         secondButton.snp.remakeConstraints { make in
             make.right.equalToSuperview()
             make.top.equalTo(firstButton.snp.top)
-            make.height.equalTo(CGFloat.saiha_verticalSize(num: 58))
-            make.bottom.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: 0))
+            make.height.equalTo(58)
+            make.bottom.equalToSuperview().offset(0)
         }
         firstButton.saiha_addSeparator(color: self.separatorColor, position: .top, leftEdge: self.separatorEdge, rightEdge: 0)
         secondButton.saiha_addSeparator(color: self.separatorColor, position: .top, leftEdge: 0, rightEdge: self.separatorEdge)
@@ -212,8 +218,8 @@ open class SHAlertView: SHUIView {
         line.snp.makeConstraints { make in
             make.left.equalTo(firstButton.snp.right)
             make.width.equalTo(1)
-            make.top.equalTo(firstButton.snp.top).offset(CGFloat.saiha_verticalSize(num: 14))
-            make.bottom.equalTo(firstButton.snp.bottom).offset(CGFloat.saiha_verticalSize(num: -14))
+            make.top.equalTo(firstButton.snp.top).offset(14)
+            make.bottom.equalTo(firstButton.snp.bottom).offset(-14)
         }
     }
     

@@ -27,35 +27,40 @@ open class SHInputAlertView: SHAlertView {
     open var warnLabel: SHUILabel = {
         let label: SHUILabel = SHUILabel()
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 14))
+        label.font = .systemFont(ofSize: 14)
         label.textColor = .red
         return label
     }()
     
     private var regular: String?
     private var warnTip: String?
+    
     private var confirmActionWithView: ((_ inputAlertView: SHInputAlertView) -> Void)?
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.setInputViewUI()
+    }
+    
+    func setInputViewUI() {
         self.addSubview(self.contentView)
         
         self.textField.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
         self.contentView.addSubview(self.textField)
         self.textField.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.saiha_horizontalSize(num: 22))
-            make.right.equalToSuperview().offset(CGFloat.saiha_horizontalSize(num: -22))
-            make.top.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: 12))
+            make.left.equalToSuperview().offset(12)
+            make.right.equalToSuperview().offset(-12)
+            make.top.equalToSuperview().offset(12)
             //make.bottom.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -12))
-            make.height.equalTo(CGFloat.saiha_verticalSize(num: 48))
+            make.height.equalTo(48)
         }
         
         self.contentView.addSubview(self.warnLabel)
         self.warnLabel.snp.makeConstraints { make in
             make.left.equalTo(self.textField.snp.left)
-            make.top.equalTo(self.textField.snp.bottom).offset(CGFloat.saiha_verticalSize(num: 8))
-            make.bottom.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: 0))
+            make.top.equalTo(self.textField.snp.bottom).offset(8)
+            make.bottom.equalToSuperview().offset(0)
         }
         self.warnLabel.isHidden = true
     }
@@ -64,14 +69,14 @@ open class SHInputAlertView: SHAlertView {
         super.init(coder: coder)
     }
     
-    @objc private func textFieldDidChange(textField: UITextField) {
-        if self.textField.text == nil || self.textField.text == "" {
+    @objc func textFieldDidChange(textField: UITextField) {
+        if textField.text == nil || textField.text == "" {
             self.hiddenWarn()
         }
     }
     
     override func handleConfirmAction(sender: SHUIButton) {
-        if let regex = self.regular {
+        if let regex: String = self.regular {
             let regexRule: NSPredicate = NSPredicate(format: "SELF MATCHES %@" , regex)
             if regexRule.evaluate(with: self.textField.text ?? "") {
                 self.confirmActionWithView?(self)
@@ -86,7 +91,7 @@ open class SHInputAlertView: SHAlertView {
         }
     }
     
-    private func playAnimation() {
+    func playAnimation() {
         let viewLayer: CALayer = self.mainContentView.layer
         viewLayer.removeAnimation(forKey: "position.animation.show")
         let positon: CGPoint = viewLayer.position
@@ -102,12 +107,12 @@ open class SHInputAlertView: SHAlertView {
         viewLayer.add(animation, forKey: "position.animation.show")
     }
     
-    private func showWarn() {
+    func showWarn() {
         self.warnLabel.isHidden = false
         self.warnLabel.text = self.warnTip
     }
     
-    private func hiddenWarn() {
+    func hiddenWarn() {
         self.warnLabel.isHidden = true
     }
     
@@ -124,7 +129,7 @@ open class SHInputAlertView: SHAlertView {
         - cancelAction: 点击左边取消按钮的事件。
         - confirmAction: 点击右边确定按钮的事件。
      */
-    public static func show(title: String?, placeholder: String, regular: String? = nil, warnTip: String? = nil, inViewController: Bool = false, viewConfiguration: ((_ inputAlertView: SHInputAlertView) -> Void)?, cancelAction: (() -> Void)?, confirmAction: @escaping ((_ inputAlertView: SHInputAlertView) -> Void)) {
+    public static func show(title: String?, placeholder: String?, regular: String? = nil, warnTip: String? = nil, inViewController: Bool = false, viewConfiguration: ((_ inputAlertView: SHInputAlertView) -> Void)?, cancelAction: (() -> Void)?, confirmAction: @escaping ((_ inputAlertView: SHInputAlertView) -> Void)) {
         let inputAlertView: SHInputAlertView = SHInputAlertView()
         inputAlertView.textField.placeholder = placeholder
         inputAlertView.regular = regular

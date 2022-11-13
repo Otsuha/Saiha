@@ -195,6 +195,7 @@
 		C6E26427D2CFDA364DE0FA5DB1D64A79 /* SDImageAWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5627C4EC7C14F51A031E763247D91221 /* SDImageAWebPCoder.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C76B0E50CBC62A5D037B6A194E087E74 /* UIImage+MultiFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A7C15F0186273A47A43FFC9B8721940 /* UIImage+MultiFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C782BF1C0145C528FC779080FD128016 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CDC6391E3063232D20F2FFE1617B4AA /* Foundation.framework */; };
+		CAD5B4CD287D71460068C7F6 /* SHDoubleInputAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD5B4CC287D71460068C7F6 /* SHDoubleInputAlertView.swift */; };
 		CB283C76C5CE1F0E9BAA1A5299A2847E /* UILayoutSupport+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4CBFD47AE76E6C76E111D031680F38 /* UILayoutSupport+Extensions.swift */; };
 		CD531C8993BE84886671A80BCC786C21 /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D23ACCA1262400140B53C1CAABA58 /* ConstraintRelatableTarget.swift */; };
 		CDBF01A6DA546A80B667A40512DEC745 /* SDWebImageCacheKeyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A17561F402A01D92B75F685CFCB74087 /* SDWebImageCacheKeyFilter.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -478,6 +479,7 @@
 		C666A1FFEAD4B63671CB8F2D3B208F15 /* ConstraintMakerFinalizable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerFinalizable.swift; path = Source/ConstraintMakerFinalizable.swift; sourceTree = "<group>"; };
 		C78B3FEBC7ECA4C77D6529ACE37C4531 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+ImageContentType.h"; path = "SDWebImage/Core/NSData+ImageContentType.h"; sourceTree = "<group>"; };
 		C973DCA437A660E4F8DDA919E5D49498 /* Pods-Saiha_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Saiha_Example-umbrella.h"; sourceTree = "<group>"; };
+		CAD5B4CC287D71460068C7F6 /* SHDoubleInputAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SHDoubleInputAlertView.swift; path = Saiha/Classes/SHAlertView/SHDoubleInputAlertView.swift; sourceTree = "<group>"; };
 		CC07A744E55C950EE749487506D74BFE /* NSButton+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSButton+WebCache.h"; path = "SDWebImage/Core/NSButton+WebCache.h"; sourceTree = "<group>"; };
 		CC88883B5B945E1BFC7658A39101E073 /* ConstraintView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ConstraintView+Extensions.swift"; path = "Source/ConstraintView+Extensions.swift"; sourceTree = "<group>"; };
 		CD3116F2B4384BE10EBEA0F25E42F404 /* SHAlertView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHAlertView.swift; path = Saiha/Classes/SHAlertView/SHAlertView.swift; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 			children = (
 				CD3116F2B4384BE10EBEA0F25E42F404 /* SHAlertView.swift */,
 				1366DB3DEA9BCDC3D0A895A00E75DBD2 /* SHInputAlertView.swift */,
+				CAD5B4CC287D71460068C7F6 /* SHDoubleInputAlertView.swift */,
 				099DB55BCB810EF3D4954D95330B6844 /* SHMessageAlertView.swift */,
 				E55660C8069386119C631566D69050BC /* SHSingleButtonAlertView.swift */,
 				D2A3EE31CA16794FD760F0418E76AEC7 /* SHSingleButtonMessageAlertView.swift */,
@@ -1335,6 +1338,7 @@
 				EFDF1DF2BD6F498BE579227A8BA20C3E /* SHContentSheetDefaultTableView.swift in Sources */,
 				4E03993E1D6F1DCD7A11CE062A23C181 /* SHContentSheetMultipleSelectionTableView.swift in Sources */,
 				65AA64286CEB2F0B3ABB979D83B63F31 /* SHContentSheetMultipleSelectionTableViewCell.swift in Sources */,
+				CAD5B4CD287D71460068C7F6 /* SHDoubleInputAlertView.swift in Sources */,
 				E0B0C23385A7217B563C9507B74E57D9 /* SHContentSheetSwitchTableView.swift in Sources */,
 				70D8426F9BB990BFF4F8179442A53880 /* SHContentSheetSwitchTableViewCell.swift in Sources */,
 				57135DAF5158028FB189AB510D94A755 /* SHContentSheetTableView.swift in Sources */,

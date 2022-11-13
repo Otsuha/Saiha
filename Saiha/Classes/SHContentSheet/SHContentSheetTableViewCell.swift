@@ -44,12 +44,12 @@ class SHContentSheetTableViewCell: UITableViewCell {
             
             self.titleLabel = SHUILabel()
             self.titleLabel.text = "中通快递"
-            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16))
+            self.titleLabel.font = .systemFont(ofSize: 16)
             self.contentView.addSubview(self.titleLabel)
         } else {
             self.titleLabel = SHUILabel()
             self.titleLabel.text = "中通快递"
-            self.titleLabel.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16))
+            self.titleLabel.font = .systemFont(ofSize: 16)
             self.contentView.addSubview(self.titleLabel)
         }
         
@@ -63,46 +63,46 @@ class SHContentSheetTableViewCell: UITableViewCell {
     open override func layoutSubviews() {
         if self.showIcon {
             if self.iconImageView != nil {
-                let edge: CGFloat = self.widgeAlignment == .left ? CGFloat.saiha_horizontalSize(num: 20) : CGFloat.saiha_horizontalSize(num: 140)
+                let edge: CGFloat = self.widgeAlignment == .left ? 20 : 140
                 self.iconImageView!.snp.remakeConstraints { make in
                     make.left.equalToSuperview().offset(edge)
                     make.centerY.equalToSuperview()
-                    make.width.height.equalTo(CGFloat.saiha_verticalSize(num: 24))
+                    make.width.height.equalTo(24)
                 }
             }
             if self.titleLabel != nil {
                 self.titleLabel.textAlignment = .left
                 self.titleLabel.snp.remakeConstraints { make in
-                    make.left.equalTo(self.iconImageView!.snp.right).offset(CGFloat.saiha_horizontalSize(num: 8))
+                    make.left.equalTo(self.iconImageView!.snp.right).offset(8)
                     make.centerY.equalToSuperview()
-                    make.width.greaterThanOrEqualTo(CGFloat.saiha_horizontalSize(num: 64))
-                    make.height.greaterThanOrEqualTo(CGFloat.saiha_verticalSize(num: 16))
+                    make.width.greaterThanOrEqualTo(64)
+                    make.height.greaterThanOrEqualTo(16)
                 }
             }
         } else {
             if self.titleLabel != nil {
                 self.titleLabel.textAlignment = .center
                 if self.widgeAlignment == .left {
-                    let edge: CGFloat = self.widgeAlignment == .left ? CGFloat.saiha_horizontalSize(num: 20) : CGFloat.saiha_horizontalSize(num: 140)
+                    let edge: CGFloat = self.widgeAlignment == .left ? 20 : 140
                     self.titleLabel.snp.remakeConstraints { make in
                         make.left.equalToSuperview().offset(edge)
                         make.centerY.equalToSuperview()
-                        make.width.greaterThanOrEqualTo(CGFloat.saiha_horizontalSize(num: 64))
-                        make.height.greaterThanOrEqualTo(CGFloat.saiha_verticalSize(num: 16))
+                        make.width.greaterThanOrEqualTo(64)
+                        make.height.greaterThanOrEqualTo(16)
                     }
                 } else {
                     self.titleLabel.snp.remakeConstraints { make in
                         make.centerX.equalToSuperview()
                         make.centerY.equalToSuperview()
-                        make.width.greaterThanOrEqualTo(CGFloat.saiha_horizontalSize(num: 64))
-                        make.height.greaterThanOrEqualTo(CGFloat.saiha_verticalSize(num: 16))
+                        make.width.greaterThanOrEqualTo(64)
+                        make.height.greaterThanOrEqualTo(16)
                     }
                 }
             }
         }
         
         if self.showSeparator && self.hasAddSeparator == false {
-            self.contentView.saiha_addSeparator(color: UIColor.saiha_colorWithHexString("#D8D8D8", alpha: 0.5), position: .bottom, leftEdge: CGFloat.saiha_horizontalSize(num: 16), rightEdge: CGFloat.saiha_horizontalSize(num: 18))
+            self.contentView.saiha_addSeparator(color: UIColor.saiha_colorWithHexString("#D8D8D8", alpha: 0.5), position: .bottom, leftEdge: 16, rightEdge: 18)
             self.hasAddSeparator = true
         }
         
@@ -110,9 +110,9 @@ class SHContentSheetTableViewCell: UITableViewCell {
         if self.showMark {
             self.markButton.isHidden = false
             self.markButton.snp.makeConstraints { make in
-                make.right.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -20))
+                make.right.equalToSuperview().offset(-20)
                 make.centerY.equalTo(self.titleLabel)
-                make.width.height.equalTo(CGFloat.saiha_verticalSize(num: 20))
+                make.width.height.equalTo(20)
             }
         } else {
             self.markButton.isHidden = true

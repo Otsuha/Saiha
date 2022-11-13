@@ -31,7 +31,7 @@ open class SHContentSheetTableView: SHUIView {
     
     public var titleLabel: SHUILabel = {
         let label: SHUILabel = SHUILabel()
-        label.font = .systemFont(ofSize: CGFloat.saiha_verticalSize(num: 16), weight: .medium)
+        label.font = .systemFont(ofSize: 16, weight: .medium)
         return label
     }()
     public var cancelButton: SHUIButton = {
@@ -57,10 +57,8 @@ open class SHContentSheetTableView: SHUIView {
             self.titleLabel.text = newValue
             if newValue == nil {
                 self.showTitleLabel = false
-                self.showCancelButton = false
             } else {
                 self.showTitleLabel = true
-                self.showCancelButton = true
             }
         }
     }
@@ -78,14 +76,14 @@ open class SHContentSheetTableView: SHUIView {
     public var widgeAlignment: SHContentSheetTableView.WidgeAlignment?
     
     /// 自定义动画时间。
-    public var animationDuration: CGFloat = 0.6
+    public var animationDuration: CGFloat = 0.5
     
     var cancelHandler: (() -> Void)?
     
     var defaultContentHeight: CGFloat {
         get {
             if self.showTitleLabel {
-                return self.tableViewHeight + CGFloat.saiha_verticalSize(num: 60)
+                return self.tableViewHeight + 60
             } else {
                 return self.tableViewHeight
             }
@@ -97,14 +95,14 @@ open class SHContentSheetTableView: SHUIView {
      - Parameters:
         - count: 当数据源个数小于 `count` 时，`tableView` 会自适应高度并显示所有行。当数据源个数大于 `count` 时，`tableView` 将默认显示 `count` 个数，其余的滑动显示。
      */
-    public var defaultShowCount: Int = 8
+    public var defaultShowCount: Int = 6
     var tableViewHeight: CGFloat {
         get {
             var height: CGFloat = 0
             if self.dataSource.count <= self.defaultShowCount {
-                height = CGFloat(self.dataSource.count) * CGFloat.saiha_verticalSize(num: 56)
+                height = CGFloat(self.dataSource.count) * 56
             } else {
-                height = CGFloat(self.defaultShowCount) * CGFloat.saiha_verticalSize(num: 56) + CGFloat.saiha_verticalSize(num: 56 / 2)
+                height = CGFloat(self.defaultShowCount) * 56 + 56 / 2
             }
             return height
         }
@@ -129,7 +127,7 @@ open class SHContentSheetTableView: SHUIView {
         self.mainTableView = UITableView()
         self.mainTableView.delegate = self
         self.mainTableView.dataSource = self
-        self.mainTableView.rowHeight = CGFloat.saiha_verticalSize(num: 56)
+        self.mainTableView.rowHeight = 56
         self.mainTableView.separatorStyle = .none
         self.addSubview(self.mainTableView)
     }
@@ -147,10 +145,10 @@ open class SHContentSheetTableView: SHUIView {
         if self.showTitleLabel {
             self.titleLabel.isHidden = false
             self.titleLabel.snp.makeConstraints { make in
-                make.left.equalToSuperview().offset(CGFloat.saiha_horizontalSize(num: 20))
-                make.bottom.equalTo(self.mainTableView.snp.top).offset(CGFloat.saiha_verticalSize(num: -20))
-                make.width.greaterThanOrEqualTo(CGFloat.saiha_horizontalSize(num: 64))
-                make.height.equalTo(CGFloat.saiha_verticalSize(num: 20))
+                make.left.equalToSuperview().offset(20)
+                make.bottom.equalTo(self.mainTableView.snp.top).offset(-20)
+                make.width.greaterThanOrEqualTo(64)
+                make.height.equalTo(20)
             }
         } else {
             self.titleLabel.isHidden = true
@@ -159,9 +157,9 @@ open class SHContentSheetTableView: SHUIView {
         if self.showCancelButton && self.showTitleLabel {
             self.cancelButton.isHidden = false
             self.cancelButton.snp.makeConstraints { make in
-                make.right.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -20))
+                make.right.equalToSuperview().offset(-20)
                 make.centerY.equalTo(self.titleLabel)
-                make.width.height.equalTo(CGFloat.saiha_verticalSize(num: 20))
+                make.width.height.equalTo(20)
             }
         } else {
             self.cancelButton.isHidden = true

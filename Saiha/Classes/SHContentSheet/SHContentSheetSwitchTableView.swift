@@ -62,6 +62,12 @@ open class SHContentSheetSwitchTableView: SHContentSheetTableView {
         }
     }
     
+    public func controlSwitch(index: Int, isOn: Bool) {
+        let cell: SHContentSheetSwitchTableViewCell = self.mainTableView.cellForRow(at: IndexPath(row: index, section: 0)) as! SHContentSheetSwitchTableViewCell
+        cell.switchButton.isOn = isOn
+        self.dataSource[index].isOn = isOn
+    }
+    
     /**
      开关样式弹框。你可以实现 `SHContentSheetSwitchTableViewDelegate` 来实现每个开关的操作，或者更多自定义操作。
      

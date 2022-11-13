@@ -32,9 +32,9 @@ class SHContentSheetSwitchTableViewCell: SHContentSheetTableViewCell {
         self.switchButton.addTarget(self, action: #selector(self.handleSwitch(sender:)), for: .valueChanged)
         self.contentView.addSubview(self.switchButton)
         self.switchButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(CGFloat.saiha_verticalSize(num: -24))
+            make.right.equalToSuperview().offset(-24)
             make.centerY.equalToSuperview()
-            make.width.equalTo(CGFloat.saiha_horizontalSize(num: 51))
+            make.width.equalTo(51)
         }
     }
     
