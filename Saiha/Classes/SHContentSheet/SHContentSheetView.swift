@@ -44,7 +44,8 @@ open class SHContentSheetView: SHUIView {
         super.init(frame: frame)
                 
         self.backgroundView = SHUIView()
-        self.backgroundView.backgroundColor = UIColor.saiha_colorWithHexString("#000000", alpha: 0.7)
+        //self.backgroundView.backgroundColor = UIColor.saiha_colorWithHexString("#000000", alpha: 0.7)
+        self.backgroundView.backgroundColor = .white
         self.addSubview(self.backgroundView)
         self.backgroundView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()

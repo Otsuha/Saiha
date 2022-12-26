@@ -1,7 +1,7 @@
 {
   "name": "Saiha",
-  "version": "0.1.21",
-  "summary": "My iOS universal code.",
+  "version": "0.1.23",
+  "summary": "iOS UI 组件层",
   "homepage": "https://github.com/Otsuha/Saiha.git",
   "license": {
     "type": "MIT",
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/Otsuha/Saiha.git",
-    "tag": "0.1.21"
+    "tag": "0.1.23"
   },
   "platforms": {
     "ios": "10.0"
@@ -123,6 +123,19 @@
 
         ],
         "SnapKit": [
+
+        ]
+      }
+    },
+    {
+      "name": "SHCalendarView",
+      "source_files": "Saiha/Classes/SHCalendarView/*",
+      "frameworks": [
+        "Foundation",
+        "UIKit"
+      ],
+      "dependencies": {
+        "Saiha/SHFoundation": [
 
         ]
       }

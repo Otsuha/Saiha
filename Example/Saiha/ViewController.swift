@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     
     private var label: UILabel!
     
+    private var selectedBeginDate: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -57,31 +59,31 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapAction(_ sender: Any) {
-        let defaultDataSource: [(String, String?)] = [
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil),
-            ("dsfadasfd", nil)
-        ]
-        let multipleSelectionDataSource: [(String, String?, Bool)] = [
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, true),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, true),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, true),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false),
-            ("dsfadasfd", nil, false)
-        ]
+//        let defaultDataSource: [(String, String?)] = [
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil),
+//            ("dsfadasfd", nil)
+//        ]
+//        let multipleSelectionDataSource: [(String, String?, Bool)] = [
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, true),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, true),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, true),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false),
+//            ("dsfadasfd", nil, false)
+//        ]
         let contentSwitchDataSource: [(String, String?, Bool)] = [
             ("dsfadasfd", nil, false),
             ("dsfadasfd", nil, false),
@@ -153,14 +155,67 @@ class ViewController: UIViewController {
 //            saiha_print("点击了确认")
 //        }
 
-        SHDoubleInputAlertView.show(title: "dddd", subTitles: ["dd", "dd"], placeholders: ["1111", "2222"], regulars: ["^[\\d\\*]{11}$", nil], warnTips: ["aaa", "bbb"]) { inputAlertView in
-            
-        } cancelAction: {
-            
-        } confirmAction: { inputAlertView in
-            
-        }
-        
+//        SHDoubleInputAlertView.show(title: "dddd", subTitles: ["dd", "dd"], placeholders: ["1111", "2222"], regulars: ["^[\\d\\*]{11}$", nil], warnTips: ["aaa", "bbb"]) { inputAlertView in
+//
+//        } cancelAction: {
+//
+//        } confirmAction: { inputAlertView in
+//
+//        }
     }
     
+}
+
+extension ViewController: SHCalendarViewDelegate {
+    
+    func calendarView(calendarView: SHCalendarView, didSelectCell cell: SHCalendarDateButton) {
+//        if let date = cell.date {
+//            print(date.toString())
+//        }
+//        self.selectedDate = cell.date
+    }
+    
+//    func calendarView(enableSelectDateIn calendarView: SHCalendarView, date: SHDate, cell: SHCalendarDateButton) -> Bool {
+//        guard let beginDate = self.selectedBeginDate else {
+//            return true
+//        }
+//        if calendarView.beginTime != nil && calendarView.endTime == nil {
+//            self.selectedBeginDate = beginDate
+//            let dateFormatter: SHDateFormatter = SHDateFormatter()
+//            dateFormatter.string(from: beginDate)
+//            let selectedBeginDateStr: String = dateFormatter.string(from: beginDate)
+//            let todayStr: String = SHDate().toString()
+//            let prefix31: SHDate = SHCalendar.current.date(
+//                byAdding: .day,
+//                value: -31,
+//                to: date
+//            )
+//            let prefix31Str: String = prefix31.toString()
+//            let after31: SHDate = SHCalendar.current.date(
+//                byAdding: .day,
+//                value: +31,
+//                to: date
+//            )
+//            let after31Str: String = after31.toString()
+//            if after31Str > todayStr {
+//                if prefix31Str <= selectedBeginDateStr && selectedBeginDateStr >= todayStr {
+//                    cell.setTitleColor(.black, for: .normal)
+//                    return true
+//                } else {
+//                    cell.setTitleColor(.gray, for: .normal)
+//                    return false
+//                }
+//            } else {
+//                if prefix31Str <= selectedBeginDateStr && selectedBeginDateStr >= after31Str {
+//                    cell.setTitleColor(.black, for: .normal)
+//                    return true
+//                } else {
+//                    cell.setTitleColor(.gray, for: .normal)
+//                    return false
+//                }
+//            }
+//        } else {
+//            return false
+//        }
+//    }
 }

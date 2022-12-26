@@ -31,7 +31,7 @@ Pod::Spec.new do |spec|
       ss.dependency 'Saiha/SHFoundation'
   end
   
-  # 通用 UIKit 组件。
+  # 通用 UIKit 组件
   spec.subspec 'SHUIKit' do |ss|
       ss.source_files = 'Saiha/Classes/SHUIKit/**/*'
       ss.frameworks = "Foundation", "UIKit"
@@ -51,7 +51,7 @@ Pod::Spec.new do |spec|
       ss.dependency 'SnapKit'
   end
       
-  # 底部 contentSheet 弹框。
+  # 底部 contentSheet 弹框
   spec.subspec 'SHContentSheet' do |ss|
       ss.source_files = 'Saiha/Classes/SHContentSheet/*'
       ss.frameworks = "Foundation", "UIKit"
@@ -61,7 +61,7 @@ Pod::Spec.new do |spec|
       ss.dependency 'SnapKit'
   end
   
-  # 警告框。
+  # 警告框
   spec.subspec 'SHAlertView' do |ss|
       ss.source_files = 'Saiha/Classes/SHAlertView/*'
       ss.frameworks = "Foundation", "UIKit"
@@ -69,6 +69,13 @@ Pod::Spec.new do |spec|
       ss.dependency 'Saiha/SHCommon'
       ss.dependency 'Saiha/SHUIKit'
       ss.dependency 'SnapKit'
+  end
+  
+  # 日历
+  spec.subspec 'SHCalendarView' do |ss|
+      ss.source_files = 'Saiha/Classes/SHCalendarView/*'
+      ss.frameworks = "Foundation", "UIKit"
+      ss.dependency 'Saiha/SHFoundation'
   end
   
   spec.subspec "Resources" do |subspec|

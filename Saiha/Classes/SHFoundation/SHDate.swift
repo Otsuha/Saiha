@@ -50,3 +50,64 @@ extension Date {
         return aDateFormatter.string(from: date)
     }
 }
+
+public class SHDate: NSObject {
+
+    static var today: SHDate = SHDate()
+    
+    public var dateFormatterString: String = "yyyy-MM-dd"
+    
+    private var date: Date!
+    private var dateFormatter: SHDateFormatter = SHDateFormatter()
+    private var calendar: SHCalendar = SHCalendar.current
+    
+    public var day: Int {
+        return self.calendar.day(date: self)
+    }
+    
+    public var month: Int {
+        return self.calendar.month(date: self)
+    }
+    
+    public var week: Int {
+        return self.calendar.week(date: self)
+    }
+    
+    public var mark: String?
+    
+    public override init() {
+        super.init()
+        
+        self.date = Date()
+        self.dateFormatter.dateFormat = self.dateFormatterString
+    }
+    
+    public convenience init(date: Date) {
+        self.init()
+        
+        self.date = date
+    }
+    
+    public convenience init(date: Date, dateFormatterString: String) {
+        self.init(date: date)
+        
+        self.dateFormatterString = dateFormatterString
+    }
+    
+    public convenience init(date: Date, dateFormatterString: String, calendar: SHCalendar) {
+        self.init(date: date, dateFormatterString: dateFormatterString)
+        
+        self.calendar = calendar
+    }
+}
+
+extension SHDate {
+    
+    public func toDate() -> Date {
+        return self.date
+    }
+    
+    public func toString() -> String {
+        return self.dateFormatter.string(from: self.date)
+    }
+}

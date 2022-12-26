@@ -23,7 +23,7 @@ public extension UIColor {
                 if traitCollection.userInterfaceStyle == .light {
                     return UIColor.saiha_colorWithHexString("333333")
                 } else {
-                    return UIColor.white
+                    return UIColor.black
                 }
             }
         } else {
